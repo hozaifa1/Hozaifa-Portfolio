@@ -59,33 +59,22 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="mb-6 pt-8"
+            className="mb-10 pt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <p className="text-cyan-400 text-xl md:text-2xl font-mono mb-2">Hi, I&apos;m</p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+            <h1 className="text-5xl md:text-7xl font-bold text-white">
               Hozaifa
             </h1>
           </motion.div>
 
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] to-cyan-300">
-              Full-Stack Developer & ML Engineer
-            </span>
-          </motion.h2>
-
           <motion.p
-            className="text-lg md:text-xl text-slate-400 mb-8 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             I design production-ready platforms across web and AI, blending reliable engineering with sharp execution to ship products that move businesses forward.
           </motion.p>
