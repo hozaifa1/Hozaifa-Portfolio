@@ -145,7 +145,7 @@ export default function AboutPage() {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-900/50 rounded-lg p-6 border border-slate-700">
-                  <p className="text-white font-bold mb-2">DL-based Optimization of Solar Cell Design Parameters</p>
+                  <p className="text-white font-bold mb-2">Computational Modeling for Photovoltaic Materials</p>
                   <p className="text-cyan-400 text-sm mb-2">Ongoing Research</p>
                   <p className="text-slate-400 text-sm">
                     Training deep learning models on simulated data to predict and optimize photovoltaic efficiency with the Emerging Nanodevices Group.
@@ -153,7 +153,7 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="bg-slate-900/50 rounded-lg p-6 border border-slate-700">
-                  <p className="text-white font-bold mb-2">GAA-FeFET based Spiking Neural Networks (SNN)</p>
+                  <p className="text-white font-bold mb-2">Neuromorphic Device Simulation Framework</p>
                   <p className="text-cyan-400 text-sm mb-2">Ongoing Research</p>
                   <p className="text-slate-400 text-sm">
                     Exploring neuromorphic architectures using ferroelectric transistors via device-level simulations.

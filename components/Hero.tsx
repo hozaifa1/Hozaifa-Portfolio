@@ -15,10 +15,12 @@ export default function Hero() {
     () =>
       [...Array(50)].map((_, i) => {
         const base = i + 1;
+        const left = seededRandom(base) * 100;
+        const top = seededRandom(base * 1.3) * 100;
         return {
           id: i,
-          left: seededRandom(base) * 100,
-          top: seededRandom(base * 1.3) * 100,
+          left: Number(left.toFixed(4)),
+          top: Number(top.toFixed(4)),
           duration: 2 + seededRandom(base * 1.7) * 3,
           delay: seededRandom(base * 2.1) * 5,
         };
