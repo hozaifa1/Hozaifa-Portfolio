@@ -42,9 +42,6 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
             About Me
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Building reliable software that ships on time and performs in production.
-          </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto mb-12">
@@ -55,15 +52,38 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-slate-300 text-lg leading-relaxed mb-4">
-              I&apos;m a full-stack developer and ML engineer with over 3 years of experience building production-grade applications. My expertise spans web development, mobile apps, and AI/ML solutions.
-            </p>
-            <p className="text-slate-300 text-lg leading-relaxed mb-4">
-              I&apos;ve successfully delivered 20+ projects including enterprise ERPs, learning management systems, e-commerce platforms, and cutting-edge AI applications. My work has helped businesses automate operations, reduce costs by up to 85%, and serve thousands of users.
-            </p>
-            <p className="text-slate-300 text-lg leading-relaxed mb-6">
-              Currently pursuing B.Sc. in Electrical and Electronic Engineering at the University of Dhaka (Expected Aug 2026), I blend academic research with hands-on engineering to deliver solutions that work.
-            </p>
+            <div className="space-y-6">
+              <p className="text-slate-300 text-lg leading-relaxed">
+                <span className="text-white font-semibold">I&apos;m a full-stack developer and ML engineer</span> with over <span className="text-cyan-400 font-bold">3 years</span> of experience building production-grade applications.
+              </p>
+              <div className="pl-6 border-l-4 border-cyan-500/50">
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  My expertise spans:
+                </p>
+                <ul className="mt-2 space-y-1 text-slate-400">
+                  <li className="flex items-center gap-2">
+                    <span className="text-cyan-400">▸</span> Web development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-cyan-400">▸</span> Mobile apps
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-cyan-400">▸</span> AI/ML solutions
+                  </li>
+                </ul>
+              </div>
+              <p className="text-slate-300 text-lg leading-relaxed">
+                I&apos;ve successfully delivered <span className="text-cyan-400 font-bold">20+ projects</span> including <em className="text-slate-200">enterprise ERPs, learning management systems, e-commerce platforms,</em> and cutting-edge AI applications.
+              </p>
+              <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  <span className="text-cyan-400 font-semibold">Impact:</span> My work has helped businesses automate operations, reduce costs by up to <span className="text-white font-bold">85%</span>, and serve <span className="text-white font-bold">thousands of users</span>.
+                </p>
+              </div>
+              <p className="text-slate-300 text-lg leading-relaxed">
+                Currently pursuing <span className="text-white font-semibold">B.Sc. in Electrical and Electronic Engineering</span> at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> <span className="text-slate-400">(Expected Aug 2026)</span>, I blend academic research with hands-on engineering to deliver solutions that work.
+              </p>
+            </div>
             <div className="flex justify-center">
               <Link
                 href="/about"

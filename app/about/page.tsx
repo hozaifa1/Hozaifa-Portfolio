@@ -8,27 +8,20 @@ import Contact from '@/components/Contact';
 export default function AboutPage() {
   return (
     <main className="pt-16">
-      <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-900 text-white text-center relative">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-        <div className="max-w-4xl mx-auto px-4 relative">
-          <Link 
-            href="/#about" 
-            className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-          <h1 className="text-5xl font-bold mb-6">About Me</h1>
-          <p className="text-xl text-slate-300">
-            A deeper look into my academic journey, certifications, research, and leadership experiences
-          </p>
-        </div>
-      </section>
-
       <section className="py-16 bg-[#09090b] relative">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           
+          <div className="mb-8">
+            <Link 
+              href="/#about" 
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </Link>
+          </div>
+
           <motion.div
             className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 mb-12"
             initial={{ opacity: 0, y: 20 }}

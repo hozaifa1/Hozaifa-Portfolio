@@ -55,6 +55,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleSmoothScroll(e, item.href)}
                 className="text-slate-300 hover:text-cyan-400 transition-colors font-medium"
               >
                 {item.name}
@@ -62,6 +63,7 @@ export default function Navbar() {
             ))}
             <Link
               href="#contact"
+              onClick={(e) => handleSmoothScroll(e, '#contact')}
               className="px-6 py-2 bg-[#06b6d4] hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors"
             >
               Get in Touch
@@ -90,7 +92,7 @@ export default function Navbar() {
             ))}
             <Link
               href="#contact"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleSmoothScroll(e, '#contact')}
               className="block px-6 py-2 bg-[#06b6d4] hover:bg-cyan-500 text-white rounded-lg font-semibold text-center transition-colors"
             >
               Get in Touch

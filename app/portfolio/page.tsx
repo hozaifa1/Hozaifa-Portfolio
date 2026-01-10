@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '@/lib/data';
@@ -10,18 +10,20 @@ import Contact from '@/components/Contact';
 export default function PortfolioPage() {
   return (
     <main className="pt-16">
-      <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-900 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-6">My Portfolio</h1>
-          <p className="text-xl text-slate-300">
-            A showcase of my work across web development, mobile apps, and AI/ML projects
-          </p>
-        </div>
-      </section>
-
-      <section className="py-24 bg-slate-900/50 relative">
+      <section className="py-16 bg-slate-900/50 relative">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          
+          <div className="mb-8">
+            <Link 
+              href="/#portfolio" 
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </Link>
+          </div>
+
           <div className="space-y-12">
             {projects.map((project, idx) => (
               <motion.div
