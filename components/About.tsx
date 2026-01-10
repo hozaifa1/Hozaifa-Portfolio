@@ -84,7 +84,7 @@ export default function About() {
                 Currently pursuing <span className="text-white font-semibold">B.Sc. in Electrical and Electronic Engineering</span> at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> <span className="text-slate-400">(Expected Aug 2026)</span>, I blend academic research with hands-on engineering to deliver solutions that work.
               </p>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-8">
               <Link
                 href="/about"
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-cyan-500/10 hover:bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400 rounded-lg font-semibold transition-all"
