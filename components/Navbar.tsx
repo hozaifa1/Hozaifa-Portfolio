@@ -15,6 +15,23 @@ export default function Navbar() {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#09090b]/95 backdrop-blur-sm border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +84,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleSmoothScroll(e, item.href)}
                 className="block text-slate-300 hover:text-cyan-400 transition-colors font-medium py-2"
               >
                 {item.name}

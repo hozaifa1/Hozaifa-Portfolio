@@ -39,7 +39,7 @@ export default function Portfolio() {
               transition={{ duration: 0.8, delay: idx * 0.1 }}
             >
               {project.image && (
-                <div className="relative aspect-video overflow-hidden">
+                <Link href={`/portfolio/${project.id}`} className="block relative aspect-video overflow-hidden cursor-pointer">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -48,7 +48,10 @@ export default function Portfolio() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-                </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-[#09090b]/80 transition-opacity">
+                    <p className="text-white text-lg font-semibold">View Details</p>
+                  </div>
+                </Link>
               )}
 
               <div className="p-6">
