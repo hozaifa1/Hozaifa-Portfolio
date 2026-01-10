@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { projects } from '@/lib/data';
 
 export default function Portfolio() {
-  const featuredProjects = projects.slice(0, 6);
+  const featuredProjects = projects.filter(p => p.id !== 'torbiz').slice(0, 6);
 
   return (
     <section id="portfolio" className="py-16 bg-[#09090b] relative">
