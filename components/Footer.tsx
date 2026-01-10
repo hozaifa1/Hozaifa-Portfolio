@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4 text-[#06b6d4] font-mono">Hozaifa</h3>
             <p className="text-slate-400">
-              Full-Stack Developer & ML Engineer specializing in building scalable web applications, intelligent systems, and innovative solutions. Available for freelance projects and collaborations.
+              Developer working with web applications and machine learning. Currently studying at the University of Dhaka.
             </p>
           </div>
 

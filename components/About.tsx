@@ -8,23 +8,23 @@ export default function About() {
   const highlights = [
     {
       icon: Code2,
-      title: "Full-Stack Delivery",
-      description: "Ship resilient web platforms with Next.js, Django, and cloud-native tooling."
+      title: "Web Development",
+      description: "Building applications with Next.js, Django, and modern web technologies."
     },
     {
       icon: Brain,
-      title: "Applied AI/ML",
-      description: "Deploy computer vision and NLP systems that serve real users—not just demos."
+      title: "AI & Machine Learning",
+      description: "Working with computer vision and NLP systems."
     },
     {
       icon: Rocket,
-      title: "End-to-End Product",
-      description: "Own the journey from discovery to launch with clear metrics and fast iteration."
+      title: "Product Development",
+      description: "From idea to deployment, I enjoy the full process."
     },
     {
       icon: Users,
-      title: "Client Partnership",
-      description: "Communicate often, hit deadlines, and keep stakeholders confident throughout delivery."
+      title: "Collaboration",
+      description: "Working with others to bring projects to life."
     }
   ];
 
@@ -54,34 +54,29 @@ export default function About() {
           >
             <div className="space-y-6">
               <p className="text-slate-300 text-lg leading-relaxed">
-                <span className="text-white font-semibold">I&apos;m a full-stack developer and ML engineer</span> with over <span className="text-cyan-400 font-bold">3 years</span> of experience building production-grade applications.
+                I&apos;m a developer who enjoys building web applications and experimenting with machine learning. Most of my time is spent working with Next.js, Django, and various AI tools.
               </p>
               <div className="pl-6 border-l-4 border-cyan-500/50">
                 <p className="text-slate-300 text-lg leading-relaxed">
-                  My expertise spans:
+                  I work on:
                 </p>
                 <ul className="mt-2 space-y-1 text-slate-400">
                   <li className="flex items-center gap-2">
-                    <span className="text-cyan-400">▸</span> Web development
+                    <span className="text-cyan-400">▸</span> Web and mobile applications
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-cyan-400">▸</span> Mobile apps
+                    <span className="text-cyan-400">▸</span> Enterprise systems
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-cyan-400">▸</span> AI/ML solutions
+                    <span className="text-cyan-400">▸</span> Computer vision and NLP projects
                   </li>
                 </ul>
               </div>
               <p className="text-slate-300 text-lg leading-relaxed">
-                I&apos;ve successfully delivered <span className="text-cyan-400 font-bold">20+ projects</span> including <em className="text-slate-200">enterprise ERPs, learning management systems, e-commerce platforms,</em> and cutting-edge AI applications.
+                I&apos;ve built things like ERPs, learning management systems, e-commerce platforms, and various AI experiments. You can check them out in my portfolio.
               </p>
-              <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
-                <p className="text-slate-300 text-lg leading-relaxed">
-                  <span className="text-cyan-400 font-semibold">Impact:</span> My work has helped businesses automate operations, reduce costs by up to <span className="text-white font-bold">85%</span>, and serve <span className="text-white font-bold">thousands of users</span>.
-                </p>
-              </div>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Currently pursuing <span className="text-white font-semibold">B.Sc. in Electrical and Electronic Engineering</span> at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> <span className="text-slate-400">(Expected Aug 2026)</span>, I blend academic research with hands-on engineering to deliver solutions that work.
+                Currently studying <span className="text-white font-semibold">Electrical and Electronic Engineering</span> at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> <span className="text-slate-400">(graduating Aug 2026)</span>.
               </p>
             </div>
             <div className="flex justify-center mt-8">
@@ -89,7 +84,7 @@ export default function About() {
                 href="/about"
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-cyan-500/10 hover:bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400 rounded-lg font-semibold transition-all"
               >
-                Get to Know Me Better
+                More about me
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

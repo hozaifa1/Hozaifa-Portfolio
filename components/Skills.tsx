@@ -16,10 +16,10 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Skills & Expertise
+            Skills
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            The toolkit I rely on to ship quickly and maintain quality.
+            Technologies I work with.
           </p>
         </motion.div>
 

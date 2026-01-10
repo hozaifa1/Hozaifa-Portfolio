@@ -32,13 +32,13 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-white mb-6">Introduction</h2>
             <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
               <p>
-                I&apos;m <span className="text-cyan-400 font-semibold">S. M. Hozaifa Hossain</span>, a full-stack developer and ML engineer with a passion for building production-ready systems that solve real-world problems.
+                I&apos;m <span className="text-cyan-400 font-semibold">S. M. Hozaifa Hossain</span>, a developer who enjoys working on web applications and machine learning projects.
               </p>
               <p>
-                Currently pursuing my B.Sc. in Electrical and Electronic Engineering at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> (CGPA: 3.74/4.00, Expected Aug 2026), I&apos;m part of the Emerging Nanodevices Research Group where I work on cutting-edge research in neuromorphic computing and solar cell optimization using deep learning.
+                I&apos;m studying Electrical and Electronic Engineering at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> (Expected Aug 2026), where I&apos;m part of the Emerging Nanodevices Research Group working on neuromorphic computing and solar cell optimization.
               </p>
               <p>
-                Beyond academics, I serve as <span className="text-cyan-400 font-semibold">Chair of IEEE SIGHT Student Branch at DU</span>, where I led Project Archer—a humanitarian initiative that deployed 10 Orange Pi systems in rural Netrokona, recognized by the IEEE Humanitarian Technologies Board.
+                I also serve as <span className="text-cyan-400 font-semibold">Chair of IEEE SIGHT Student Branch at DU</span>, where I led Project Archer—a humanitarian initiative that deployed 10 Orange Pi systems in rural Netrokona.
               </p>
             </div>
           </motion.div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 <p className="text-white font-bold text-lg mb-2">Nurses&apos; Skill Assessment in Endotracheal Suctioning</p>
                 <p className="text-cyan-400 text-sm mb-2">International Journal of Advanced Biomedical and Clinical Research (IJABC), 2024</p>
                 <p className="text-slate-300">
-                  Published research applying multi-view pose estimation to clinical assessment. Improved F1-score by 9% through custom post-processing techniques. This work demonstrates the practical application of computer vision in healthcare settings.
+                  Research applying multi-view pose estimation to clinical assessment using computer vision.
                 </p>
               </div>
               
@@ -188,10 +188,7 @@ export default function AboutPage() {
                   </span>
                 </div>
                 <p className="text-slate-300 mb-3">
-                  Leading humanitarian technology initiatives as Chair for 2025. Directed <strong>Project Archer</strong>, overseeing the deployment of 10 Orange Pi systems in rural Netrokona to provide computing access to underserved communities.
-                </p>
-                <p className="text-cyan-400 text-sm font-semibold">
-                  ✓ Recognized by the IEEE Humanitarian Technologies Board
+                  Leading humanitarian technology initiatives as Chair for 2025. Led <strong>Project Archer</strong>, deploying 10 Orange Pi systems in rural Netrokona to provide computing access to underserved communities.
                 </p>
               </div>
               

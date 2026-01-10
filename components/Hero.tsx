@@ -78,7 +78,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            I design production-ready platforms across web and AI, blending reliable engineering with sharp execution to ship products that move businesses forward.
+            I build things for the web and tinker with AI.
           </motion.p>
 
           <motion.div
@@ -91,14 +91,14 @@ export default function Hero() {
               href="/portfolio"
               className="group px-8 py-3 border-2 border-[#06b6d4] bg-[#06b6d4] text-white hover:bg-cyan-500 hover:border-cyan-500 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
             >
-              View portfolio
+              See my work
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="#contact"
               className="px-8 py-3 border-2 border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4] hover:text-white rounded-lg font-semibold transition-all"
             >
-              Book a call
+              Get in touch
             </Link>
           </motion.div>
 
@@ -134,25 +134,6 @@ export default function Hero() {
               <Mail className="w-5 h-5" />
             </a>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-        >
-          {[
-            { value: '20+', label: 'Projects Completed' },
-            { value: '3+', label: 'Years Experience' },
-            { value: '25+', label: 'Technologies' },
-            { value: '100%', label: 'Client Satisfaction' },
-          ].map((stat, idx) => (
-            <div key={idx} className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-1">{stat.value}</div>
-              <div className="text-slate-400 text-xs">{stat.label}</div>
-            </div>
-          ))}
         </motion.div>
       </div>
 

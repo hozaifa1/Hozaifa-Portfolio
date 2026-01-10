@@ -211,10 +211,3 @@ export const skills = [
     technologies: ["Rust", "Tauri", "Electron"]
   }
 ];
-
-export const stats = [
-  { label: "Projects Completed", value: "20+" },
-  { label: "Years of Experience", value: "3+" },
-  { label: "Technologies Mastered", value: "25+" },
-  { label: "Client Satisfaction", value: "100%" }
-];

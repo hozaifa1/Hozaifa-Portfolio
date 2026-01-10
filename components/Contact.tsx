@@ -16,10 +16,10 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Let&apos;s Work Together
+            Get in Touch
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Open for high-impact collaborations and freelance engagements.
+            Feel free to reach out if you&apos;d like to chat.
           </p>
         </motion.div>
 
@@ -104,29 +104,6 @@ export default function Contact() {
               </p>
             </motion.div>
           </div>
-
-          <motion.div
-            className="mt-8 p-6 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-4">Open to Opportunities</h3>
-            <p className="text-slate-400 text-lg mb-6 max-w-2xl mx-auto">
-              If you&apos;re shipping something ambitious and need an engineer who delivers, let&apos;s talk.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                Available for work
-              </span>
-              <span>•</span>
-              <span>Response within 24 hours</span>
-              <span>•</span>
-              <span>Free consultation</span>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
