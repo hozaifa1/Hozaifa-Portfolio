@@ -3,29 +3,18 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-
-const generateParticles = () => 
-  [...Array(50)].map((_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    duration: 2 + Math.random() * 3,
-    delay: Math.random() * 5,
-  }));
+import { useMemo } from 'react';
 
 export default function Hero() {
-  const [particles, setParticles] = useState<Array<{
-    id: number;
-    left: number;
-    top: number;
-    duration: number;
-    delay: number;
-  }>>([]);
-
-  useEffect(() => {
-    setParticles(generateParticles());
-  }, []);
+  const particles = useMemo(() => 
+    [...Array(50)].map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      duration: 2 + Math.random() * 3,
+      delay: Math.random() * 5,
+    })), 
+  []);
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#09090b]">
@@ -65,7 +54,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <p className="text-cyan-400 text-lg font-mono mb-2">Hi, I'm</p>
+            <p className="text-cyan-400 text-lg font-mono mb-2">Hi, I&apos;m</p>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
               Hozaifa
             </h1>
@@ -122,6 +111,7 @@ export default function Hero() {
               href="https://github.com/hozaifa1"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Profile"
               className="w-12 h-12 bg-slate-800 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
             >
               <Github className="w-5 h-5" />
@@ -130,12 +120,14 @@ export default function Hero() {
               href="https://linkedin.com/in/hozaifa1/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
               className="w-12 h-12 bg-slate-800 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="mailto:20hozaifa02@gmail.com"
+              aria-label="Email Contact"
               className="w-12 h-12 bg-slate-800 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
             >
               <Mail className="w-5 h-5" />

@@ -55,10 +55,10 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-slate-300 text-lg leading-relaxed mb-4">
-              I'm a full-stack developer and ML engineer with over 3 years of experience building production-grade applications. My expertise spans web development, mobile apps, and AI/ML solutions.
+              I&apos;m a full-stack developer and ML engineer with over 3 years of experience building production-grade applications. My expertise spans web development, mobile apps, and AI/ML solutions.
             </p>
             <p className="text-slate-300 text-lg leading-relaxed mb-4">
-              I've successfully delivered 20+ projects including enterprise ERPs, learning management systems, e-commerce platforms, and cutting-edge AI applications. My work has helped businesses automate operations, reduce costs by up to 85%, and serve thousands of users.
+              I&apos;ve successfully delivered 20+ projects including enterprise ERPs, learning management systems, e-commerce platforms, and cutting-edge AI applications. My work has helped businesses automate operations, reduce costs by up to 85%, and serve thousands of users.
             </p>
             <p className="text-slate-300 text-lg leading-relaxed">
               I thrive on challenging problems and am always exploring new technologies to deliver innovative solutions. Available for freelance projects and collaborations worldwide.
