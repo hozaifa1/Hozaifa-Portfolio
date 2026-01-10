@@ -19,7 +19,7 @@ export default function Skills() {
             Skills & Expertise
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
+            The toolkit I rely on to ship quickly and maintain quality.
           </p>
         </motion.div>
 

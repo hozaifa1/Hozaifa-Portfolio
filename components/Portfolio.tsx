@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { projects } from '@/lib/data';
 
 export default function Portfolio() {
@@ -23,7 +24,7 @@ export default function Portfolio() {
             Featured Projects
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            A selection of my recent work across web, mobile, and AI/ML
+            Selected deliveries across web, mobile, and applied AI.
           </p>
         </motion.div>
 
@@ -86,10 +87,13 @@ export default function Portfolio() {
                       Code
                     </a>
                   )}
-                  <button className="flex items-center gap-2 px-4 py-2 border border-[#06b6d4] text-[#06b6d4] rounded-lg hover:bg-[#06b6d4]/10 transition-colors text-sm">
+                  <Link
+                    href={`/portfolio/${project.id}`}
+                    className="flex items-center gap-2 px-4 py-2 border border-[#06b6d4] text-[#06b6d4] rounded-lg hover:bg-[#06b6d4]/10 transition-colors text-sm"
+                  >
                     <ExternalLink className="w-4 h-4" />
-                    Details
-                  </button>
+                    Case study
+                  </Link>
                 </div>
               </div>
             </motion.div>

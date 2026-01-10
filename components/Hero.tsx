@@ -6,15 +6,25 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 
 export default function Hero() {
-  const particles = useMemo(() => 
-    [...Array(50)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      duration: 2 + Math.random() * 3,
-      delay: Math.random() * 5,
-    })), 
-  []);
+  const seededRandom = (seed: number) => {
+    const x = Math.sin(seed) * 10000;
+    return x - Math.floor(x);
+  };
+
+  const particles = useMemo(
+    () =>
+      [...Array(50)].map((_, i) => {
+        const base = i + 1;
+        return {
+          id: i,
+          left: seededRandom(base) * 100,
+          top: seededRandom(base * 1.3) * 100,
+          duration: 2 + seededRandom(base * 1.7) * 3,
+          delay: seededRandom(base * 2.1) * 5,
+        };
+      }),
+    []
+  );
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#09090b]">
@@ -67,7 +77,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] to-cyan-300">
-              Full-Stack Developer & ML Engineer
+              Full-Stack Engineer crafting intelligent products
             </span>
           </motion.h2>
 
@@ -77,7 +87,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            I build scalable web applications, intelligent systems, and innovative solutions using modern technologies. Passionate about creating impactful software that solves real-world problems.
+            I design production-ready platforms across web and AI, blending reliable engineering with sharp execution to ship products that move businesses forward.
           </motion.p>
 
           <motion.div
@@ -90,14 +100,14 @@ export default function Hero() {
               href="#portfolio"
               className="group px-8 py-3 border-2 border-[#06b6d4] bg-[#06b6d4] text-white hover:bg-cyan-500 hover:border-cyan-500 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
             >
-              View My Work
+              View portfolio
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="#contact"
               className="px-8 py-3 border-2 border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4] hover:text-white rounded-lg font-semibold transition-all"
             >
-              Contact Me
+              Book a call
             </Link>
           </motion.div>
 

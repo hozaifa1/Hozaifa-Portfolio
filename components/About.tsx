@@ -7,23 +7,23 @@ export default function About() {
   const highlights = [
     {
       icon: Code2,
-      title: "Full-Stack Development",
-      description: "Expert in building scalable web applications using Next.js, Django, and modern tech stacks"
+      title: "Full-Stack Delivery",
+      description: "Ship resilient web platforms with Next.js, Django, and cloud-native tooling."
     },
     {
       icon: Brain,
-      title: "AI/ML Engineering",
-      description: "Specialized in computer vision, NLP, and deploying intelligent systems in production"
+      title: "Applied AI/ML",
+      description: "Deploy computer vision and NLP systems that serve real users—not just demos."
     },
     {
       icon: Rocket,
-      title: "Product Development",
-      description: "From concept to deployment - I build complete solutions that solve real business problems"
+      title: "End-to-End Product",
+      description: "Own the journey from discovery to launch with clear metrics and fast iteration."
     },
     {
       icon: Users,
-      title: "Client Success",
-      description: "100% client satisfaction delivering projects on time with measurable impact"
+      title: "Client Partnership",
+      description: "Communicate often, hit deadlines, and keep stakeholders confident throughout delivery."
     }
   ];
 
@@ -42,7 +42,7 @@ export default function About() {
             About Me
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Passionate developer building impactful software solutions
+            Building reliable software that ships on time and performs in production.
           </p>
         </motion.div>
 
@@ -55,13 +55,13 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-slate-300 text-lg leading-relaxed mb-4">
-              I&apos;m a full-stack developer and ML engineer with over 3 years of experience building production-grade applications. My expertise spans web development, mobile apps, and AI/ML solutions.
+              Full-stack engineer and ML practitioner with 3+ years shipping production systems across web, mobile, and data.
             </p>
             <p className="text-slate-300 text-lg leading-relaxed mb-4">
-              I&apos;ve successfully delivered 20+ projects including enterprise ERPs, learning management systems, e-commerce platforms, and cutting-edge AI applications. My work has helped businesses automate operations, reduce costs by up to 85%, and serve thousands of users.
+              Delivered 20+ engagements spanning ERPs, LMS platforms, e-commerce, and AI products—driving automation, accuracy, and new revenue.
             </p>
             <p className="text-slate-300 text-lg leading-relaxed">
-              I thrive on challenging problems and am always exploring new technologies to deliver innovative solutions. Available for freelance projects and collaborations worldwide.
+              I move fast with clear communication, tight feedback loops, and measurable outcomes. Open to selective freelance and collaborations worldwide.
             </p>
           </motion.div>
         </div>

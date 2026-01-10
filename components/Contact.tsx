@@ -19,7 +19,7 @@ export default function Contact() {
             Let&apos;s Work Together
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            I&apos;m available for freelance projects and collaborations. Get in touch!
+            Open for high-impact collaborations and freelance engagements.
           </p>
         </motion.div>
 
@@ -42,7 +42,7 @@ export default function Contact() {
                 <h3 className="text-lg font-semibold text-white">Email</h3>
               </div>
               <p className="text-slate-400 text-xs">
-                Send me an email
+                Share context and next steps
               </p>
             </motion.a>
 
@@ -63,7 +63,7 @@ export default function Contact() {
                 <h3 className="text-lg font-semibold text-white">WhatsApp</h3>
               </div>
               <p className="text-slate-400 text-xs">
-                Instant messaging
+                Quick, informal sync
               </p>
             </motion.a>
 
@@ -82,7 +82,7 @@ export default function Contact() {
                 <h3 className="text-lg font-semibold text-white">Phone</h3>
               </div>
               <p className="text-slate-400 text-xs">
-                Direct call
+                Direct call for decisions
               </p>
             </motion.a>
 
@@ -100,7 +100,7 @@ export default function Contact() {
                 <h3 className="text-lg font-semibold text-white">Location</h3>
               </div>
               <p className="text-slate-400 text-xs">
-                Remote worldwide
+                Remote-first, worldwide
               </p>
             </motion.div>
           </div>
@@ -114,7 +114,7 @@ export default function Contact() {
           >
             <h3 className="text-2xl font-bold text-white mb-4">Open to Opportunities</h3>
             <p className="text-slate-400 text-lg mb-6 max-w-2xl mx-auto">
-              Whether you have a project in mind or just want to connect, I&apos;d love to hear from you. Let&apos;s create something amazing together!
+              If you&apos;re shipping something ambitious and need an engineer who delivers, let&apos;s talk.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center gap-2">

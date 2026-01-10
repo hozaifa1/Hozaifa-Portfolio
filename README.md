@@ -1,43 +1,31 @@
-# Hozaifa's Personal Portfolio
+# Hozaifa Portfolio
 
-A modern, responsive personal portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+Modern, performant portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-## Tech Stack
+## Tech
+- Next.js 16.1 (App Router, Turbopack)
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React / React Icons
 
-- **Framework:** Next.js 16.1
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS 4
-- **Animations:** Framer Motion
-- **Icons:** Lucide React, React Icons
-
-## Getting Started
-
-Install dependencies:
-
+## Run locally
 ```bash
 npm install
-```
-
-Run the development server:
-
-```bash
 npm run dev
+# visit http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Build for Production
-
+## Production
 ```bash
 npm run build
 npm start
 ```
 
-## Project Structure
-
+## Structure
 ```
-├── app/              # Next.js app directory
-├── components/       # React components
-├── lib/             # Data and utilities
-└── public/          # Static assets
+app/          # Next.js app directory
+components/   # UI components
+lib/          # Data and helpers
+public/       # Static assets
 ```
