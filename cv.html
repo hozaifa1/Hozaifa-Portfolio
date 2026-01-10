@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - S. M. Hozaifa Hossain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --text-main: #1e293b;
+            --text-light: #475569;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.22;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 6px;
+        }
+
+        #cv-content {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background: white;
+            padding: 7mm 8mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .print-btn {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            font-size: 12px;
+        }
+
+        .print-btn-dark { background: var(--primary); }
+
+        header { text-align: center; margin-bottom: 6px; }
+
+        h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            margin-top: 2px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: -0.01em;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 4px;
+            font-size: 10px;
+            color: var(--text-light);
+        }
+
+        .contact-info a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+        .github-hero {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            display: inline-flex;
+            margin-top: 6px;
+            font-size: 10px;
+            text-decoration: none;
+        }
+
+        section { margin-bottom: 7px; }
+
+        h2 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after { content: ""; flex: 1; margin-left: 12px; height: 1px; background: var(--border); }
+
+        .entry { margin-bottom: 3px; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+
+        .entry-title { font-size: 13px; font-weight: 700; color: var(--primary); }
+        
+        .entry-badge {
+            font-size: 8px;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .badge-prod { background: #ecfdf5; color: #059669; border: 1px solid #10b981; }
+        .badge-comm { background: #fff7ed; color: #ea580c; border: 1px solid #f97316; }
+        .badge-open { background: #f5f3ff; color: #7c3aed; border: 1px solid #8b5cf6; }
+
+        .entry-subtext { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; margin-top: 1px; }
+        .entry-date { font-size: 10px; color: var(--text-light); font-weight: 400; }
+
+        ul { margin: 1px 0 0 14px; padding: 0; list-style-type: square; list-style-position: outside; }
+        li { margin-bottom: 2px; font-size: 10.5px; color: var(--text-main); text-align: left; }
+
+        .footer-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .tech-stack {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            background: #f0f7ff;
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+        
+        .repo-link {
+            font-size: 9px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cert-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .cert-list { list-style: none; padding: 0; margin: 0; }
+        .cert-list li { font-size: 10px; margin-bottom: 2px; display: flex; align-items: baseline; gap: 6px; }
+        .cert-list li::before { content: "•"; color: var(--accent); font-weight: bold; }
+
+        .leadership-box {
+            background: var(--bg-light);
+            padding: 8px;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+            font-size: 10.5px;
+        }
+
+        .leadership-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            margin: 2px 4px 2px 0;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: var(--accent);
+            font-size: 9.5px;
+            font-weight: 700;
+            border: 1px solid #dbeafe;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+            margin-top: 4px;
+        }
+
+        .skill-group-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .honors-list {
+            margin: 4px 0 0 0;
+            padding-left: 14px;
+            list-style-type: square;
+            list-style-position: outside;
+            text-align: left;
+        }
+
+        .honors-item {
+            font-size: 10.5px;
+            margin-bottom: 2px;
+        }
+
+        .meta-note {
+            font-size: 10px;
+            margin-top: 1px;
+        }
+
+        .section-tight { margin-bottom: 0; }
+
+        @page { size: A4; margin: 4mm; }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button class="print-btn" onclick="generatePDF()">Direct Save as PDF</button>
+    <button class="print-btn print-btn-dark" onclick="window.print()">Print Dialog</button>
+</div>
+
+<div id="cv-content">
+    <header>
+        <h1>S. M. Hozaifa Hossain</h1>
+        <div class="subtitle">Backend Software Engineer | Laravel & Django Specialist</div>
+        <div class="contact-info">
+            <span>Dhaka, Bangladesh</span>
+            <span>+8801615001456</span>
+            <span><a href="mailto:20hozaifa02@gmail.com">20hozaifa02@gmail.com</a></span>
+            <span><a href="https://linkedin.com/in/hozaifa1/">linkedin.com/in/hozaifa1/</a></span>
+            <span><a href="https://hozaifa1.github.io/">hozaifa1.github.io</a></span>
+        </div>
+    </header>
+
+    <section>
+        <h2>Technical Proficiency & Core Competencies</h2>
+        <div class="skills-grid">
+            <div>
+                <div class="skill-group-title">Backend & Ops</div>
+                <div>
+                    <span class="skill-tag">PHP (Laravel)</span>
+                    <span class="skill-tag">Python (Django)</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">Supervisor</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Nginx</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Backend Architecture</span>
+                    <span class="skill-tag">Database Optimization</span>
+                </div>
+            </div>
+            <div>
+                <div class="skill-group-title">AI & Data</div>
+                <div>
+                    <span class="skill-tag">LLM Integration</span>
+                    <span class="skill-tag">RAG Pipelines</span>
+                    <span class="skill-tag">Distributed Systems</span>
+                    <span class="skill-tag">Data Structures</span>
+                    <span class="skill-tag">Petals</span>
+                    <span class="skill-tag">Rust</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">AI/LLM Integration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Professional Engineering Experience</h2>
+        
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Cross-Border E-Commerce Platform</span>
+                <span class="entry-badge badge-prod">Production / Laravel</span>
+            </div>
+            <ul>
+                <li>Deployed a high-performance <strong>Laravel 11</strong> architecture on VPS (Ubuntu/Nginx), utilizing <strong>Redis</strong> for session caching and <strong>Supervisor</strong> for reliable background worker management.</li>
+                <li>Integrated <strong>SSLCommerz</strong> gateway sandbox/live modes; optimized <strong>MySQL 8.4</strong> queries for catalog filtering across multi-currency (BDT) and multi-locale data.</li>
+            </ul>
+            <div class="footer-line">
+                <span class="tech-stack">Stack: PHP 8.3, Laravel 11, Bagisto, Redis, MySQL, Nginx</span>
+                <a href="https://github.com/hozaifa1/provashop" class="repo-link"> github.com/hozaifa1/provashop</a>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Textile Operations ERP (Lead Architect)</span>
+                <span class="entry-badge badge-prod">Production / Freelance</span>
+            </div>
+            <ul>
+                <li>Architected an <strong>Atomic OrderLine</strong> model to handle granular quantities and pricing, utilizing <strong>PostgreSQL</strong> partitioning strategies for deep historical data access.</li>
+                <li>Implemented <strong>RBAC</strong> for 5+ personas and a real-time notification loop with 30s polling optimization to minimize load while keeping merchandisers in sync.</li>
+                <li>Exposed RESTful APIs and optimized indexes/queries, reducing report generation time by 40% across large supplier ledgers.</li>
+            </ul>
+            <div class="footer-line">
+                <span class="tech-stack">Stack: Next.js, Django, PostgreSQL (partitioning/indexing), Redis, Google Cloud Storage, DigitalOcean</span>
+                <a href="https://github.com/hozaifa1/provabook-public" class="repo-link"> https://github.com/hozaifa1/provabook-public</a>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Torbiz: Distributed LLM Inference System</span>
+                <span class="entry-badge badge-open">Open Source / ML</span>
+            </div>
+            <ul>
+                <li>Designed a <strong>distributed backend architecture</strong> for P2P model execution, handling asynchronous processing and network latency across community nodes.</li>
+                <li>Integrated <strong>LLM workflows</strong> with resilient node discovery and fallback to keep inference online despite churn.</li>
+            </ul>
+            <div class="footer-line">
+                <span class="tech-stack">Stack: Python, Petals, Rust, Linux Shell</span>
+                <a href="https://github.com/hozaifa1/torbiz-desktop" class="repo-link"> github.com/hozaifa1/torbiz-desktop</a>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">University LMS (IGMIS College, Chattogram)</span>
+                <span class="entry-badge badge-prod">Academic / Production</span>
+            </div>
+            <ul>
+                <li>Deployed an LMS for a National University affiliate with biometric attendance sync, securing academic payment flows.</li>
+                <li>Automated result generation and audit-friendly reporting to strengthen data integrity and security.</li>
+            </ul>
+            <div class="footer-line">
+                <span class="tech-stack">Stack: Next.js, Django, PostgreSQL, Cloudinary, Vercel</span>
+                <a href="https://github.com/hozaifa1/uni-management-sys" class="repo-link"> github.com/hozaifa1/uni-management-sys</a>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Voice Link: Real-time Audio Routing App</span>
+                <span class="entry-badge badge-comm">Commercial Beta</span>
+            </div>
+            <ul>
+                <li>Developed a low-latency Android app to transmit in-app audio and voice during HD screen sharing sessions.</li>
+                <li>Overcame standard Android limitations to support dual-channel audio for mobile gaming and collaboration.</li>
+            </ul>
+            <span class="tech-stack">Stack: Kotlin, Java, Android Studio, Firebase</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Research & Publications</h2>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Nurses' Skill Assessment in Endotracheal Suctioning</span>
+                <span class="entry-date">IJABC, 2024</span>
+            </div>
+            <ul>
+                <li>Published in the International Journal of Advanced Biomedical and Clinical Research (IJABC), Vol 2024, Issue 3.</li>
+                <li>Applied multi-view pose estimation to clinical assessment; improved F1-score by 9% via custom post-processing.</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">DL-based Optimization of Solar Cell Design Parameters</span>
+                <span class="entry-date">Ongoing Research</span>
+            </div>
+            <ul>
+                <li>Training DL models on simulated data to predict and optimize photovoltaic efficiency (Emerging Nanodevices Group).</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">GAA-FeFET based Spiking Neural Networks (SNN)</span>
+                <span class="entry-date">Ongoing Research</span>
+            </div>
+            <ul>
+                <li>Exploring neuromorphic architectures using ferroelectric transistors via device-level simulations.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Academic Background</h2>
+        <div class="entry">
+            <div class="entry-subtext">
+                <span>University of Dhaka | B.Sc. in Electrical and Electronic Engineering</span>
+                <span class="entry-date">Expected Dec 2026</span>
+            </div>
+            <div style="font-size: 10px; margin-top: 1px;">CGPA: 3.74 / 4.00 | Emerging Nanodevices Research Group</div>
+        </div>
+        <div class="entry-subtext">
+            <span>Notre Dame College, Dhaka | HSC (Science)</span>
+            <span class="entry-date">GPA: 5.00 / 5.00</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Professional Certifications</h2>
+        <div class="cert-container">
+            <div>
+                <strong style="font-size: 9px; color: var(--accent); display: block; margin-bottom: 3px;">SPECIALIZATIONS</strong>
+                <ul class="cert-list">
+                    <li>Machine Learning Specialization — Stanford Online</li>
+                    <li>Deep Learning Specialization — DeepLearning.AI</li>
+                </ul>
+            </div>
+            <div>
+                <strong style="font-size: 9px; color: var(--accent); display: block; margin-bottom: 3px;">TECHNICAL PROFICIENCY</strong>
+                <ul class="cert-list">
+                    <li>Advanced Data Analytics — Google</li>
+                    <li>Linux and Shell Scripting — IBM</li>
+                    <li>Version Control with Git — Atlassian</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-bottom: 0;">
+        <h2>Leadership & Honors</h2>
+        <div class="leadership-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                <strong>Chair, IEEE SIGHT Student Branch, DU (2025)</strong>
+                <span style="font-size: 8px; color: var(--accent);">ID: 23-HTB-115</span>
+            </div>
+            <div>Directed 'Project Archer', overseeing the deployment of 10 Orange Pi systems in rural Netrokona, recognized by the IEEE Humanitarian Technologies Board.</div>
+        </div>
+        <ul style="margin: 6px 0 0 14px; padding: 0; list-style-type: square;">
+            <li style="font-size: 10.5px; margin-bottom: 2px;">Runner-Up: Line Following Robot Competition, Brac University (2024)</li>
+            <li style="font-size: 10.5px; margin-bottom: 2px;">Talentpool Scholarship — BD Education Board</li>
+        </ul>
+    </section>
+</div>
+
+<script>
+    function generatePDF() {
+        const element = document.getElementById('cv-content');
+        const opt = {
+            margin: 0,
+            filename: 'CV_Hozaifa_Hossain.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+Place your project screenshots here:
+
+1. prova-erp.png - Screenshot of Textile Supply Chain ERP
+2. igmis-lms.png - Screenshot of University LMS dashboard
+3. voicelink.png - Screenshot of Voice Link Android app
+4. torbiz.png - Screenshot of Torbiz desktop application
+5. research-pose.png - Screenshot/diagram from Nurses' Skill Assessment research
+
+Recommended image dimensions: 1200x800px or 16:9 aspect ratio
+Format: PNG or WebP for best quality
