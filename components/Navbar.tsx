@@ -12,7 +12,6 @@ export default function Navbar() {
     { name: 'About', href: '#about' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
   ];
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -41,9 +40,8 @@ export default function Navbar() {
           </Link>
 
           <div className="flex md:hidden items-center gap-4 text-sm">
-            <Link href="#about" className="text-slate-300 hover:text-cyan-400 transition-colors">About</Link>
-            <Link href="#portfolio" className="text-slate-300 hover:text-cyan-400 transition-colors">Portfolio</Link>
-            <Link href="#contact" className="text-slate-300 hover:text-cyan-400 transition-colors">Contact</Link>
+            <Link href="#about" onClick={(e) => handleSmoothScroll(e, '#about')} className="text-slate-300 hover:text-cyan-400 transition-colors">About</Link>
+            <Link href="#portfolio" onClick={(e) => handleSmoothScroll(e, '#portfolio')} className="text-slate-300 hover:text-cyan-400 transition-colors">Portfolio</Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-white p-2 ml-2"
