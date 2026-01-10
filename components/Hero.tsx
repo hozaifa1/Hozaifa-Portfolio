@@ -59,12 +59,12 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="mb-6"
+            className="mb-6 pt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <p className="text-cyan-400 text-lg font-mono mb-2">Hi, I&apos;m</p>
+            <p className="text-cyan-400 text-xl md:text-2xl font-mono mb-2">Hi, I&apos;m</p>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
               Hozaifa
             </h1>
@@ -77,7 +77,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] to-cyan-300">
-              Full-Stack Engineer crafting intelligent products
+              Full-Stack Developer & ML Engineer
             </span>
           </motion.h2>
 
@@ -97,7 +97,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Link
-              href="#portfolio"
+              href="/portfolio"
               className="group px-8 py-3 border-2 border-[#06b6d4] bg-[#06b6d4] text-white hover:bg-cyan-500 hover:border-cyan-500 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
             >
               View portfolio
