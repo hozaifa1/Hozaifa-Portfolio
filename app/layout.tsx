@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import Spotlight from '@/components/Spotlight';
 
 export const metadata: Metadata = {
-  title: 'Hozaifa - Full-Stack Developer & ML Engineer',
-  description: 'Personal portfolio of Hozaifa - Full-Stack Developer specializing in Next.js, Django, and AI/ML solutions',
+  title: 'Hozaifa - Personal Portfolio',
+  description: 'Personal portfolio showcasing projects and experience across web development, mobile apps, and AI/ML solutions',
 };
 
 export default function RootLayout({
