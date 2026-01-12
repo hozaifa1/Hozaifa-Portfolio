@@ -191,7 +191,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
             {project.image && <ProjectHeroImage src={project.image} alt={project.title} />}
 
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {Object.entries(project.impact).map(([key, value]) => (
                 <div key={key} className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-cyan-400/40 transition-colors">
                   <div className="text-3xl font-bold text-cyan-300 mb-2">{value}</div>
