@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter - S. M. Hozaifa Hossain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --text-main: #1e293b;
+            --text-light: #475569;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #letter-content {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background: white;
+            padding: 20mm 25mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .print-btn {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            font-size: 12px;
+        }
+
+        header { margin-bottom: 30px; }
+        .contact-info { margin-bottom: 20px; font-size: 14px; }
+        .date { margin-bottom: 20px; }
+        .recipient { margin-bottom: 30px; }
+        .subject { font-weight: 700; margin-bottom: 20px; text-decoration: underline; }
+        
+        p { margin-bottom: 15px; text-align: justify; }
+        .closing { margin-top: 30px; }
+
+        @page { size: A4; margin: 0; }
+        @media print {
+            body { background: none; padding: 0; }
+            .controls { display: none; }
+            #letter-content { box-shadow: none; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button class="print-btn" onclick="generatePDF()">Save as PDF</button>
+</div>
+
+<div id="letter-content">
+    <header>
+        <div class="contact-info">
+            <strong>S. M. Hozaifa Hossain</strong><br>
+            Dhaka, Bangladesh<br>
+            +8801615001456<br>
+            20hozaifa02@gmail.com<br>
+            <a href="https://linkedin.com/in/hozaifa1/">linkedin.com/in/hozaifa1/</a>
+        </div>
+        <div class="date">January 21, 2026</div>
+    </header>
+
+    <div class="recipient">
+        <strong>Hiring Manager</strong><br>
+        Care Guide BD<br>
+        Mohakhali, Gulshan Road, Dhaka
+    </div>
+
+    <div class="subject">Subject: Application for AI/Automation Engineer Position</div>
+
+    <div class="salutation">Dear Hiring Manager,</div>
+
+    <p>
+        I am writing to express my strong interest in the AI/Automation Engineer position at Care Guide BD, as advertised. With a solid foundation in Electrical and Electronic Engineering from the University of Dhaka and extensive hands-on experience in building AI-driven automation systems, I am eager to contribute to your team's innovative projects.
+    </p>
+
+    <p>
+        In my recent work, I have focused on designing and deploying sophisticated automation workflows. My technical toolkit includes <strong>n8n, Make (Integromat), and Zapier</strong>, which I have used to integrate CRMs, booking systems, and outreach tools efficiently. I have also developed custom AI agents using <strong>CrewAI, LangChain, and LangGraph</strong>, demonstrating my ability to implement complex logic and LLM-driven solutions that directly impact operational efficiency.
+    </p>
+
+    <p>
+        My background in Python and JavaScript, combined with experience in managing cloud resources (AWS/GCP), Docker, and CI/CD pipelines, ensures that I can handle the full lifecycle of an automation project—from initial POC to production deployment. Furthermore, my research in multi-view pose estimation and neuromorphic devices has sharpened my analytical skills and ability to work with cutting-edge AI technologies.
+    </p>
+
+    <p>
+        I am particularly drawn to Care Guide BD because of your commitment to using AI to transform service delivery. I am confident that my blend of automation expertise and AI integration skills makes me an ideal fit for your engineering team. I am ready to work the 7 PM – 4 AM shift and look forward to the opportunity to discuss how I can help Care Guide BD scale its automation capabilities.
+    </p>
+
+    <div class="closing">
+        Sincerely,<br><br>
+        <strong>S. M. Hozaifa Hossain</strong>
+    </div>
+</div>
+
+<script>
+    function generatePDF() {
+        const element = document.getElementById('letter-content');
+        const opt = {
+            margin: 0,
+            filename: 'Cover_Letter_Hozaifa_Hossain.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+
+</body>
+</html>
