@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Fahmida Haque Fariha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --text-main: #1e293b;
+            --text-light: #475569;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.22;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 6px;
+        }
+
+        #cv-content {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background: white;
+            padding: 7mm 8mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .print-btn {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            font-size: 12px;
+        }
+
+        .print-btn-dark { background: var(--primary); }
+
+        header { text-align: center; margin-bottom: 6px; }
+
+        h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin-top: 2px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 4px;
+            font-size: 10px;
+            color: var(--text-light);
+        }
+
+        .contact-info a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+        section { margin-bottom: 7px; }
+
+        h2 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after { content: ""; flex: 1; margin-left: 12px; height: 1px; background: var(--border); }
+
+        .entry { margin-bottom: 3px; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+
+        .entry-title { font-size: 13px; font-weight: 700; color: var(--primary); }
+        
+        .entry-badge {
+            font-size: 8px;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .badge-prod { background: #ecfdf5; color: #059669; border: 1px solid #10b981; }
+        .badge-comm { background: #fff7ed; color: #ea580c; border: 1px solid #f97316; }
+        .badge-open { background: #f5f3ff; color: #7c3aed; border: 1px solid #8b5cf6; }
+        .badge-acad { background: #eff6ff; color: #1d4ed8; border: 1px solid #3b82f6; }
+
+        .entry-subtext { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; margin-top: 1px; }
+        .entry-date { font-size: 10px; color: var(--text-light); font-weight: 400; }
+
+        ul { margin: 1px 0 0 14px; padding: 0; list-style-type: square; list-style-position: outside; }
+        li { margin-bottom: 2px; font-size: 10.5px; color: var(--text-main); text-align: left; }
+
+        .footer-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .tech-stack {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            background: #f0f7ff;
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+        
+        .repo-link {
+            font-size: 9px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+            margin-top: 4px;
+        }
+
+        .skill-group-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            margin: 2px 4px 2px 0;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: var(--accent);
+            font-size: 9.5px;
+            font-weight: 700;
+            border: 1px solid #dbeafe;
+        }
+
+        .leadership-box {
+            background: var(--bg-light);
+            padding: 8px;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+            font-size: 10.5px;
+            margin-bottom: 6px;
+        }
+
+        .leadership-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .honors-list-style { margin: 6px 0 0 14px; padding: 0; list-style-type: square; }
+        .honors-li { font-size: 10.5px; margin-bottom: 2px; }
+
+        .cgpa { font-size: 10px; margin-top: 1px; }
+
+        .ref-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            font-size: 10px;
+        }
+        
+        @page { size: A4; margin: 4mm; }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button class="print-btn" onclick="generatePDF()">Direct Save as PDF</button>
+    <button class="print-btn print-btn-dark" onclick="window.print()">Print Dialog</button>
+</div>
+
+<div id="cv-content">
+    <header>
+        <h1>Fahmida Haque Fariha</h1>
+        <div class="subtitle">Computer Science and Engineering Student | Software Development & ML Enthusiast</div>
+        <div class="contact-info">
+            <span>+8801922681791</span>
+            <span><a href="mailto:fariha.fhf@gmail.com">fariha.fhf@gmail.com</a></span>
+            <span><a href="mailto:fahmida.haque.fariha@g.bracu.ac.bd">University Email</a></span>
+            <span><a href="https://github.com/farihafhf">github.com/farihafhf</a></span>
+            <span><a href="https://linkedin.com/in/fahmida-haque-fariha-992571292">LinkedIn</a></span>
+        </div>
+    </header>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div>
+                <div class="skill-group-title">Languages & Tools</div>
+                <div>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Git/Bash</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Arduino</span>
+                </div>
+            </div>
+            <div>
+                <div class="skill-group-title">Frameworks & Libraries</div>
+                <div>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Technical & Professional Projects</h2>
+        
+        <!-- Provabook Info (Added as requested) -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Textile Operations ERP (Lead Architect)</span>
+                <span class="entry-badge badge-prod">Production / Freelance</span>
+            </div>
+            <ul>
+                <li>Architected an <strong>Atomic OrderLine</strong> model to handle granular quantities and pricing, utilizing <strong>PostgreSQL</strong> partitioning strategies for deep historical data access.</li>
+                <li>Implemented <strong>RBAC</strong> for 5+ personas and a real-time notification loop with 30s polling optimization to minimize load while keeping merchandisers in sync.</li>
+                <li>Exposed RESTful APIs and optimized indexes/queries, reducing report generation time by 40% across large supplier ledgers.</li>
+            </ul>
+            <div class="footer-line">
+                <span class="tech-stack">Stack: Next.js, Django, PostgreSQL, Redis, Google Cloud Storage</span>
+                <a href="https://github.com/hozaifa1/provabook-public" class="repo-link"> github.com/hozaifa1/provabook-public</a>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Braccit: University Social Media Platform</span>
+                <span class="entry-badge badge-open">Full-Stack / MERN</span>
+            </div>
+            <ul>
+                <li>Built a platform for BRAC students to share posts, track course schedules, and get workload suggestions based on CGPA.</li>
+                <li>Includes Reddit-style communities, commenting, course progress, and routine planning features.</li>
+            </ul>
+            <div class="footer-line">
+                <span class="tech-stack">Stack: MongoDB, Express.js, React, Node.js</span>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Smart UV-C Sanitisation & Attendance System</span>
+                <span class="entry-badge badge-acad">Embedded Systems</span>
+            </div>
+            <ul>
+                <li>Designed an automated UV-C disinfection system with RFID-based student attendance.</li>
+                <li>Integrated sensors (Ultrasonic, DHT11) and SPI/I2C/Bluetooth protocols for real-time tracking; ensured 99.98% bacterial elimination in labs.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Part-of-Speech Tagging using Deep RNN Models</span>
+                <span class="entry-badge badge-acad">NLP / ML</span>
+            </div>
+            <ul>
+                <li>Trained and evaluated RNN, LSTM, GRU, and BiLSTM models for multi-class sequence tagging.</li>
+                <li>Applied token-level classification on labeled POS data to compare model accuracy and F1-scores.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Research Projects</h2>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Sentiment Analysis of GitHub Commit Messages</span>
+                <span class="entry-badge badge-acad">Undergraduate Thesis</span>
+            </div>
+            <ul>
+                <li>Investigating developer sentiment using NLP techniques and deep learning models (Ongoing).</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Solid Waste Detection in Aquatic Environments</span>
+                <span class="entry-badge badge-acad">Literature Review</span>
+            </div>
+            <ul>
+                <li>Reviewed ML methods for detecting solid waste in water bodies; analyzed top-performing models, feasibility, and challenges.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Academic Background</h2>
+        <div class="entry">
+            <div class="entry-subtext">
+                <span>BRAC University, Dhaka | B.Sc. in Computer Science and Engineering</span>
+                <span class="entry-date">Expected Summer 2025</span>
+            </div>
+            <div class="cgpa">CGPA: 3.54 / 4.00</div>
+        </div>
+        <div class="entry">
+            <div class="entry-subtext">
+                <span>Rajuk Uttara Model College | HSC (Science)</span>
+                <span class="entry-date">2020</span>
+            </div>
+            <div class="cgpa">GPA: 5.00 / 5.00</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Leadership & Honors</h2>
+        <div class="leadership-box">
+            <div class="leadership-header-row">
+                <strong>Project Lead & Team Developer</strong>
+            </div>
+            <div>Led teams for major academic projects including Automated Pet Food Dispenser, Braccit, and Get It Done (productivity platform).</div>
+        </div>
+        <ul>
+            <li>Tutored children in reading and ScratchJr programming, developing empathy and communication skills.</li>
+            <li>Excellent public speaker with strong stage presence; capable of presenting ideas clearly and confidently.</li>
+            <li>Member, Literature Club & Social Service Club, Rajuk Uttara Model College.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Interests</h2>
+        <ul>
+            <li>Poetry, Cooking, Teaching, Building Things That Help People, Debugging Code.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>References</h2>
+        <div class="ref-container">
+            <div>
+                <strong>Md. Aquib Azmain (Thesis Adviser)</strong><br>
+                Lecturer, Dept. of CSE, BRAC University<br>
+                <a href="mailto:aquib.azmain@bracu.ac.bd">aquib.azmain@bracu.ac.bd</a>
+            </div>
+            <div>
+                <strong>Dr. Farida Chowdhury</strong><br>
+                Professor, Dept. of CSE, BRAC University<br>
+                <a href="mailto:farida.chowdhury@bracu.ac.bd">farida.chowdhury@bracu.ac.bd</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function generatePDF() {
+        const element = document.getElementById('cv-content');
+        const opt = {
+            margin: 0,
+            filename: 'CV_Fahmida_Haque_Fariha.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+
+</body>
+</html>
