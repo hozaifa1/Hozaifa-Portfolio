@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markopolo High-Fidelity Clone</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --text-white: #ffffff;
+            --text-dim: #a0a0a0;
+            --accent-green: #ccff00; /* The bright green/yellow from screenshot */
+            --glass-bg: rgba(20, 20, 20, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-weight: 500; letter-spacing: -0.02em; }
+        p { color: var(--text-dim); line-height: 1.6; }
+        .text-accent { color: var(--accent-green); }
+
+        /* --- 1. DYNAMIC GLASS NAVBAR --- */
+        /* The user mentioned "texture" and "dynamic with background". 
+           We use a blur backdrop and a very subtle noise texture overlay if possible, 
+           but CSS blur is key here. */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 1px solid transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 16px 60px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-transform: lowercase; letter-spacing: -1px; }
+        .nav-items a { color: #ccc; text-decoration: none; margin-left: 32px; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-items a:hover { color: #fff; }
+
+        /* --- 2. SMOOTH PARALLAX HERO --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* The background image that moves slowly */
+        .parallax-bg {
+            position: absolute;
+            top: -10%; left: 0; width: 100%; height: 120%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), #050505),
+                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            will-change: transform;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            opacity: 0; /* Init for animation */
+            transform: translateY(40px);
+        }
+
+        /* --- 3. TIMELINE & SECTIONS (Left line effect) --- */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 100px 20px;
+            display: flex;
+        }
+
+        /* The vertical line guide */
+        .timeline-guide {
+            position: absolute;
+            left: 40px; /* Position from left */
+            top: 100px;
+            bottom: 100px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* The active line that grows */
+        .timeline-progress {
+            position: absolute;
+            left: 40px;
+            top: 100px;
+            width: 1px;
+            background: var(--accent-green);
+            height: 0; /* JS will animate this */
+            box-shadow: 0 0 8px var(--accent-green);
+            transition: height 0.1s linear;
+            z-index: 1;
+        }
+
+        .sections-container {
+            margin-left: 100px; /* Space for the line */
+            width: 100%;
+        }
+
+        .section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 100px;
+        }
+
+        /* The "Yellow Square" Marker */
+        .section-marker {
+            position: absolute;
+            left: -65px; /* Aligns with the line (100px margin - 65px - width/2 approx) */
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.3);
+            transform: translateY(-50%) rotate(45deg); /* Diamond shape or square */
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .section.active .section-marker {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            box-shadow: 0 0 10px var(--accent-green);
+            transform: translateY(-50%) rotate(45deg) scale(1.5);
+        }
+
+        /* Content Layouts */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* --- 4. ANIMATIONS (Fade Up, Typewriter, Float) --- */
+        
+        /* Base class for scroll reveal */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating images */
+        .floating-ui {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 24px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            /* Parallax effect will be applied here via JS transform */
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            padding: 30px;
+            border-radius: 16px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 5px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .typewriter-text::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">markopolo</div>
+        <div class="nav-items">
+            <a href="#">Solutions</a>
+            <a href="#">Company</a>
+            <a href="#">Sign In</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="parallax-bg" id="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title reveal-on-scroll">Recover lost revenue,<br>automatically.</h1>
+            <p class="reveal-on-scroll" style="transition-delay: 0.2s;">AI-powered marketing that understands your customers better than they do.</p>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- The Left Line System -->
+        <div class="timeline-guide"></div>
+        <div class="timeline-progress" id="progress-line"></div>
+
+        <div class="sections-container">
+            
+            <!-- Section 1: Stats -->
+            <div class="section" id="sec1">
+                <div class="section-marker"></div>
+                <div class="feature-grid">
+                    <div class="text-col">
+                        <p class="text-accent reveal-on-scroll">Behavioral Intelligence</p>
+                        <h2 class="reveal-on-scroll" style="font-size: 2.5rem; margin: 20px 0;">Turn every click into<br>conversion intelligence.</h2>
+                        <p class="reveal-on-scroll">We analyze 384 behavioral signals - from hesitation patterns to product comparisons.</p>
+                    </div>
+                    <div class="ui-col">
+                        <div class="stat-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                            <p>Total Revenue Recovered</p>
+                            <div class="stat-number" data-target="54000000">$0</div>
+                        </div>
+                        <div class="stat-card reveal-on-scroll" style="margin-top: 20px; transition-delay: 0.4s;">
+                            <p>Avg. Recovery Rate</p>
+                            <div class="stat-number" data-target="35">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Floating UI -->
+            <div class="section" id="sec2">
+                <div class="section-marker"></div>
+                <div class="feature-grid">
+                    <div class="ui-col" style="position: relative;">
+                        <!-- Floating elements with parallax classes -->
+                        <div class="floating-ui parallax-element" data-speed="0.05" style="width: 300px;">
+                            <p style="font-size: 0.8rem; color: #888;">Activity Log</p>
+                            <div style="margin-top: 10px; font-size: 0.9rem;">
+                                <div style="margin-bottom: 8px;">Viewed product <span style="float: right; color: #666;">11:02am</span></div>
+                                <div style="margin-bottom: 8px;">Comparing... <span style="float: right; color: #666;">11:04am</span></div>
+                                <div class="text-accent">Added to cart <span style="float: right; opacity: 0.7;">11:06am</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-ui parallax-element" data-speed="0.12" style="position: absolute; top: -50px; right: -20px; width: 200px; background: rgba(30,30,30,0.9);">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 30px; height: 30px; background: #555; border-radius: 50%;"></div>
+                                <div>
+                                    <div style="font-size: 0.8rem;">Michelle Smith</div>
+                                    <div style="font-size: 0.7rem; color: #888;">High Intent</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-col">
+                        <p class="text-accent reveal-on-scroll">Identify Visitors</p>
+                        <h2 class="reveal-on-scroll" style="font-size: 2.5rem; margin: 20px 0;">Identify up to 20% of<br>anonymous visitors</h2>
+                        <div class="typewriter-container reveal-on-scroll">
+                            <p class="typewriter-text" id="typewriter1"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section" id="sec3">
+                <div class="section-marker"></div>
+                <div class="feature-grid">
+                    <div class="text-col">
+                        <h2 class="reveal-on-scroll">Real-time Orchestration</h2>
+                        <p class="reveal-on-scroll">Trigger the perfect message at the perfect moment.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div style="height: 50vh;"></div>
+
+    <script>
+        // --- 1. SCROLL REVEAL & ACTIVE SECTIONS ---
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    
+                    // Trigger counters if inside
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => animateCounter(counter));
+
+                    // Trigger typewriter if inside
+                    const typer = entry.target.querySelector('.typewriter-text');
+                    if (typer && !typer.dataset.typed) {
+                        typeWriter(typer, "We identify and track anonymous shoppers from their first session, giving you behavioral insights before they ever buy.");
+                        typer.dataset.typed = "true";
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+        // --- 2. ACTIVE SECTION TRACKING (For Timeline) ---
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active from all
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    // Add to current
+                    entry.target.classList.add('active');
+                    
+                    // Update line height based on section index
+                    // This is a simplified "fill to current" logic
+                    const allSections = Array.from(document.querySelectorAll('.section'));
+                    const index = allSections.indexOf(entry.target);
+                    // Just visual fun: fill line down to this section
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.section').forEach(sec => sectionObserver.observe(sec));
+
+
+        // --- 3. ANIMATION FUNCTIONS ---
+        
+        function animateCounter(el) {
+            if(el.dataset.animated) return;
+            el.dataset.animated = "true";
+            
+            const target = parseInt(el.dataset.target);
+            const isCurrency = el.innerText.includes('$');
+            const isPercent = el.innerText.includes('%');
+            let start = 0;
+            const duration = 2000; // 2s
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease out quart
+                const ease = 1 - Math.pow(1 - progress, 4);
+                
+                const currentVal = Math.floor(start + (target - start) * ease);
+                
+                let text = currentVal.toLocaleString();
+                if(target > 1000000) text = (currentVal / 1000000).toFixed(0) + 'm+';
+                
+                if (isCurrency) el.innerText = '$' + text;
+                else if (isPercent) el.innerText = text + '%';
+                else el.innerText = text;
+
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        function typeWriter(element, text) {
+            let i = 0;
+            element.innerText = "";
+            const speed = 30; // ms per char
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerText += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // --- 4. SCROLL LOOP (Parallax & Navbar) ---
+        const navbar = document.getElementById('navbar');
+        const heroBg = document.getElementById('hero-bg');
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        const progressLine = document.getElementById('progress-line');
+        const contentWrapper = document.querySelector('.content-wrapper');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Navbar
+            if (scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+
+            // Hero BG Parallax
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+            }
+
+            // Floating Elements Parallax
+            parallaxElements.forEach(el => {
+                const speed = parseFloat(el.dataset.speed || 0.1);
+                el.style.transform = `translateY(${scrollY * -speed}px)`;
+            });
+
+            // Continuous Line Drawing
+            // We want the line to fill up as we scroll through the content wrapper
+            if(contentWrapper) {
+                const rect = contentWrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Calculate how much of the wrapper we have passed
+                // Start drawing when wrapper top hits center of screen
+                const startPoint = rect.top - (windowHeight / 2);
+                
+                // If we are past the start point (startPoint is negative when scrolled past)
+                let height = 0;
+                if (rect.top < windowHeight/2) {
+                    height = Math.abs(rect.top - windowHeight/2);
+                }
+                
+                // Cap height at container height
+                const maxHeight = rect.height;
+                height = Math.min(height, maxHeight);
+                
+                progressLine.style.height = `${height}px`;
+            }
+        });
+
+    </script>
+</body>
+</html>
