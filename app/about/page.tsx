@@ -5,6 +5,7 @@ import { GraduationCap, Award, BookOpen, Trophy, ArrowLeft } from 'lucide-react'
 import Link from 'next/link';
 import Contact from '@/components/Contact';
 import ScrollReveal from '@/components/ScrollReveal';
+import ScrollProgress from '@/components/ScrollProgress';
 
 export default function AboutPage() {
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function AboutPage() {
 
   return (
     <main className="pt-24">
+      <ScrollProgress />
       <section className="relative py-16">
         <div className="section-container">
           

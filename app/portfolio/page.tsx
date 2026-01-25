@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { projects } from '@/lib/data';
 import Contact from '@/components/Contact';
 import ScrollReveal from '@/components/ScrollReveal';
+import ScrollProgress from '@/components/ScrollProgress';
 
 export default function PortfolioPage() {
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function PortfolioPage() {
 
   return (
     <main className="pt-24">
+      <ScrollProgress />
       <section className="relative py-16">
         <div className="section-container">
           
