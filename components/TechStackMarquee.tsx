@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { SiNextdotjs, SiDjango, SiPostgresql, SiRust, SiDocker, SiPython, SiReact, SiTypescript, SiKotlin, SiTensorflow, SiPhp, SiLaravel, SiMysql, SiFirebase, SiAndroidstudio, SiPytorch, SiOpencv, SiTailwindcss, SiCloudflare, SiVercel } from 'react-icons/si';
 
 const techStack = [
@@ -27,30 +27,45 @@ const techStack = [
 ];
 
 export default function TechStackMarquee() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
   const duplicatedTech = [...techStack, ...techStack];
 
+  useEffect(() => {
+    const marquee = marqueeRef.current;
+    if (!marquee) return;
+
+    let animationId: number;
+    let position = 0;
+    const speed = 0.5;
+
+    const animate = () => {
+      position -= speed;
+      if (position <= -(techStack.length * 152)) {
+        position = 0;
+      }
+      marquee.style.transform = `translateX(${position}px)`;
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
   return (
-    <section className="py-12 bg-[#09090b] border-y border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <p className="text-center text-slate-400 text-sm font-mono uppercase tracking-wider">
+    <section className="py-16 border-y border-[var(--border-subtle)] overflow-hidden">
+      <div className="section-container mb-8">
+        <p className="text-center text-[var(--text-muted)] text-xs uppercase tracking-[0.2em]">
           Technologies I work with
         </p>
       </div>
       
-      <div className="relative overflow-hidden py-4">
-        <motion.div
-          className="flex gap-12"
-          animate={{
-            x: [0, `-${(techStack.length * 152)}px`],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 40,
-              ease: "linear",
-            },
-          }}
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10" />
+        
+        <div
+          ref={marqueeRef}
+          className="flex gap-12 will-change-transform"
         >
           {duplicatedTech.map((tech, idx) => {
             const IconComponent = tech.Icon;
@@ -60,20 +75,20 @@ export default function TechStackMarquee() {
                 className="flex items-center justify-center min-w-[140px] group cursor-pointer flex-shrink-0"
               >
                 <div className="text-center transition-all duration-300">
-                  <div className="flex items-center justify-center mb-2 grayscale group-hover:grayscale-0 transition-all duration-300">
+                  <div className="flex items-center justify-center mb-3 opacity-40 group-hover:opacity-100 transition-opacity duration-300">
                     <IconComponent 
-                      className="w-10 h-10" 
+                      className="w-8 h-8" 
                       style={{ color: tech.color }}
                     />
                   </div>
-                  <span className="text-xs font-mono text-slate-500 group-hover:text-[#06b6d4] transition-colors block">
+                  <span className="text-xs text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors block">
                     {tech.name}
                   </span>
                 </div>
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,1 +1,362 @@
 @import "tailwindcss";
+
+/* ========================================
+   MARKOPOLO-STYLE DESIGN SYSTEM
+   ======================================== */
+
+:root {
+  /* Color Palette */
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-card: rgba(15, 15, 15, 0.6);
+  --bg-glass: rgba(10, 10, 10, 0.7);
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  
+  --accent-primary: #06b6d4; /* Cyan/Blue theme */
+  --accent-secondary: #0ea5e9;
+  --accent-glow: rgba(6, 182, 212, 0.3);
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(6, 182, 212, 0.5);
+  
+  /* Typography */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Spacing */
+  --section-padding: clamp(60px, 10vw, 120px);
+  
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ========================================
+   BASE STYLES & SMOOTH SCROLL
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  /* Use CSS scroll-behavior with JS fallback for smoother experience */
+}
+
+/* Lenis smooth scroll integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
+/* ========================================
+   GLASS MORPHISM UTILITIES
+   ======================================== */
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+}
+
+/* ========================================
+   SCROLL-TRIGGERED REVEAL ANIMATIONS
+   ======================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered delays */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ========================================
+   PARALLAX UTILITIES
+   ======================================== */
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* ========================================
+   TIMELINE / PROGRESS LINE
+   ======================================== */
+
+.timeline-track {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
+}
+
+.timeline-progress {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  width: 1px;
+  background: var(--accent-primary);
+  box-shadow: 0 0 12px var(--accent-glow);
+  transition: height 0.15s linear;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 35px;
+  width: 10px;
+  height: 10px;
+  background: var(--bg-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: rotate(45deg);
+  transition: all 0.4s var(--ease-out-expo);
+  z-index: 2;
+}
+
+.timeline-marker.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: rotate(45deg) scale(1.3);
+}
+
+/* ========================================
+   TYPEWRITER EFFECT
+   ======================================== */
+
+.typewriter-cursor::after {
+  content: '|';
+  color: var(--accent-primary);
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========================================
+   FLOATING UI ELEMENTS
+   ======================================== */
+
+.floating-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.floating-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ========================================
+   COUNTER ANIMATION
+   ======================================== */
+
+.counter-number {
+  font-variant-numeric: tabular-nums;
+  font-weight: 300;
+}
+
+/* ========================================
+   ACCENT COLORS & HIGHLIGHTS
+   ======================================== */
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.bg-accent {
+  background: var(--accent-primary);
+}
+
+.border-accent {
+  border-color: var(--accent-primary);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ========================================
+   SECTION LAYOUTS
+   ======================================== */
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--section-padding) 20px;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 16px;
+  max-width: 600px;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ========================================
+   GRADIENT BACKGROUNDS
+   ======================================== */
+
+.gradient-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(200, 255, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(100, 0, 255, 0.03) 0%, transparent 60%);
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+  .timeline-track,
+  .timeline-progress,
+  .timeline-marker {
+    display: none;
+  }
+  
+  .section-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

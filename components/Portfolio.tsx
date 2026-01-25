@@ -1,58 +1,59 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '@/lib/data';
+import ScrollReveal from './ScrollReveal';
+import TextReveal from './TextReveal';
 
 export default function Portfolio() {
-  const featuredProjects = projects.filter(p => p.id !== 'torbiz').slice(0, 6);
+  const featuredProjects = projects.slice(0, 4);
 
   return (
-    <section id="portfolio" className="py-16 bg-[#09090b] relative">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Projects
-          </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Some things I&apos;ve built.
-          </p>
-        </motion.div>
+    <section id="portfolio" className="relative py-32">
+      <div className="section-container">
+        <div className="timeline-track hidden md:block" />
+        
+        <div className="md:ml-24">
+          <ScrollReveal>
+            <div className="section-header">
+              <p className="text-[var(--accent-primary)] text-sm font-medium tracking-widest uppercase mb-4">
+                ■ Selected Work
+              </p>
+              <h2 className="section-title">
+                Projects that<br />
+                <span className="text-[var(--text-secondary)]">solve real problems</span>
+              </h2>
+            </div>
+          </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {featuredProjects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              className="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-400/60 transition-all duration-300"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
-            >
-              {project.image && (
-                <Link href={`/portfolio/${project.id}`} className="block relative aspect-video overflow-hidden cursor-pointer">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-[#09090b]/80 transition-opacity">
-                    <p className="text-white text-lg font-semibold">View Details</p>
-                  </div>
-                </Link>
-              )}
+          <div className="grid md:grid-cols-2 gap-8">
+            {featuredProjects.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                className="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-400/60 transition-all duration-300"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+              >
+                {project.image && (
+                  <Link href={`/portfolio/${project.id}`} className="block relative aspect-video overflow-hidden cursor-pointer">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-[#09090b]/80 transition-opacity">
+                      <p className="text-white text-lg font-semibold">View Details</p>
+                    </div>
+                  </Link>
+                )}
 
               <div className="p-6">
                 <div className="inline-block px-3 py-1 bg-[#06b6d4]/10 text-[#06b6d4] rounded-full text-xs font-semibold mb-3">
@@ -64,7 +65,9 @@ export default function Portfolio() {
                 </h3>
 
                 <p className="text-slate-400 mb-4 line-clamp-2">
-                  {project.description}
+                  <TextReveal delay={300} duration={20}>
+                    {project.description}
+                  </TextReveal>
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -101,6 +104,19 @@ export default function Portfolio() {
               </div>
             </motion.div>
           ))}
+          </div>
+
+          <ScrollReveal delay={0.5}>
+            <div className="mt-12 text-center">
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-all duration-300 group"
+              >
+                View all projects
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

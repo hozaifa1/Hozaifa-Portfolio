@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Award, ExternalLink, GraduationCap, Trophy, FileText } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function Certifications() {
   const certifications = [
@@ -101,130 +101,108 @@ export default function Certifications() {
   ];
 
   return (
-    <section id="certifications" className="py-16 bg-[#09090b] relative">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Certifications & Recognitions
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Professional certifications and recognitions that validate my expertise
-          </p>
-        </motion.div>
+    <section id="certifications" className="relative py-32">
+      <div className="section-container">
+        <div className="timeline-track hidden md:block" />
+        
+        <div className="md:ml-24">
+          <ScrollReveal>
+            <div className="section-header">
+              <p className="text-[var(--accent-primary)] text-sm font-medium tracking-widest uppercase mb-4">
+                ■ Credentials
+              </p>
+              <h2 className="section-title">
+                Certifications &<br />
+                <span className="text-[var(--text-secondary)]">Recognitions</span>
+              </h2>
+            </div>
+          </ScrollReveal>
 
-        <div className="mb-16">
-          <motion.h3
-            className="text-2xl font-bold text-white mb-8 flex items-center gap-3"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Award className="w-6 h-6 text-cyan-400" />
-            Professional Certifications
-          </motion.h3>
-          
-          <div className="space-y-8">
-            {certifications.map((category, catIdx) => {
-              const CategoryIcon = category.icon;
-              return (
-                <motion.div
-                  key={catIdx}
-                  className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: catIdx * 0.1 }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 bg-gradient-to-br ${category.color} rounded-lg flex items-center justify-center border-2`}>
-                      <CategoryIcon className={`w-5 h-5 ${category.iconColor}`} />
-                    </div>
-                    <h4 className="text-xl font-bold text-white">{category.category}</h4>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {category.items.map((cert, idx) => (
-                      <motion.a
-                        key={idx}
-                        href={cert.file}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group bg-slate-900/50 hover:bg-slate-900 rounded-lg p-4 border border-slate-700 hover:border-cyan-400/50 transition-all"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="flex-1">
-                            <p className="text-white font-semibold group-hover:text-cyan-400 transition-colors">
-                              {cert.title}
-                            </p>
-                            <p className="text-slate-400 text-sm mt-1">{cert.issuer}</p>
-                          </div>
-                          <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors flex-shrink-0 mt-1" />
+          <div className="mb-16">
+            <ScrollReveal delay={0.1}>
+              <h3 className="text-xl font-medium text-white mb-8 flex items-center gap-3">
+                <Award className="w-5 h-5 text-[var(--accent-primary)]" />
+                Professional Certifications
+              </h3>
+            </ScrollReveal>
+            
+            <div className="space-y-6">
+              {certifications.map((category, catIdx) => {
+                const CategoryIcon = category.icon;
+                return (
+                  <ScrollReveal key={catIdx} delay={catIdx * 0.1 + 0.2}>
+                    <div className="glass-card p-6">
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center">
+                          <CategoryIcon className="w-5 h-5 text-[var(--accent-primary)]" />
                         </div>
-                      </motion.a>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div>
-          <motion.h3
-            className="text-2xl font-bold text-white mb-8 flex items-center gap-3"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Trophy className="w-6 h-6 text-cyan-400" />
-            Recognitions & Achievements
-          </motion.h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {recognitions.map((item, idx) => {
-              const ItemIcon = item.icon;
-              return (
-                <motion.a
-                  key={idx}
-                  href={item.file}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group bg-gradient-to-br ${item.color} backdrop-blur-sm rounded-xl p-6 border-2 hover:shadow-xl hover:shadow-cyan-500/10 transition-all`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 bg-slate-900/50 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                      <ItemIcon className={`w-6 h-6 ${item.iconColor}`} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-white font-bold text-lg group-hover:text-cyan-300 transition-colors">
-                          {item.title}
-                        </h4>
-                        <ExternalLink className={`w-4 h-4 ${item.iconColor} opacity-70 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-1`} />
+                        <h4 className="text-lg font-medium text-white">{category.category}</h4>
                       </div>
-                      <p className="text-slate-300 text-sm mt-2">{item.description}</p>
+                      
+                      <div className="grid md:grid-cols-2 gap-3">
+                        {category.items.map((cert, idx) => (
+                          <a
+                            key={idx}
+                            href={cert.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-start justify-between gap-2 p-4 rounded-lg bg-white/5 hover:bg-white/10 border border-transparent hover:border-[var(--border-active)] transition-all"
+                          >
+                            <div className="flex-1">
+                              <p className="text-white font-medium group-hover:text-[var(--accent-primary)] transition-colors text-sm">
+                                {cert.title}
+                              </p>
+                              <p className="text-[var(--text-muted)] text-xs mt-1">{cert.issuer}</p>
+                            </div>
+                            <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors flex-shrink-0 mt-0.5" />
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </motion.a>
-              );
-            })}
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+
+          <div>
+            <ScrollReveal delay={0.1}>
+              <h3 className="text-xl font-medium text-white mb-8 flex items-center gap-3">
+                <Trophy className="w-5 h-5 text-[var(--accent-primary)]" />
+                Recognitions & Achievements
+              </h3>
+            </ScrollReveal>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {recognitions.map((item, idx) => {
+                const ItemIcon = item.icon;
+                return (
+                  <ScrollReveal key={idx} delay={idx * 0.1 + 0.2}>
+                    <a
+                      href={item.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block glass-card p-6 group hover:border-[var(--border-active)] transition-all"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center flex-shrink-0">
+                          <ItemIcon className="w-6 h-6 text-[var(--accent-primary)]" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between gap-2">
+                            <h4 className="text-white font-medium group-hover:text-[var(--accent-primary)] transition-colors">
+                              {item.title}
+                            </h4>
+                            <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors flex-shrink-0 mt-0.5" />
+                          </div>
+                          <p className="text-[var(--text-secondary)] text-sm mt-2">{item.description}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

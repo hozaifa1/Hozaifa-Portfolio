@@ -1,116 +1,129 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Code2, Brain, Rocket, Users, GraduationCap, Award, BookOpen, Trophy, ArrowRight } from 'lucide-react';
+import { GraduationCap, Briefcase, Award, ArrowRight, Zap } from 'lucide-react';
 import Link from 'next/link';
+import ScrollReveal from './ScrollReveal';
+import TextReveal from './TextReveal';
 
 export default function About() {
-  const highlights = [
-    {
-      icon: Code2,
-      title: "Web Development",
-      description: "Building applications with Next.js, Django, and modern web technologies."
-    },
-    {
-      icon: Brain,
-      title: "AI & Machine Learning",
-      description: "Working with computer vision and NLP systems."
-    },
-    {
-      icon: Rocket,
-      title: "Product Development",
-      description: "From idea to deployment, I enjoy the full process."
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "Working with others to bring projects to life."
-    }
-  ];
-
   return (
-    <section id="about" className="py-16 bg-slate-900/50 relative">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            About Me
-          </h2>
-        </motion.div>
+    <section id="about" className="relative py-32">
+      <div className="section-container">
+        {/* Timeline track - visible on desktop */}
+        <div className="timeline-track hidden md:block" />
 
-        <div className="max-w-4xl mx-auto mb-12">
-          <motion.div
-            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+        <div className="md:ml-24">
+          {/* Section Header */}
+          <ScrollReveal>
+            <div className="section-header">
+              <p className="text-[var(--accent-primary)] text-sm font-medium tracking-widest uppercase mb-4">
+                ■ About Me
+              </p>
+              <h2 className="section-title">
+                Turning ideas into<br />
+                <span className="text-[var(--text-secondary)]">production-ready solutions</span>
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            {/* Left - Introduction */}
             <div className="space-y-6">
-              <p className="text-slate-300 text-lg leading-relaxed">
-                I&apos;m a developer who enjoys building web applications and experimenting with machine learning. Most of my time is spent working with Next.js, Django, and various AI tools.
-              </p>
-              <div className="pl-6 border-l-4 border-cyan-500/50">
-                <p className="text-slate-300 text-lg leading-relaxed">
-                  I work on:
-                </p>
-                <ul className="mt-2 space-y-1 text-slate-400">
-                  <li className="flex items-center gap-2">
-                    <span className="text-cyan-400">▸</span> Web and mobile applications
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-cyan-400">▸</span> Enterprise systems
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-cyan-400">▸</span> Computer vision and NLP projects
-                  </li>
-                </ul>
-              </div>
-              <p className="text-slate-300 text-lg leading-relaxed">
-                I&apos;ve built things like ERPs, learning management systems, e-commerce platforms, and various AI experiments. You can check them out in my portfolio.
-              </p>
-              <p className="text-slate-300 text-lg leading-relaxed">
-                Currently studying <span className="text-white font-semibold">Electrical and Electronic Engineering</span> at the <span className="text-cyan-400 font-semibold">University of Dhaka</span> <span className="text-slate-400">(graduating Aug 2026)</span>.
-              </p>
-            </div>
-            <div className="flex justify-center mt-8">
-              <Link
-                href="/about"
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-cyan-500/10 hover:bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400 rounded-lg font-semibold transition-all"
-              >
-                More about me
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={idx}
-                className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 hover:border-cyan-400/60 transition-all"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-cyan-400" />
+              <ScrollReveal delay={0.1}>
+                <div className="glass-card p-8">
+                  <div className="space-y-5 text-[var(--text-secondary)] leading-relaxed">
+                    <p>
+                      <TextReveal delay={200} duration={30}>
+                        I&apos;m S. M. Hozaifa Hossain, a developer passionate about building scalable web applications and exploring the frontiers of AI.
+                      </TextReveal>
+                    </p>
+                    <p>
+                      <TextReveal delay={400} duration={30}>
+                        Currently pursuing my B.Sc. in EEE at the University of Dhaka, I balance academics with real-world development—shipping production systems for businesses while conducting research on neuromorphic computing.
+                      </TextReveal>
+                    </p>
+                    <p>
+                      <TextReveal delay={600} duration={30}>
+                        As Chair of IEEE SIGHT, I led Project Archer, deploying 10 computing systems to rural communities in Netrokona.
+                      </TextReveal>
+                    </p>
+                  </div>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center gap-2 mt-8 text-[var(--accent-primary)] hover:text-white font-medium transition-colors group"
+                  >
+                    Full background
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm">{item.description}</p>
-              </motion.div>
-            );
-          })}
+              </ScrollReveal>
+            </div>
+
+            {/* Right - Info Cards */}
+            <div className="space-y-6">
+              <ScrollReveal delay={0.2}>
+                <div className="glass-card p-6 group hover:border-[var(--border-active)] transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center flex-shrink-0">
+                      <GraduationCap className="w-6 h-6 text-[var(--accent-primary)]" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium text-lg mb-1">Education</h4>
+                      <p className="text-white/90">University of Dhaka</p>
+                      <p className="text-[var(--text-muted)] text-sm">B.Sc. Electrical & Electronic Engineering</p>
+                      <p className="text-[var(--accent-primary)] font-medium text-sm mt-2">CGPA: 3.74/4.00</p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.3}>
+                <div className="glass-card p-6 group hover:border-[var(--border-active)] transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center flex-shrink-0">
+                      <Briefcase className="w-6 h-6 text-[var(--accent-primary)]" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium text-lg mb-2">Current Roles</h4>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="text-white/90">Chair, IEEE SIGHT</p>
+                          <p className="text-[var(--text-muted)] text-sm">University of Dhaka Student Branch</p>
+                        </div>
+                        <div>
+                          <p className="text-white/90">Research Assistant</p>
+                          <p className="text-[var(--text-muted)] text-sm">Emerging Nanodevices Group</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.4}>
+                <div className="glass-card p-6 group hover:border-[var(--border-active)] transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center flex-shrink-0">
+                      <Award className="w-6 h-6 text-[var(--accent-primary)]" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium text-lg mb-2">Achievements</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start gap-2">
+                          <Zap className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
+                          <span className="text-[var(--text-secondary)]">Runner-Up, Line Following Robot - BRAC University</span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <Zap className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
+                          <span className="text-[var(--text-secondary)]">Talentpool Scholarship - Bangladesh Education Board</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </div>
     </section>

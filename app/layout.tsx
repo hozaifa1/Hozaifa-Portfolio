@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Spotlight from '@/components/Spotlight';
+import SmoothScroll from '@/components/SmoothScroll';
 
 export const metadata: Metadata = {
-  title: 'Hozaifa - Personal Portfolio',
-  description: 'Personal portfolio showcasing projects and experience across web development, mobile apps, and AI/ML solutions',
+  title: 'Hozaifa - Full Stack Developer & AI Engineer',
+  description: 'Building production-grade web applications and AI solutions. Specializing in Next.js, Django, and Machine Learning.',
 };
 
 export default function RootLayout({
@@ -15,12 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-[#09090b] text-white">
-        <Spotlight />
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="en">
+      <body className="antialiased">
+        <SmoothScroll>
+          <div className="gradient-mesh" />
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
