@@ -4,7 +4,7 @@ export const projects = [
     title: "Provabook – Production Control System",
     client: "Prova Fashion",
     category: "Production / Freelance",
-    description: "Operating system for textile buying houses replacing WhatsApp and Excel chaos with real-time production visibility from inquiry to shipment.",
+    description: "The operating system for textile buying houses and mills tired of managing million-dollar orders on WhatsApp and Excel. Replaces chaos with a single source of truth, giving you visibility from inquiry to shipment.",
     highlights: [
       "Precision loss tracking with automatic process loss % and mixed fabric calculations",
       "Live production cockpit with real-time progress bars against finished fabric targets",
