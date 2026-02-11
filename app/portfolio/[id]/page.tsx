@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Github, ArrowLeft, CheckCircle2, Package, Users, BarChart3, FileText, Shield, Zap } from 'lucide-react';
+import { Github, ArrowLeft, CheckCircle2, Package, Users, BarChart3, FileText, Shield, Zap, TrendingUp } from 'lucide-react';
 import { projects } from '@/lib/data';
 import Contact from '@/components/Contact';
 import ProjectHeroImage from '@/components/ProjectHeroImage';
@@ -14,70 +14,97 @@ export async function generateStaticParams() {
 
 const erpFeatures = [
   {
-    title: "Foreign Order Management",
-    icon: Package,
-    description: "Complete order lifecycle tracking with style hierarchy, fabric specifications, and buyer information.",
+    title: "Live Production Cockpit",
+    icon: Zap,
+    description: "Forget asking 'status?' 50 times a day. See real-time progress bars for knitting, dyeing, and finishing.",
     details: [
-      "Order + style hierarchy with fabric specs and colorways",
-      "Document stack with cloud storage",
-      "Categorization pipelines (Upcoming, Running, Archived)",
-      "Approval history timelines"
+      "Real-time progress bars against order quantity",
+      "Floor-level tracker for local orders",
+      "Daily Targets vs Actual output monitoring",
+      "Instant visibility on production bottlenecks"
     ]
   },
   {
-    title: "Development & Sampling",
+    title: "Precision Loss Tracking",
+    icon: TrendingUp,
+    description: "Automatic calculation of Process Loss % and Mixed Fabric usage. Stop bleeding raw material.",
+    details: [
+      "New algorithms for Process Loss % calculation",
+      "Track Mixed Fabric usage automatically",
+      "Identify exactly how much raw material is wasted",
+      "Granular tracking of greige and yarn"
+    ]
+  },
+  {
+    title: "The 'Mega-Timeline'",
     icon: FileText,
-    description: "Comprehensive sampling workflow from Lab Dip to Production samples.",
+    description: "A centralized activity log. Every document, note, and status change in one chronological feed.",
     details: [
-      "Lab Dip, Hand Loom, Strike-Off, PP sample tracking",
-      "Versioned submissions with courier logging",
-      "Mandatory resubmission plans",
-      "Photo viewer dialog for instant review"
+      "Aggregates every document and note",
+      "Permanent, un-editable activity history",
+      "Who/When/Why accountability tracking",
+      "Full story from inquiry to packing list"
     ]
   },
   {
-    title: "Financial Management",
+    title: "True-Finish Progress",
+    icon: CheckCircle2,
+    description: "Production progress calculated against Finished Fabric targets for brutal honesty.",
+    details: [
+      "Progress vs Finished Fabric targets",
+      "Realistic shipment readiness views",
+      "Eliminates '99% done' illusions",
+      "Data-driven delivery forecasting"
+    ]
+  },
+  {
+    title: "Centralized Order 'Brain'",
+    icon: Package,
+    description: "Tech packs, POs, and LCs live with the order, not in email folders.",
+    details: [
+      "Unified Document Stack (LCs, POs, Tech Packs)",
+      "Visual timelines for order lifecycle",
+      "Secure Google Cloud Storage integration",
+      "Presigned URLs for secure sharing"
+    ]
+  },
+  {
+    title: "Financial Control",
     icon: BarChart3,
     description: "Multi-version invoicing and Letter of Credit tracking system.",
     details: [
       "Proforma Invoices (Draft/Sent/Revised/Confirmed)",
-      "LC tracker with expiry alerts",
-      "Discrepancy notes and document attachments",
-      "Automated financial reporting"
+      "LC tracker with milestone clocks",
+      "Automated financial reporting",
+      "Discrepancy management"
     ]
+  }
+];
+
+const erpProblems = [
+  {
+    title: "Last-Moment Shipment Pressure",
+    icon: "🚨",
+    problem: "You find out about delays 2 days before shipment.",
+    result: "Air freight costs, discounts, and angry buyers."
   },
   {
-    title: "Local Production & Daily Metrics",
-    icon: Zap,
-    description: "Real-time production cockpit with throughput monitoring.",
-    details: [
-      "Floor-level tracker for local orders",
-      "Cuts, finishing, and delivery status",
-      "Inline order/line notes for instant coaching",
-      "KPI widgets and gradient cards"
-    ]
+    title: "The \"Excel & WhatsApp\" Black Hole",
+    icon: "🕳️",
+    problem: "Critical updates are buried in chat logs or outdated spreadsheets.",
+    result: "\"I didn't see that message\" becomes the excuse for $10,000 mistakes."
   },
   {
-    title: "Incidents & Blockers",
-    icon: Shield,
-    description: "Comprehensive incident management with action plans.",
-    details: [
-      "Capture rejections, breakdowns, and delays",
-      "Action plans with owners and due dates",
-      "Status transitions and evidence uploads",
-      "Auditable escalation trails"
-    ]
+    title: "Merchandiser Dependency",
+    icon: "🔑",
+    problem: "If your key merchandiser gets sick or quits, the order history vanishes with them.",
+    result: "You are held hostage by your staff's memory."
   },
   {
-    title: "Shipments & Logistics",
-    icon: Users,
-    description: "End-to-end shipment tracking and documentation.",
-    details: [
-      "Packing list, invoice, and AWB uploads",
-      "ETD/ETA tracking",
-      "Delivery confirmation workflow",
-      "Real-time notification system"
-    ]
+    title: "Blind Inspection & Payment",
+    icon: "💸",
+    problem: "You pay suppliers or factories without knowing if the goods are actually ready or up to spec.",
+    result: "You pay for quality you didn't get."
   }
 ];
 
@@ -160,6 +187,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   const isERP = project.id === 'prova-erp';
   const isLMS = project.id === 'igmis-lms';
+  // Use imported TrendingUp for Icon in erpFeatures
   const features = isERP ? erpFeatures : isLMS ? lmsFeatures : null;
 
   return (
@@ -205,7 +233,27 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <p className="text-lg text-slate-200 mb-8 leading-relaxed">{project.description}</p>
 
               {isERP && (
-                <div className="bg-gradient-to-br from-cyan-500/10 via-transparent to-indigo-500/10 border border-cyan-500/30 rounded-2xl p-6 mb-8">
+                <>
+                  <div className="mb-12">
+                    <h3 className="text-2xl font-bold text-white mb-6">🛑 The 4 Problems That Kill Profits</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {erpProblems.map((item, i) => (
+                        <div key={i} className="bg-red-500/5 border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-colors">
+                           <div className="flex items-center gap-3 mb-3">
+                             <span className="text-2xl">{item.icon}</span>
+                             <h4 className="font-bold text-white text-lg">{item.title}</h4>
+                           </div>
+                           <div className="space-y-2 text-sm">
+                             <p className="text-slate-300"><strong className="text-red-400">Problem:</strong> {item.problem}</p>
+                             <p className="text-slate-300"><strong className="text-red-400">Result:</strong> {item.result}</p>
+                           </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-cyan-500/10 via-transparent to-indigo-500/10 border border-cyan-500/30 rounded-2xl p-6 mb-8">
+
                   <h3 className="text-xl font-bold text-white mb-4">Why This System Works</h3>
                   <div className="space-y-4">
                     <div className="flex gap-3">
@@ -231,6 +279,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     </div>
                   </div>
                 </div>
+                </>
               )}
 
               {isLMS && (
@@ -281,19 +330,34 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               title="System Screens"
               images={[
                 {
-                  src: '/projects/erp/erp-dashboard.jpg',
+                  src: '/projects/erp/dashboard.jpg',
                   title: 'Dashboard & Navigation',
                   description: 'Main control center with KPI widgets and navigation',
                 },
                 {
-                  src: '/projects/erp/erp-samples.jpg',
+                  src: '/projects/erp/samples.jpg',
                   title: 'Samples Workspace',
                   description: 'Lab Dip, Strike-Off, and PP sample tracking',
                 },
                 {
-                  src: '/projects/erp/erp-local-orders.jpg',
+                  src: '/projects/erp/notifications.jpg',
                   title: 'Delivery Notifications Console',
                   description: 'Delivery alert stream with notification history',
+                },
+                {
+                  src: '/projects/erp/loss-tracking.jpg',
+                  title: 'Precision Loss Tracking',
+                  description: 'Automatic calculation of Process Loss % and Mixed Fabric usage',
+                },
+                {
+                  src: '/projects/erp/production.jpg',
+                  title: 'True-Finish Production',
+                  description: 'Real-time progress bars for knitting, dyeing, and finishing',
+                },
+                {
+                  src: '/projects/erp/timeline.jpg',
+                  title: 'The Mega-Timeline',
+                  description: 'Centralized activity log and document stack',
                 },
               ]}
             />

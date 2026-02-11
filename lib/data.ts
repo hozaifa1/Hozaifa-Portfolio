@@ -1,24 +1,22 @@
 export const projects = [
   {
     id: "prova-erp",
-    title: "Provabook – Production Control System",
+    title: "Provabook - Production OS",
     client: "Prova Fashion",
-    category: "Production / Freelance",
-    description: "The operating system for textile buying houses and mills tired of managing million-dollar orders on WhatsApp and Excel. Replaces chaos with a single source of truth, giving you visibility from inquiry to shipment.",
+    category: "Production / SaaS",
+    description: "The operating system for textile buying houses. Replaces WhatsApp/Excel chaos with a single source of truth from inquiry to shipment.",
     highlights: [
-      "Precision loss tracking with automatic process loss % and mixed fabric calculations",
-      "Live production cockpit with real-time progress bars against finished fabric targets",
-      "Mega-timeline aggregating all documents, notes, and status changes in chronological feed",
-      "Permanent activity log recording every change with who, when, why, and evidence"
+      "Live Production Cockpit: Real-time progress bars for knitting, dyeing, and finishing",
+      "Precision Loss Tracking: Automatic calculation of Process Loss % and mixed fabric usage",
+      "The 'Mega-Timeline': Centralized activity log and document stack for full accountability"
     ],
-    tech: ["Next.js", "Django", "PostgreSQL", "Cloudflare R2", "DigitalOcean"],
+    tech: ["Next.js", "Django", "PostgreSQL", "Google Cloud Storage", "DigitalOcean"],
     image: "/projects/prova-erp.png",
     github: "https://github.com/farihafhf/provabook-3",
     status: "Production",
     impact: {
-      tracking: "Real-Time Production Metrics",
-      accountability: "Un-editable Audit Trails",
-      automation: "Automated Loss Calculations"
+      visibility: "Realtime Order & Inventory Tracking",
+      automation: "100% Automated Ledgers"
     }
   },
   {
@@ -182,6 +180,27 @@ export const projects = [
       products: "15+ Categories",
       framework: "Bagisto E-commerce",
       market: "International Trade"
+    }
+  },
+  {
+    id: "reminder-app",
+    title: "Break Enforcer: Screen Time Guardian",
+    client: "Productivity / Android",
+    category: "Mobile / Android",
+    description: "A native Android break enforcer app that monitors continuous screen usage and enforces healthy break intervals with full-screen overlay blocking.",
+    highlights: [
+      "UsageStatsManager integration for precise screen-time tracking",
+      "Full-screen overlay enforcement with immersive mode blocking",
+      "Foreground service for persistent background monitoring",
+      "Jetpack Compose UI with Material 3 design system"
+    ],
+    tech: ["Kotlin", "Jetpack Compose", "Android Studio", "Material 3", "Room DB"],
+    github: "https://github.com/hozaifa1/reminder-app",
+    status: "Development",
+    impact: {
+      tracking: "Real-time Usage Stats",
+      enforcement: "Full-screen Overlay",
+      platform: "Android 10+"
     }
   }
 ];
