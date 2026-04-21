@@ -1,28 +1,32 @@
 import type { Metadata } from 'next';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SmoothScroll from '@/components/SmoothScroll';
+import PillNav from '@/components/PillNav';
+import ThemeShiftController from '@/components/ThemeShiftController';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700'],
+  variable: '--font-dm-sans',
+});
 
 export const metadata: Metadata = {
-  title: 'Hozaifa - Full Stack Developer & AI Engineer',
-  description: 'Building production-grade web applications and AI solutions. Specializing in Next.js, Django, and Machine Learning.',
+  title: 'S. M. Hozaifa Hossain',
+  description:
+    'AI/ML engineer and full-stack developer building intelligent systems, research-led products, and tactile digital experiences.',
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
-        <SmoothScroll>
-          <div className="gradient-mesh" />
-          <Navbar />
-          {children}
-          <Footer />
-        </SmoothScroll>
+    <html lang="en" className={dmSans.variable}>
+      <body className={dmSans.className}>
+        <ThemeShiftController />
+        <PillNav />
+        {children}
       </body>
     </html>
   );
