@@ -26,10 +26,14 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     ).matches;
     if (prefersReduced) return;
 
+    // `lerp` (continuous smoothing) — NOT `duration`/`easing`. Duration mode
+    // restarts its easing timeline on every wheel tick, so a rapid mousewheel
+    // stream stutters/races; lerp chases the target smoothly regardless of how
+    // fast wheel events arrive.
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.1,
       smoothWheel: true,
+      wheelMultiplier: 1,
       touchMultiplier: 1.6,
     });
 
