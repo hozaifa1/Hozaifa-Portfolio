@@ -36,11 +36,14 @@ html.lenis body {
   height: auto;
 }
 
-.lenis.lenis-smooth {
+/* Whenever Lenis is active, native smooth-scroll MUST be off or the browser
+   fights Lenis on every scroll (the jump-up-then-settle racing). Match on the
+   `lenis` class alone — Lenis does not always add `lenis-smooth`. */
+html.lenis {
   scroll-behavior: auto !important;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
+html.lenis [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
 
