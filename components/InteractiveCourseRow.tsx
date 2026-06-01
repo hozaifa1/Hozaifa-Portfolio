@@ -1,7 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 
 type InteractiveCourseRowProps = {
   index: number;
@@ -18,6 +25,10 @@ function isExternalHref(href: string) {
   return href.startsWith('http') || href.startsWith('/');
 }
 
+const REVEAL_EASE = [0.16, 1, 0.3, 1] as const;
+const TILT_SPRING = { stiffness: 160, damping: 18, mass: 0.4 };
+const HOVER_SPRING = { stiffness: 200, damping: 26 };
+
 export default function InteractiveCourseRow({
   index,
   name,
@@ -28,77 +39,62 @@ export default function InteractiveCourseRow({
   tag,
   href,
 }: InteractiveCourseRowProps) {
-  const rowRef = useRef<HTMLDivElement>(null);
-  const tileRef = useRef<HTMLDivElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
-  const [visible, setVisible] = useState(false);
+  const reduce = useReducedMotion();
 
-  useEffect(() => {
-    const element = rowRef.current;
-    if (!element) {
-      return;
-    }
+  const nx = useMotionValue(0);
+  const ny = useMotionValue(0);
+  const hover = useMotionValue(0);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.25,
-        rootMargin: '0px 0px -40px 0px',
-      },
-    );
+  const sx = useSpring(nx, TILT_SPRING);
+  const sy = useSpring(ny, TILT_SPRING);
+  const sHover = useSpring(hover, HOVER_SPRING);
 
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
+  const rotateY = useTransform(sx, (v) => v * 8);
+  const rotateX = useTransform(sy, (v) => -v * 8);
+  const scale = useTransform(sHover, (v) => 1 + v * 0.04);
 
   const onMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    const nx = x / rect.width - 0.5;
-    const ny = y / rect.height - 0.5;
 
     if (pillRef.current) {
       pillRef.current.style.left = `${x}px`;
       pillRef.current.style.top = `${y}px`;
-      pillRef.current.style.transform = 'translate(-50%, -50%) scale(1)';
-      pillRef.current.style.opacity = '1';
     }
 
-    if (tileRef.current) {
-      tileRef.current.style.transform = `perspective(600px) rotateX(${-ny * 8}deg) rotateY(${nx * 8}deg) scale(1.04)`;
-    }
+    if (reduce) return;
+    nx.set(x / rect.width - 0.5);
+    ny.set(y / rect.height - 0.5);
+    hover.set(1);
   };
 
   const onLeave = () => {
-    if (pillRef.current) {
-      pillRef.current.style.opacity = '0';
-      pillRef.current.style.transform = 'translate(-50%, -50%) scale(0.7)';
-    }
-
-    if (tileRef.current) {
-      tileRef.current.style.transform = '';
-    }
+    nx.set(0);
+    ny.set(0);
+    hover.set(0);
   };
-
-  const rowStyle = { '--row-delay': `${index * 80}ms` } as CSSProperties;
 
   const tile = (
     <div className="cr-tile-wrap" onMouseMove={onMove} onMouseLeave={onLeave}>
-      <div ref={tileRef} className="cr-tile" style={{ background }}>
+      <motion.div
+        className="cr-tile"
+        style={{
+          background,
+          rotateX: reduce ? 0 : rotateX,
+          rotateY: reduce ? 0 : rotateY,
+          scale: reduce ? 1 : scale,
+          transformPerspective: 600,
+          transition: 'none',
+        }}
+      >
         <div className="cr-tile-motif" style={{ background: motif }} />
         <div className="cr-tile-bg">
           <span className="cr-tile-mark">{mark}</span>
           <span className="cr-tile-tag">{tag}</span>
         </div>
-      </div>
+      </motion.div>
       <span ref={pillRef} className="cred-pill">
         Credentials
       </span>
@@ -106,10 +102,12 @@ export default function InteractiveCourseRow({
   );
 
   return (
-    <div
-      ref={rowRef}
-      className={`course-row${visible ? ' visible' : ''}`}
-      style={rowStyle}
+    <motion.div
+      className="course-row"
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+      transition={{ duration: 0.9, ease: REVEAL_EASE, delay: index * 0.08 }}
     >
       {href ? (
         isExternalHref(href) ? (
@@ -126,7 +124,6 @@ export default function InteractiveCourseRow({
       )}
       <div className="cr-name">{name}</div>
       <div className="cr-provider">{provider}</div>
-    </div>
+    </motion.div>
   );
 }
-

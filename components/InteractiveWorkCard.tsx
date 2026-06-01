@@ -1,7 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
+import { CSSProperties, ReactNode, useRef } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 
 type InteractiveWorkCardProps = {
   background: string;
@@ -23,6 +30,10 @@ function isExternalHref(href: string) {
   return href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
 }
 
+const REVEAL_EASE = [0.16, 1, 0.3, 1] as const;
+const TILT_SPRING = { stiffness: 150, damping: 18, mass: 0.4 };
+const HOVER_SPRING = { stiffness: 200, damping: 26 };
+
 export default function InteractiveWorkCard({
   background,
   motif,
@@ -38,70 +49,56 @@ export default function InteractiveWorkCard({
   reverse = false,
   motif2Style,
 }: InteractiveWorkCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const thumbRef = useRef<HTMLDivElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
-  const [visible, setVisible] = useState(false);
+  const reduce = useReducedMotion();
 
-  useEffect(() => {
-    const element = cardRef.current;
-    if (!element) {
-      return;
-    }
+  // Pointer-driven tilt, smoothed by springs instead of raw per-frame DOM writes.
+  const nx = useMotionValue(0);
+  const ny = useMotionValue(0);
+  const hover = useMotionValue(0);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: '0px 0px -60px 0px',
-      },
-    );
+  const sx = useSpring(nx, TILT_SPRING);
+  const sy = useSpring(ny, TILT_SPRING);
+  const sHover = useSpring(hover, HOVER_SPRING);
 
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
+  const rotateY = useTransform(sx, (v) => (reverse ? -1 : 1) * v * 8);
+  const rotateX = useTransform(sy, (v) => -v * 5);
+  const scale = useTransform(sHover, (v) => 1 + v * 0.015);
 
   const onMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    const nx = x / rect.width - 0.5;
-    const ny = y / rect.height - 0.5;
-    const rotateY = (reverse ? -1 : 1) * nx * 8;
-    const rotateX = -ny * 5;
 
     if (pillRef.current) {
       pillRef.current.style.left = `${x}px`;
       pillRef.current.style.top = `${y}px`;
-      pillRef.current.style.transform = 'translate(-50%, -50%) scale(1)';
-      pillRef.current.style.opacity = '1';
     }
 
-    if (thumbRef.current) {
-      thumbRef.current.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.015)`;
-    }
+    if (reduce) return;
+    nx.set(x / rect.width - 0.5);
+    ny.set(y / rect.height - 0.5);
+    hover.set(1);
   };
 
   const onLeave = () => {
-    if (pillRef.current) {
-      pillRef.current.style.opacity = '0';
-      pillRef.current.style.transform = 'translate(-50%, -50%) scale(0.7)';
-    }
-
-    if (thumbRef.current) {
-      thumbRef.current.style.transform = '';
-    }
+    nx.set(0);
+    ny.set(0);
+    hover.set(0);
   };
 
   const thumbInner = (
-    <div ref={thumbRef} className="work-thumb" style={{ background }}>
+    <motion.div
+      className="work-thumb"
+      style={{
+        background,
+        rotateX: reduce ? 0 : rotateX,
+        rotateY: reduce ? 0 : rotateY,
+        scale: reduce ? 1 : scale,
+        transformPerspective: 2000,
+        transition: 'none',
+      }}
+    >
       <div className="thumb-motif" style={{ background: motif }} />
       <div className="thumb-motif-2" style={{ background: motif2, ...motif2Style }} />
       <div className="thumb-bg">
@@ -114,7 +111,7 @@ export default function InteractiveWorkCard({
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   const thumbContent = href ? (
@@ -132,9 +129,13 @@ export default function InteractiveWorkCard({
   );
 
   return (
-    <div
-      ref={cardRef}
-      className={`work-item flip-up${reverse ? ' reverse' : ''}${visible ? ' visible' : ''}`}
+    <motion.div
+      className={`work-item${reverse ? ' reverse' : ''}`}
+      style={{ transformOrigin: 'center bottom' }}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 60, rotateX: 8 }}
+      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, margin: '0px 0px -60px 0px' }}
+      transition={{ duration: 0.9, ease: REVEAL_EASE }}
     >
       <div className="work-thumb-wrap" onMouseMove={onMove} onMouseLeave={onLeave}>
         {thumbContent}
@@ -148,6 +149,6 @@ export default function InteractiveWorkCard({
         </div>
         <div className="subtitle">{subtitle}</div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -3,6 +3,7 @@ import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import PillNav from '@/components/PillNav';
 import ThemeShiftController from '@/components/ThemeShiftController';
+import SmoothScroll from '@/components/SmoothScroll';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -26,7 +27,7 @@ export default function RootLayout({
       <body className={dmSans.className}>
         <ThemeShiftController />
         <PillNav />
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
