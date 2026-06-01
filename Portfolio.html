@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S. M. Hozaifa Hossain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080808;
+    --fg: #f5f4f0;
+    --fg-dim: rgba(245,244,240,0.45);
+    --fg-dimmer: rgba(245,244,240,0.18);
+    --lavender: #d4c9f0;
+    --pale-yellow: #ede9b0;
+    --red-orange: #f0816a;
+    --mint: #b8e4cc;
+    --metal: #c8cdd4;
+    --font: 'DM Sans', 'Helvetica Neue', Helvetica, sans-serif;
+    --pad-x: clamp(24px, 5vw, 80px);
+    --content-max: 1280px;
+    --theme-transition: background-color 0.8s ease, color 0.8s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    transition: var(--theme-transition);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ───── MOBBIN-STYLE FLOATING NAV ───── */
+  .navwrap {
+    position: fixed; top: 20px; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: center;
+    pointer-events: none;
+    padding: 0 20px;
+  }
+  nav.pillnav {
+    pointer-events: auto;
+    display: flex; align-items: center;
+    gap: 4px;
+    height: 46px;
+    padding: 4px 6px 4px 20px;
+    border-radius: 9999px;
+    background: rgba(237, 237, 237, 0.14);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.8s ease, border-color 0.8s ease, color 0.8s ease;
+    max-width: 100%;
+  }
+  body.theme-light nav.pillnav {
+    background: rgba(237, 237, 237, 0.72);
+    border-color: rgba(0,0,0,0.06);
+    color: #141414;
+  }
+  .nav-brand {
+    font-size: 15px; font-weight: 500; letter-spacing: -0.01em;
+    padding-right: 18px;
+    border-right: 1px solid currentColor;
+    opacity: 0.8;
+    margin-right: 12px;
+    white-space: nowrap;
+  }
+  .nav-brand-dot {
+    display: inline-block; width: 7px; height: 7px;
+    border-radius: 50%; background: currentColor;
+    margin-right: 8px; vertical-align: middle;
+    opacity: 0.9;
+  }
+  .nav-links {
+    display: flex; gap: 2px; align-items: center;
+  }
+  .nav-link {
+    position: relative;
+    padding: 6px 14px;
+    font-size: 13px; font-weight: 400;
+    border-radius: 9999px;
+    transition: background 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  body.theme-light .nav-link:hover {
+    background: rgba(0,0,0,0.06);
+  }
+  .nav-cta {
+    margin-left: 6px;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    background: var(--fg);
+    color: var(--bg);
+    font-size: 13px; font-weight: 500;
+    transition: padding 0.35s ease, font-size 0.3s ease;
+    white-space: nowrap;
+  }
+  .nav-cta:hover {
+    padding: 8px 24px;
+    font-size: 13.5px;
+  }
+
+  /* ───── SECTION WRAPPERS ───── */
+  .content {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--pad-x);
+  }
+  section {
+    transition: var(--theme-transition);
+    position: relative;
+  }
+
+  /* theme variants (set on section via JS data-theme attrs applied dynamically) */
+  .theme-dark { background: #080808; color: #f5f4f0; }
+  .theme-cream { background: #f5f2ea; color: #141414; }
+  .theme-pearl { background: #ececec; color: #141414; }
+  .theme-ink { background: #0b0b12; color: #f5f4f0; }
+  .theme-olive { background: #1a1a14; color: #ede9b0; }
+
+  /* ───── HERO ───── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    align-items: end;
+    padding: 140px 0 80px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    align-items: end;
+  }
+  .hero-tagline {
+    grid-column: 1 / 10;
+    font-size: clamp(40px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: pretty;
+  }
+  .hero-tagline em {
+    font-style: italic;
+    opacity: 0.55;
+  }
+  .hero-meta {
+    grid-column: 10 / 13;
+    align-self: end;
+    padding-bottom: 10px;
+  }
+  .hero-meta .role {
+    font-size: 13px; font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .hero-meta p {
+    font-size: 14px;
+    opacity: 0.55;
+    line-height: 1.7;
+  }
+  .hero-sub {
+    grid-column: 1 / 13;
+    margin-top: 72px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    opacity: 0.5;
+    border-top: 1px solid currentColor;
+    padding-top: 18px;
+    border-opacity: 0.15;
+  }
+  .hero-sub::before {
+    content: '↓ scroll'; letter-spacing: 0.15em;
+  }
+
+  /* ───── STATS BAND ───── */
+  #stats {
+    padding: 0 0 96px;
+  }
+  .stats-header {
+    font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.5;
+    margin-bottom: 40px;
+    padding-top: 80px;
+    border-top: 1px solid rgba(245,244,240,0.15);
+  }
+  body.theme-light .stats-header {
+    border-top-color: rgba(20,20,20,0.12);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .stat-card {
+    padding: 32px 28px 32px;
+    border-radius: 20px;
+    background: rgba(245,244,240,0.05);
+    border: 1px solid rgba(245,244,240,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  body.theme-light .stat-card {
+    background: rgba(20,20,20,0.04);
+    border-color: rgba(20,20,20,0.08);
+  }
+  .stat-card:hover {
+    background: rgba(245,244,240,0.09);
+    transform: translateY(-4px);
+  }
+  body.theme-light .stat-card:hover {
+    background: rgba(20,20,20,0.07);
+  }
+  .stat-label {
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.5;
+    margin-bottom: 20px;
+  }
+  .stat-value {
+    font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-value sup {
+    font-size: 0.4em; vertical-align: top;
+    opacity: 0.5; font-weight: 400;
+    margin-left: 4px;
+  }
+  .stat-desc {
+    font-size: 13px; opacity: 0.6;
+    line-height: 1.5;
+  }
+
+  /* ───── SPECIALTIES ───── */
+  #specialties { padding: 120px 0; }
+  .spec-header {
+    font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.5;
+    margin-bottom: 48px;
+  }
+  .spec-list {
+    list-style: none;
+    position: relative;
+  }
+  .spec-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    padding: 32px 0;
+    border-top: 1px solid currentColor;
+    border-top-color: rgba(245,244,240,0.15);
+    cursor: default;
+    position: relative;
+  }
+  body.theme-light .spec-item {
+    border-top-color: rgba(20,20,20,0.12);
+  }
+  .spec-item:last-child {
+    border-bottom: 1px solid rgba(245,244,240,0.15);
+  }
+  body.theme-light .spec-item:last-child {
+    border-bottom-color: rgba(20,20,20,0.12);
+  }
+  .spec-letter {
+    font-size: 13px;
+    opacity: 0.45;
+    font-weight: 400; letter-spacing: 0.04em;
+    font-family: monospace;
+  }
+  .spec-name {
+    font-size: clamp(32px, 5.5vw, 76px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    transition: opacity 0.3s;
+    position: relative;
+    z-index: 2;
+  }
+  /* Floating pills absolutely positioned across the entire list */
+  .spec-pill {
+    position: absolute;
+    font-size: 13px; font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(0.3);
+    transform-origin: center;
+    transition: transform 0.45s cubic-bezier(.16,1,.3,1), opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .spec-item:hover ~ .spec-pill.active,
+  .spec-item.active .spec-pill,
+  .spec-pill.on {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .spec-item:hover .spec-name {
+    opacity: 0.55;
+  }
+  .pill-lavender { background: #d4c9f0; color: #1a1040; }
+  .pill-yellow { background: #ede9b0; color: #3a3200; }
+  .pill-red { background: #f0816a; color: #2d0d07; }
+  .pill-mint { background: #b8e4cc; color: #0a2d1a; }
+  .pill-metal { background: #c8cdd4; color: #1a1e24; }
+  .pill-gold { background: #e8c466; color: #2d1d00; }
+  .pill-cream { background: #f5f2ea; color: #141414; }
+
+  /* ───── WORK (MoMA STYLE) ───── */
+  #work { padding: 120px 0 140px; }
+  .work-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 80px;
+  }
+  .section-eyebrow {
+    font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(40px, 6vw, 84px);
+    font-weight: 300; letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .work-list { list-style: none; }
+  .work-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 0 0 48px;
+    margin-bottom: 0;
+  }
+  .work-thumb-wrap {
+    position: relative;
+    perspective: 2000px;
+  }
+  .work-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: 6px;
+    overflow: hidden;
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+  }
+  .work-thumb .thumb-bg {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+  }
+  .thumb-title {
+    font-size: clamp(28px, 3.5vw, 56px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #111;
+    max-width: 70%;
+  }
+  .thumb-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 600;
+    color: #111;
+  }
+  .thumb-brand-mark {
+    width: 28px; height: 28px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: monospace;
+    font-size: 13px;
+  }
+  .thumb-brand-label {
+    display: flex; flex-direction: column;
+    line-height: 1.15;
+  }
+  .thumb-brand-label small {
+    font-size: 10px; font-weight: 500; opacity: 0.6;
+  }
+
+  /* decorative motif on the thumb (brush-stroke-ish) */
+  .thumb-motif {
+    position: absolute;
+    right: -5%; top: 20%;
+    width: 60%; height: 70%;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50% 50% 48% 52% / 40% 48% 52% 60%;
+    filter: blur(2px);
+  }
+  .thumb-motif-2 {
+    position: absolute;
+    right: 15%; bottom: 10%;
+    width: 20%; height: 30%;
+    background: rgba(255,255,255,0.18);
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 50%;
+    filter: blur(4px);
+  }
+
+  /* Hover: scale thumb + cursor-following View Case Study pill */
+  .case-pill {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    padding: 14px 26px;
+    border-radius: 9999px;
+    background: rgba(20,20,20,0.85);
+    backdrop-filter: blur(8px);
+    color: #f5f4f0;
+    font-size: 14px; font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.18s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    will-change: transform, left, top;
+  }
+  .work-thumb-wrap:hover .case-pill {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .work-item:hover .work-thumb { transform: scale(1.015); }
+
+  .work-info {
+    padding-left: 8px;
+  }
+  .work-info .client {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+  .work-info .client u {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .work-info .subtitle {
+    font-size: 16px;
+    opacity: 0.55;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  .work-item.reverse {
+    grid-template-columns: 1fr 2fr;
+  }
+  .work-item.reverse .work-thumb-wrap { order: 2; }
+  .work-item.reverse .work-info { order: 1; text-align: right; padding-left: 0; padding-right: 8px; }
+
+  /* ───── PUBLICATIONS (MoMA-style cards like work) ───── */
+  #publications { padding: 120px 0; }
+  .pub-list { list-style: none; }
+  .pub-tag {
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  /* ───── PRINCIPLES ───── */
+  #principles { padding: 140px 0; }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+  .principles-label {
+    grid-column: 1 / 13;
+    font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.5;
+    margin-bottom: 48px;
+  }
+  .principles-words {
+    grid-column: 1 / 9;
+  }
+  .principles-words h2 {
+    font-size: clamp(52px, 9vw, 144px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+  }
+  .principles-words h2 span {
+    display: block;
+    padding: 14px 0;
+    transition: padding 0.4s ease, opacity 0.3s;
+    cursor: default;
+  }
+  .principles-words h2 span:hover { padding-left: 24px; }
+  .principles-desc {
+    grid-column: 9 / 13;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  .principles-desc p {
+    font-size: 17px; line-height: 1.6;
+    opacity: 0.65; margin-bottom: 32px;
+    text-align: center;
+  }
+  .cta-pill {
+    display: inline-block;
+    padding: 18px 44px;
+    border-radius: 9999px;
+    background: #ede9b0;
+    color: #141414;
+    font-size: 15px; font-weight: 500;
+    transition: padding 0.4s ease, background 0.4s ease, font-size 0.3s ease;
+    cursor: pointer;
+    width: fit-content;
+  }
+  .cta-pill:hover {
+    padding: 18px 56px;
+    font-size: 15.5px;
+  }
+
+  /* ───── SKILLS MARQUEE ───── */
+  #skills-marquee {
+    padding: 56px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(245,244,240,0.12);
+    border-bottom: 1px solid rgba(245,244,240,0.12);
+  }
+  body.theme-light #skills-marquee {
+    border-top-color: rgba(20,20,20,0.1);
+    border-bottom-color: rgba(20,20,20,0.1);
+  }
+  .marquee-track {
+    display: flex;
+    animation: marquee 70s linear infinite;
+    width: max-content;
+    align-items: center;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .mq-item {
+    display: inline-flex; align-items: center; gap: 20px;
+    padding: 0 28px;
+    font-size: clamp(28px, 3.5vw, 52px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .mq-item::after {
+    content: '';
+    display: block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+    margin-left: 20px;
+  }
+
+  /* ───── COURSES SECTION (Mobbin-style stacked reveal) ───── */
+  #courses { padding: 140px 0 160px; }
+  .courses-intro {
+    font-size: clamp(16px, 1.3vw, 19px);
+    opacity: 0.55;
+    margin: 0 auto 8px;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .courses-headline {
+    font-size: clamp(56px, 9.5vw, 156px);
+    font-weight: 300;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
+    text-align: center;
+    margin-bottom: 100px;
+    text-wrap: balance;
+  }
+  .courses-headline em {
+    font-style: italic;
+    opacity: 0.55;
+    font-weight: 300;
+  }
+  .courses-stack {
+    max-width: 1180px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(245,244,240,0.12);
+  }
+  body.theme-light .courses-stack { border-top-color: rgba(20,20,20,0.1); }
+
+  .course-row {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 8px;
+    border-bottom: 1px solid rgba(245,244,240,0.12);
+    position: relative;
+    overflow: hidden;
+    /* scroll-line reveal */
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.9s cubic-bezier(.16,1,.3,1),
+                transform 0.9s cubic-bezier(.16,1,.3,1),
+                background 0.3s ease;
+    transition-delay: var(--row-delay, 0ms);
+  }
+  body.theme-light .course-row { border-bottom-color: rgba(20,20,20,0.1); }
+  .course-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .course-row:hover {
+    background: rgba(245,244,240,0.03);
+  }
+  body.theme-light .course-row:hover {
+    background: rgba(20,20,20,0.03);
+  }
+
+  .course-row .cr-tile-wrap {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    perspective: 800px;
+  }
+  .course-row .cr-tile {
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+  }
+  .course-row .cr-tile-bg {
+    position: absolute; inset: 0;
+    padding: 10px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+  .course-row .cr-tile-motif {
+    position: absolute;
+    right: -10%; top: 15%;
+    width: 65%; height: 70%;
+    border-radius: 50% 48% 52% 46% / 44% 50% 48% 56%;
+    filter: blur(1.2px);
+    opacity: 0.6;
+  }
+  .course-row .cr-tile-mark {
+    width: 20px; height: 20px;
+    border: 1.5px solid rgba(0,0,0,0.8);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: monospace;
+    font-size: 10px;
+    color: #111;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+  .course-row .cr-tile-tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.7);
+    position: relative;
+    z-index: 1;
+  }
+
+  .course-row .cr-name {
+    font-size: clamp(28px, 4.2vw, 64px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    transition: transform 0.5s cubic-bezier(.16,1,.3,1), letter-spacing 0.4s ease;
+  }
+  .course-row:hover .cr-name {
+    transform: translateX(12px);
+    letter-spacing: -0.035em;
+  }
+  .course-row .cr-provider {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-left: 24px;
+  }
+
+  /* Cursor-following "Credentials" pill — scoped to the tile */
+  .course-row .cred-pill {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    padding: 10px 18px;
+    border-radius: 9999px;
+    background: rgba(20,20,20,0.88);
+    backdrop-filter: blur(8px);
+    color: #f5f4f0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.18s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 3;
+    will-change: transform, left, top;
+  }
+  .course-row .cr-tile-wrap:hover .cred-pill {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .course-row:hover .cr-tile { transform: scale(1.04); }
+
+  @media (max-width: 780px) {
+    .course-row {
+      grid-template-columns: 64px 1fr;
+      gap: 20px;
+      padding: 22px 4px;
+    }
+    .course-row .cr-tile-wrap { width: 64px; height: 64px; }
+    .course-row .cr-provider {
+      grid-column: 2 / 3;
+      padding-left: 0;
+      margin-top: 4px;
+    }
+    .course-row:hover .cr-name { transform: none; }
+  }
+
+  /* ───── EDUCATION ───── */
+  #education { padding: 120px 0; }
+  .edu-block {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding: 40px 0;
+    border-top: 1px solid rgba(245,244,240,0.15);
+  }
+  body.theme-light .edu-block { border-top-color: rgba(20,20,20,0.12); }
+  .edu-left { grid-column: 1 / 5; padding-top: 4px; }
+  .edu-left .edu-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+  .edu-right { grid-column: 5 / 13; }
+  .edu-degree {
+    font-size: clamp(24px, 3.5vw, 44px);
+    font-weight: 300; letter-spacing: -0.02em;
+    line-height: 1.15; margin-bottom: 10px;
+  }
+  .edu-meta {
+    font-size: 15px; opacity: 0.6; margin-bottom: 20px;
+  }
+  .course-list {
+    margin-top: 20px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px;
+  }
+  .course-list div {
+    font-size: 15px;
+    padding: 10px 0;
+    border-top: 1px dashed rgba(245,244,240,0.12);
+    display: flex; justify-content: space-between; gap: 12px;
+  }
+  body.theme-light .course-list div { border-top-color: rgba(20,20,20,0.1); }
+  .course-list div span:last-child { opacity: 0.5; font-size: 12px; }
+
+  /* ───── CONTACT FOOTER ───── */
+  #contact {
+    padding: 120px 0 64px;
+  }
+  .contact-heading {
+    font-size: clamp(40px, 7.5vw, 120px);
+    font-weight: 300; letter-spacing: -0.04em;
+    line-height: 1.0;
+    margin-bottom: 64px;
+    text-wrap: pretty;
+  }
+  .contact-heading em { font-style: italic; opacity: 0.55; }
+  .contact-cta-row {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-bottom: 72px;
+    justify-content: center;
+  }
+  .big-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 22px 40px;
+    border-radius: 9999px;
+    background: #ede9b0;
+    color: #141414;
+    font-size: 16px; font-weight: 500;
+    transition: padding 0.4s ease, font-size 0.3s ease;
+  }
+  .big-cta:hover { padding: 22px 54px; font-size: 16.5px; }
+  .ghost-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 22px 40px;
+    border-radius: 9999px;
+    background: transparent;
+    border: 1px solid currentColor;
+    font-size: 16px; font-weight: 400;
+    transition: padding 0.4s ease, font-size 0.3s ease, background 0.3s ease;
+  }
+  .ghost-cta:hover {
+    padding: 22px 54px; font-size: 16.5px;
+    background: rgba(245,244,240,0.08);
+  }
+  body.theme-light .ghost-cta:hover { background: rgba(20,20,20,0.05); }
+
+  .contact-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(245,244,240,0.15);
+  }
+  body.theme-light .contact-links { border-top-color: rgba(20,20,20,0.12); }
+  .contact-link-card {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .contact-link-card .label {
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.5;
+  }
+  .contact-link-card .value {
+    font-size: 16px; transition: padding-left 0.3s ease;
+  }
+  .contact-link-card:hover .value { padding-left: 6px; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 56px; margin-top: 56px;
+    border-top: 1px solid rgba(245,244,240,0.15);
+    font-size: 12px; opacity: 0.45;
+  }
+  body.theme-light .footer-bottom { border-top-color: rgba(20,20,20,0.12); }
+
+  /* ───── TWEAKS PANEL ───── */
+  #tweaks-panel {
+    display: none;
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    background: #111; border: 1px solid #222;
+    border-radius: 16px; padding: 22px 24px;
+    width: 280px;
+    font-size: 13px; color: #f5f4f0;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.7);
+  }
+  #tweaks-panel.open { display: block; }
+  .tweaks-title {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; opacity: 0.6;
+    margin-bottom: 16px; font-weight: 600;
+  }
+  .tweak-row { margin-bottom: 14px; }
+  .tweak-label { font-size: 12px; opacity: 0.7; margin-bottom: 6px; display: block; }
+  .tweak-row select {
+    width: 100%; padding: 8px 10px;
+    background: #1a1a1a; border: 1px solid #333;
+    color: #f5f4f0; border-radius: 8px;
+    font-family: inherit; font-size: 12px;
+  }
+
+  /* ───── HELIX FLIP ANIMATIONS ───── */
+  .flip-up {
+    opacity: 0;
+    transform: translateY(60px) rotateX(8deg);
+    transform-origin: center bottom;
+    transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+  }
+  .flip-up.visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 960px) {
+    .hero-tagline { grid-column: 1 / 13; }
+    .hero-meta { grid-column: 1 / 13; margin-top: 36px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .work-item, .work-item.reverse { grid-template-columns: 1fr; gap: 24px; }
+    .work-item.reverse .work-thumb-wrap { order: 0; }
+    .work-item.reverse .work-info { order: 0; text-align: left; padding-right: 0; padding-left: 0; }
+    .principles-words { grid-column: 1 / 13; }
+    .principles-desc { grid-column: 1 / 13; margin-top: 40px; padding-bottom: 0; }
+    .contact-links { grid-template-columns: repeat(2, 1fr); }
+    .pub-item { grid-template-columns: 1fr; gap: 8px; }
+    .edu-left { grid-column: 1 / 13; margin-bottom: 16px; }
+    .edu-right { grid-column: 1 / 13; }
+    .course-list { grid-template-columns: 1fr; }
+    .nav-brand { display: none; }
+  }
+</style>
+</head>
+<body class="theme-dark">
+
+<!-- MOBBIN-STYLE NAV -->
+<div class="navwrap">
+  <nav class="pillnav">
+    <span class="nav-brand"><span class="nav-brand-dot"></span>Hozaifa</span>
+    <div class="nav-links">
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#publications" class="nav-link">Research</a>
+      <a href="#courses" class="nav-link">Courses</a>
+      <a href="#principles" class="nav-link">Principles</a>
+      <a href="#education" class="nav-link">CV</a>
+    </div>
+    <a href="/cdn-cgi/l/email-protection#7c4e4c1413061d151a1d4c4e3c1b111d1510521f1311" class="nav-cta">Get in touch</a>
+  </nav>
+</div>
+
+<!-- HERO — dark -->
+<section id="hero" data-theme="dark">
+  <div class="content">
+    <div class="hero-grid">
+      <div class="hero-tagline">
+        I build <em>intelligent systems</em> that turn complex data into working products.
+      </div>
+      <div class="hero-meta">
+        <span class="role">AI/ML Engineer &amp; Full-Stack Developer</span>
+        <p>Computer Vision</p>
+        <p>NLP &amp; LLMs</p>
+        <p>Production AI</p>
+        <p style="margin-top:14px">Dhaka, Bangladesh</p>
+      </div>
+      <div class="hero-sub">
+        <span>Portfolio · 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES — cream -->
+<section id="specialties" data-theme="cream">
+  <div class="content">
+    <p class="spec-header">My specialties</p>
+    <ul class="spec-list" id="spec-list">
+
+      <li class="spec-item" data-row="0">
+        <span class="spec-letter">A</span>
+        <span class="spec-name">Machine Learning</span>
+      </li>
+      <li class="spec-item" data-row="1">
+        <span class="spec-letter">B</span>
+        <span class="spec-name">Computer Vision</span>
+      </li>
+      <li class="spec-item" data-row="2">
+        <span class="spec-letter">C</span>
+        <span class="spec-name">NLP &amp; Language Models</span>
+      </li>
+      <li class="spec-item" data-row="3">
+        <span class="spec-letter">D</span>
+        <span class="spec-name">MLOps &amp; Production</span>
+      </li>
+      <li class="spec-item" data-row="4">
+        <span class="spec-letter">E</span>
+        <span class="spec-name">Full-Stack Engineering</span>
+      </li>
+      <li class="spec-item" data-row="5">
+        <span class="spec-letter">S</span>
+        <span class="spec-name">Sentaurus TCAD Simulations</span>
+      </li>
+
+      <!-- Floating pills — scattered across the whole list -->
+      <span class="spec-pill pill-lavender" data-for="0" style="left: 8%; top: 8%;">PyTorch</span>
+      <span class="spec-pill pill-yellow" data-for="0" style="right: 4%; top: 6%;">Deep Learning</span>
+      <span class="spec-pill pill-mint" data-for="0" style="left: 42%; top: 14%;">Tandem Networks</span>
+      <span class="spec-pill pill-metal" data-for="0" style="right: 30%; top: 1%;">Scikit-learn</span>
+      <span class="spec-pill pill-red" data-for="0" style="left: 18%; top: 18%;">Predictive Modeling</span>
+
+      <span class="spec-pill pill-red" data-for="1" style="left: 5%; top: 32%;">OpenCV</span>
+      <span class="spec-pill pill-gold" data-for="1" style="right: 8%; top: 28%;">Pose Estimation</span>
+      <span class="spec-pill pill-mint" data-for="1" style="left: 46%; top: 36%;">CNNs</span>
+      <span class="spec-pill pill-lavender" data-for="1" style="right: 34%; top: 24%;">FDTD Simulation</span>
+      <span class="spec-pill pill-cream" data-for="1" style="left: 22%; top: 40%;">CLIP</span>
+
+      <span class="spec-pill pill-yellow" data-for="2" style="left: 10%; top: 52%;">GPT-4o</span>
+      <span class="spec-pill pill-red" data-for="2" style="right: 12%; top: 54%;">BERT</span>
+      <span class="spec-pill pill-lavender" data-for="2" style="left: 40%; top: 46%;">Vector Search</span>
+      <span class="spec-pill pill-metal" data-for="2" style="right: 38%; top: 48%;">Embeddings</span>
+      <span class="spec-pill pill-mint" data-for="2" style="left: 20%; top: 60%;">Transformers</span>
+
+      <span class="spec-pill pill-mint" data-for="3" style="left: 6%; top: 72%;">Docker</span>
+      <span class="spec-pill pill-lavender" data-for="3" style="right: 6%; top: 70%;">FastAPI</span>
+      <span class="spec-pill pill-gold" data-for="3" style="left: 44%; top: 66%;">GCP</span>
+      <span class="spec-pill pill-red" data-for="3" style="right: 32%; top: 74%;">RabbitMQ</span>
+      <span class="spec-pill pill-yellow" data-for="3" style="left: 24%; top: 78%;">ClickHouse</span>
+
+      <span class="spec-pill pill-lavender" data-for="4" style="left: 8%; top: 86%;">Next.js</span>
+      <span class="spec-pill pill-red" data-for="4" style="right: 10%; top: 84%;">TypeScript</span>
+      <span class="spec-pill pill-metal" data-for="4" style="left: 38%; top: 90%;">Django REST</span>
+      <span class="spec-pill pill-mint" data-for="4" style="right: 36%; top: 82%;">NestJS</span>
+      <span class="spec-pill pill-yellow" data-for="4" style="left: 18%; top: 94%;">PostgreSQL</span>
+
+      <span class="spec-pill pill-red" data-for="5" style="left: 6%; top: 98%;">GAAFET</span>
+      <span class="spec-pill pill-lavender" data-for="5" style="right: 8%; top: 96%;">Device Physics</span>
+      <span class="spec-pill pill-mint" data-for="5" style="left: 42%; top: 102%;">TCAD</span>
+      <span class="spec-pill pill-gold" data-for="5" style="right: 32%; top: 100%;">FinFET</span>
+
+    </ul>
+  </div>
+</section>
+
+<!-- WORK — dark (MoMA-style cards) -->
+<section id="work" data-theme="dark">
+  <div class="content">
+    <div class="work-header">
+      <div>
+        <p class="section-eyebrow">Selected work — 01/05</p>
+        <h2 class="section-title">Recent<br>projects</h2>
+      </div>
+    </div>
+
+    <ul class="work-list">
+
+      <!-- 01 Nanophotonics -->
+      <li class="work-item flip-up">
+        <div class="work-thumb-wrap">
+          <div class="work-thumb" style="background: #b8e4cc;">
+            <div class="thumb-motif" style="background: rgba(30,60,45,0.25);"></div>
+            <div class="thumb-motif-2" style="background: rgba(30,60,45,0.18); right:5%; top:40%;"></div>
+            <div class="thumb-bg">
+              <h3 class="thumb-title">Designing light<br>with neural nets</h3>
+              <div class="thumb-brand">
+                <span class="thumb-brand-mark">λ</span>
+                <span class="thumb-brand-label">Nanophotonic<br><small>Inverse Design</small></span>
+              </div>
+            </div>
+          </div>
+          <span class="case-pill">View Case Study</span>
+        </div>
+        <div class="work-info">
+          <div class="client"><u>IEEE EDTM 2026</u></div>
+          <div class="subtitle">Tandem Networks for Metasurface Inverse Design</div>
+        </div>
+      </li>
+
+      <!-- 02 Behavioral Pipeline -->
+      <li class="work-item reverse flip-up">
+        <div class="work-thumb-wrap">
+          <div class="work-thumb" style="background: #f0816a;">
+            <div class="thumb-motif" style="background: rgba(255,255,255,0.35);"></div>
+            <div class="thumb-motif-2"></div>
+            <div class="thumb-bg">
+              <h3 class="thumb-title">Turning clicks<br>into intent.</h3>
+              <div class="thumb-brand">
+                <span class="thumb-brand-mark">~</span>
+                <span class="thumb-brand-label">Behavioral Signal<br><small>Event Pipeline</small></span>
+              </div>
+            </div>
+          </div>
+          <span class="case-pill">View Case Study</span>
+        </div>
+        <div class="work-info">
+          <div class="client"><u>Open Source</u></div>
+          <div class="subtitle">Event-Driven LLM Segmentation</div>
+        </div>
+      </li>
+
+      <!-- 03 ProvaBook -->
+      <li class="work-item reverse flip-up">
+        <div class="work-thumb-wrap">
+          <div class="work-thumb" style="background: #ede9b0;">
+            <div class="thumb-motif" style="background: rgba(58,50,0,0.18);"></div>
+            <div class="thumb-motif-2" style="background: rgba(58,50,0,0.12);"></div>
+            <div class="thumb-bg">
+              <h3 class="thumb-title">An operating system<br>for the factory floor.</h3>
+              <div class="thumb-brand">
+                <span class="thumb-brand-mark">P</span>
+                <span class="thumb-brand-label">ProvaBook<br><small>Production SaaS</small></span>
+              </div>
+            </div>
+          </div>
+          <span class="case-pill">View Case Study</span>
+        </div>
+        <div class="work-info">
+          <div class="client"><u>ProvaBook</u></div>
+          <div class="subtitle">Production OS for Textile Buying Houses</div>
+        </div>
+      </li>
+
+      <!-- 04 IGMIS LMS -->
+      <li class="work-item flip-up">
+        <div class="work-thumb-wrap">
+          <div class="work-thumb" style="background: #c8cdd4;">
+            <div class="thumb-motif" style="background: rgba(26,30,36,0.25);"></div>
+            <div class="thumb-motif-2" style="background: rgba(26,30,36,0.18);"></div>
+            <div class="thumb-bg">
+              <h3 class="thumb-title">500 students,<br>one source of truth.</h3>
+              <div class="thumb-brand">
+                <span class="thumb-brand-mark">U</span>
+                <span class="thumb-brand-label">IGMIS<br><small>University LMS</small></span>
+              </div>
+            </div>
+          </div>
+          <span class="case-pill">View Case Study</span>
+        </div>
+        <div class="work-info">
+          <div class="client"><u>IGMIS University</u></div>
+          <div class="subtitle">Learning Management System &amp; Grading Engine</div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- PUBLICATIONS — pearl (MoMA-style cards) -->
+<section id="publications" data-theme="pearl">
+  <div class="content">
+    <p class="section-eyebrow">Academic output</p>
+    <h2 class="section-title">Research &amp;<br>publications</h2>
+    <ul class="pub-list work-list" style="margin-top:64px">
+
+      <!-- Pub 01 -->
+      <li class="work-item flip-up">
+        <div class="work-thumb-wrap">
+          <div class="work-thumb" style="background: #b8d4f0;">
+            <div class="thumb-motif" style="background: rgba(20,40,80,0.2);"></div>
+            <div class="thumb-motif-2" style="background: rgba(20,40,80,0.14);"></div>
+            <div class="thumb-bg">
+              <h3 class="thumb-title">Designing solar cells<br>at the speed of thought.</h3>
+              <div class="thumb-brand">
+                <span class="thumb-brand-mark">⚡</span>
+                <span class="thumb-brand-label">IEEE EDTM<br><small>Accepted, 2026</small></span>
+              </div>
+            </div>
+          </div>
+          <span class="case-pill">Read Paper</span>
+        </div>
+        <div class="work-info">
+          <div class="client"><u>IEEE EDTM 2026</u></div>
+          <div class="subtitle">ML-Assisted Solar Cell Design via Tandem Neural Networks</div>
+        </div>
+      </li>
+
+      <!-- Pub 02 -->
+      <li class="work-item reverse flip-up">
+        <div class="work-thumb-wrap">
+          <div class="work-thumb" style="background: #d4c9f0;">
+            <div class="thumb-motif" style="background: rgba(26,16,64,0.22);"></div>
+            <div class="thumb-motif-2" style="background: rgba(26,16,64,0.15);"></div>
+            <div class="thumb-bg">
+              <h3 class="thumb-title">Scoring skill<br>from motion.</h3>
+              <div class="thumb-brand">
+                <span class="thumb-brand-mark">◎</span>
+                <span class="thumb-brand-label">IJABC<br><small>Published, 2024</small></span>
+              </div>
+            </div>
+          </div>
+          <span class="case-pill">Read Paper</span>
+        </div>
+        <div class="work-info">
+          <div class="client"><u>IJABC 2024</u></div>
+          <div class="subtitle">Nurses' Skill Assessment via Computer Vision</div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- PRINCIPLES — ink (dark with olive-ish undertone) -->
+<section id="principles" data-theme="ink">
+  <div class="content">
+    <div class="principles-grid">
+      <p class="principles-label">The principles behind my practice</p>
+      <div class="principles-words">
+        <h2>
+          <span>Rigorous.</span>
+          <span>Scalable.</span>
+          <span>Purposeful.</span>
+        </h2>
+      </div>
+      <div class="principles-desc">
+        <p>Good ML engineering is more than a high score on a validation set. It means models that survive real data, pipelines that don't quietly fail at 3 a.m., and systems that solve problems people actually have.</p>
+        <p>I work at the intersection of research rigor and production pragmatism — trained on EEE fundamentals, sharpened by peer review and production users.</p>
+        <a href="/cdn-cgi/l/email-protection#1220227a7d68737b7473222052757f737b7e3c717d7f" class="cta-pill">Start a conversation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS MARQUEE -->
+<section id="skills-marquee" data-theme="ink">
+  <div class="marquee-track">
+    <span class="mq-item">Python</span>
+    <span class="mq-item">PyTorch</span>
+    <span class="mq-item">Computer Vision</span>
+    <span class="mq-item">LLMs</span>
+    <span class="mq-item">NLP</span>
+    <span class="mq-item">MLOps</span>
+    <span class="mq-item">Docker</span>
+    <span class="mq-item">RabbitMQ</span>
+    <span class="mq-item">ClickHouse</span>
+    <span class="mq-item">Next.js</span>
+    <span class="mq-item">NestJS</span>
+    <span class="mq-item">Django</span>
+    <span class="mq-item">TypeScript</span>
+    <span class="mq-item">PostgreSQL</span>
+    <span class="mq-item">FDTD</span>
+    <!-- duplicate for seamless loop -->
+    <span class="mq-item">Python</span>
+    <span class="mq-item">PyTorch</span>
+    <span class="mq-item">Computer Vision</span>
+    <span class="mq-item">LLMs</span>
+    <span class="mq-item">NLP</span>
+    <span class="mq-item">MLOps</span>
+    <span class="mq-item">Docker</span>
+    <span class="mq-item">RabbitMQ</span>
+    <span class="mq-item">ClickHouse</span>
+    <span class="mq-item">Next.js</span>
+    <span class="mq-item">NestJS</span>
+    <span class="mq-item">Django</span>
+    <span class="mq-item">TypeScript</span>
+    <span class="mq-item">PostgreSQL</span>
+    <span class="mq-item">FDTD</span>
+  </div>
+</section>
+
+<!-- COURSES — dark (Mobbin-style stacked reveal) -->
+<section id="courses" data-theme="dark">
+  <div class="content">
+    <p class="section-eyebrow">Continuing education</p>
+    <h2 class="section-title">Certifications<br>&amp; courses</h2>
+
+    <div class="courses-stack" id="courses-stack">
+
+      <div class="course-row" style="--row-delay: 0ms;">
+        <div class="cr-tile-wrap">
+          <div class="cr-tile" style="background:#b8e4cc;">
+            <div class="cr-tile-motif" style="background:rgba(10,45,26,0.3);"></div>
+            <div class="cr-tile-bg">
+              <span class="cr-tile-mark">λ</span>
+              <span class="cr-tile-tag">ML</span>
+            </div>
+          </div>
+          <span class="cred-pill">Credentials</span>
+        </div>
+        <div class="cr-name">Machine Learning Specialization</div>
+        <div class="cr-provider">Stanford University</div>
+      </div>
+
+      <div class="course-row" style="--row-delay: 80ms;">
+        <div class="cr-tile-wrap">
+          <div class="cr-tile" style="background:#ede9b0;">
+            <div class="cr-tile-motif" style="background:rgba(58,50,0,0.25);"></div>
+            <div class="cr-tile-bg">
+              <span class="cr-tile-mark">∇</span>
+              <span class="cr-tile-tag">DL</span>
+            </div>
+          </div>
+          <span class="cred-pill">Credentials</span>
+        </div>
+        <div class="cr-name">Deep Learning Specialization</div>
+        <div class="cr-provider">DeepLearning.AI</div>
+      </div>
+
+      <div class="course-row" style="--row-delay: 160ms;">
+        <div class="cr-tile-wrap">
+          <div class="cr-tile" style="background:#f0816a;">
+            <div class="cr-tile-motif" style="background:rgba(255,255,255,0.35);"></div>
+            <div class="cr-tile-bg">
+              <span class="cr-tile-mark">Ψ</span>
+              <span class="cr-tile-tag">LLM</span>
+            </div>
+          </div>
+          <span class="cred-pill">Credentials</span>
+        </div>
+        <div class="cr-name">Generative AI with LLMs</div>
+        <div class="cr-provider">DeepLearning.AI</div>
+      </div>
+
+      <div class="course-row" style="--row-delay: 240ms;">
+        <div class="cr-tile-wrap">
+          <div class="cr-tile" style="background:#d4c9f0;">
+            <div class="cr-tile-motif" style="background:rgba(26,16,64,0.22);"></div>
+            <div class="cr-tile-bg">
+              <span class="cr-tile-mark">◱</span>
+              <span class="cr-tile-tag">CNN</span>
+            </div>
+          </div>
+          <span class="cred-pill">Credentials</span>
+        </div>
+        <div class="cr-name">Convolutional Neural Networks</div>
+        <div class="cr-provider">DeepLearning.AI</div>
+      </div>
+
+      <div class="course-row" style="--row-delay: 320ms;">
+        <div class="cr-tile-wrap">
+          <div class="cr-tile" style="background:#c8cdd4;">
+            <div class="cr-tile-motif" style="background:rgba(26,30,36,0.22);"></div>
+            <div class="cr-tile-bg">
+              <span class="cr-tile-mark">Σ</span>
+              <span class="cr-tile-tag">DA</span>
+            </div>
+          </div>
+          <span class="cred-pill">Credentials</span>
+        </div>
+        <div class="cr-name">Advanced Data Analytics</div>
+        <div class="cr-provider">Google · Coursera</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION — olive -->
+<section id="education" data-theme="olive">
+  <div class="content">
+    <p class="section-eyebrow">Academic grounding</p>
+    <h2 class="section-title" style="margin-bottom:24px">Education</h2>
+    <div class="edu-block flip-up">
+      <div class="edu-left">
+        <div class="edu-label">University of Dhaka</div>
+      </div>
+      <div class="edu-right">
+        <h3 class="edu-degree">B.Sc. in Electrical &amp; Electronic Engineering</h3>
+        <p class="edu-meta">Expected July 2026 · CGPA 3.74 / 4.00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT — dark -->
+<section id="contact" data-theme="dark">
+  <div class="content">
+    <h2 class="contact-heading">Let's build something <em>worth building.</em></h2>
+    <div class="contact-cta-row">
+      <a href="/cdn-cgi/l/email-protection#7d4f4d1512071c141b1c4d4f3d1a101c1411531e1210" class="big-cta">Email me →</a>
+      <a href="https://github.com/hozaifa1" target="_blank" class="ghost-cta">View GitHub →</a>
+    </div>
+    <div class="contact-links">
+      <div class="contact-link-card">
+        <span class="label">Email</span>
+        <a class="value" href="/cdn-cgi/l/email-protection#e6d4d68e899c878f8087d6d4a6818b878f8ac885898b"><span class="__cf_email__" data-cfemail="0d3f3d6562776c646b6c3d3f4d6a606c6461236e6260">[email&#160;protected]</span></a>
+      </div>
+      <div class="contact-link-card">
+        <span class="label">GitHub</span>
+        <a class="value" href="https://github.com/hozaifa1" target="_blank">github.com/hozaifa1</a>
+      </div>
+      <div class="contact-link-card">
+        <span class="label">Portfolio</span>
+        <a class="value" href="https://hozaifa-space.vercel.app" target="_blank">hozaifa-space.vercel.app</a>
+      </div>
+      <div class="contact-link-card">
+        <span class="label">Phone</span>
+        <a class="value" href="tel:+8801615001456">+880 161 500 1456</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>S. M. Hozaifa Hossain · Dhaka, Bangladesh</span>
+      <span>© 2026 · Designed in Dhaka</span>
+    </div>
+  </div>
+</section>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel">
+  <div class="tweaks-title">Tweaks</div>
+  <div class="tweak-row">
+    <label class="tweak-label">Hero accent</label>
+    <select id="tweak-accent" onchange="applyAccent(this.value)">
+      <option value="yellow">Pale Yellow</option>
+      <option value="lavender">Lavender</option>
+      <option value="mint">Mint</option>
+      <option value="red">Red-Orange</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label class="tweak-label">Base background</label>
+    <select id="tweak-bg" onchange="applyBg(this.value)">
+      <option value="#080808">Near Black</option>
+      <option value="#0b0b12">Ink</option>
+      <option value="#141414">Soft Black</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label class="tweak-label">Font weight</label>
+    <select id="tweak-weight" onchange="applyWeight(this.value)">
+      <option value="200">Thin</option>
+      <option value="300">Light</option>
+      <option value="400">Regular</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label class="tweak-label">Scroll theme shifts</label>
+    <select id="tweak-shifts" onchange="applyShifts(this.value)">
+      <option value="on">On</option>
+      <option value="off">Off (stay dark)</option>
+    </select>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── TWEAKS ──
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "lavender",
+  "bg": "#080808",
+  "weight": "200",
+  "shifts": "on"
+}/*EDITMODE-END*/;
+
+const accentMap = {
+  lavender: { cta: '#d4c9f0', ctaText: '#1a1040' },
+  yellow:   { cta: '#ede9b0', ctaText: '#3a3200' },
+  mint:     { cta: '#b8e4cc', ctaText: '#0a2d1a' },
+  red:      { cta: '#f0816a', ctaText: '#2d0d07' }
+};
+
+function applyAccent(val) {
+  const c = accentMap[val] || accentMap.yellow;
+  document.querySelectorAll('.cta-pill, .big-cta').forEach(el => {
+    el.style.background = c.cta;
+    el.style.color = c.ctaText;
+  });
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: val } }, '*');
+}
+
+function applyBg(val) {
+  document.documentElement.style.setProperty('--bg', val);
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { bg: val } }, '*');
+}
+
+function applyWeight(val) {
+  document.body.style.fontWeight = val;
+  document.querySelectorAll('.hero-tagline, .spec-name, .section-title, .contact-heading, .thumb-title, .principles-words h2, .edu-degree, .pub-title, .mq-item, .stat-value').forEach(el => {
+    el.style.fontWeight = val;
+  });
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { weight: val } }, '*');
+}
+
+function applyShifts(val) {
+  window.__shiftsEnabled = (val === 'on');
+  if (val === 'off') { setTheme('dark'); }
+  else { refreshTheme(); }
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { shifts: val } }, '*');
+}
+
+// ── EDIT MODE PROTOCOL ──
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('open');
+  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('open');
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+// ── INIT TWEAKS ──
+(function() {
+  const d = TWEAK_DEFAULTS;
+  if (d.accent) { document.getElementById('tweak-accent').value = d.accent; applyAccent(d.accent); }
+  if (d.bg) { document.getElementById('tweak-bg').value = d.bg; applyBg(d.bg); }
+  if (d.weight) { document.getElementById('tweak-weight').value = d.weight; applyWeight(d.weight); }
+  if (d.shifts) { document.getElementById('tweak-shifts').value = d.shifts; window.__shiftsEnabled = (d.shifts === 'on'); }
+})();
+
+// ── SCROLL-DRIVEN THEME SHIFTS ──
+const themeColors = {
+  dark:   { bg: '#080808', fg: '#f5f4f0', light: false },
+  cream:  { bg: '#f5f2ea', fg: '#141414', light: true  },
+  pearl:  { bg: '#ececec', fg: '#141414', light: true  },
+  ink:    { bg: '#0b0b12', fg: '#f5f4f0', light: false },
+  olive:  { bg: '#1a1a14', fg: '#ede9b0', light: false },
+  courses:{ bg: '#080808', fg: '#f5f4f0', light: false }
+};
+
+function setTheme(name) {
+  const t = themeColors[name] || themeColors.dark;
+  document.documentElement.style.setProperty('--bg', t.bg);
+  document.documentElement.style.setProperty('--fg', t.fg);
+  document.body.style.backgroundColor = t.bg;
+  document.body.style.color = t.fg;
+  if (t.light) {
+    document.body.classList.add('theme-light');
+    document.body.classList.remove('theme-dark');
+  } else {
+    document.body.classList.remove('theme-light');
+    document.body.classList.add('theme-dark');
+  }
+}
+
+let currentTheme = 'dark';
+function refreshTheme() {
+  if (!window.__shiftsEnabled) { setTheme('dark'); return; }
+  const sections = [...document.querySelectorAll('section[data-theme]')];
+  const viewportMid = window.innerHeight * 0.45;
+  let active = sections[0];
+  for (const s of sections) {
+    const r = s.getBoundingClientRect();
+    if (r.top <= viewportMid) active = s;
+  }
+  const t = active.dataset.theme;
+  if (t !== currentTheme) {
+    currentTheme = t;
+    setTheme(t);
+  }
+}
+
+window.addEventListener('scroll', () => {
+  requestAnimationFrame(refreshTheme);
+}, { passive: true });
+window.addEventListener('resize', refreshTheme);
+setTimeout(refreshTheme, 100);
+
+// ── FLIP-UP SCROLL REVEAL (helix style) ──
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.flip-up').forEach(el => obs.observe(el));
+
+// ── WORK + PUB CARD 3D TILT + CURSOR-FOLLOWING PILL ──
+document.querySelectorAll('.work-item').forEach(item => {
+  const thumb = item.querySelector('.work-thumb');
+  const pill = item.querySelector('.case-pill');
+  const wrap = item.querySelector('.work-thumb-wrap');
+  const isReverse = item.classList.contains('reverse');
+
+  wrap && wrap.addEventListener('mousemove', (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    // cursor-follow pill
+    if (pill) {
+      pill.style.transition = 'opacity 0.25s ease';
+      pill.style.left = x + 'px';
+      pill.style.top = y + 'px';
+      pill.style.transform = 'translate(-50%, -50%) scale(1)';
+      pill.style.opacity = '1';
+    }
+    // 3D tilt
+    const nx = (x / rect.width) - 0.5;
+    const ny = (y / rect.height) - 0.5;
+    const ry = (isReverse ? -1 : 1) * nx * 8;
+    const rx = -ny * 5;
+    if (thumb) thumb.style.transform = `perspective(2000px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.015)`;
+  });
+
+  wrap && wrap.addEventListener('mouseleave', () => {
+    if (pill) {
+      pill.style.opacity = '0';
+      pill.style.transform = 'translate(-50%, -50%) scale(0.7)';
+    }
+    if (thumb) thumb.style.transform = '';
+  });
+});
+
+// ── COURSE ROWS — Mobbin-style staggered scroll reveal ──
+const courseRows = document.querySelectorAll('.course-row');
+const courseObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      courseObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+courseRows.forEach(r => courseObs.observe(r));
+
+// Cursor-follow "Credentials" pill inside each row's tile
+courseRows.forEach(row => {
+  const wrap = row.querySelector('.cr-tile-wrap');
+  const tile = row.querySelector('.cr-tile');
+  const pill = row.querySelector('.cred-pill');
+  if (!wrap || !pill) return;
+  wrap.addEventListener('mousemove', (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    pill.style.left = x + 'px';
+    pill.style.top = y + 'px';
+    pill.style.transform = 'translate(-50%, -50%) scale(1)';
+    pill.style.opacity = '1';
+    // mild tilt
+    const nx = (x / rect.width) - 0.5;
+    const ny = (y / rect.height) - 0.5;
+    if (tile) tile.style.transform = `perspective(600px) rotateX(${-ny*8}deg) rotateY(${nx*8}deg) scale(1.04)`;
+  });
+  wrap.addEventListener('mouseleave', () => {
+    pill.style.opacity = '0';
+    pill.style.transform = 'translate(-50%, -50%) scale(0.7)';
+    if (tile) tile.style.transform = '';
+  });
+});
+
+// ── SPECIALTIES HOVER PILLS ──
+const specList = document.getElementById('spec-list');
+const specItems = document.querySelectorAll('.spec-item');
+const specPills = document.querySelectorAll('.spec-pill');
+
+specItems.forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    const row = item.dataset.row;
+    specPills.forEach(p => {
+      if (p.dataset.for === row) {
+        // random jitter for organic feel
+        const jx = (Math.random() - 0.5) * 14;
+        const jy = (Math.random() - 0.5) * 10;
+        p.style.setProperty('--jx', jx + 'px');
+        p.style.setProperty('--jy', jy + 'px');
+        p.style.transform = `translate(${jx}px, ${jy}px) scale(1)`;
+        p.style.opacity = '1';
+      }
+    });
+  });
+  item.addEventListener('mouseleave', () => {
+    const row = item.dataset.row;
+    specPills.forEach(p => {
+      if (p.dataset.for === row) {
+        p.style.transform = 'scale(0.3)';
+        p.style.opacity = '0';
+      }
+    });
+  });
+});
+
+// Scatter pills: when the whole list is hovered (not item), show ALL pills
+specList.addEventListener('mouseleave', () => {
+  specPills.forEach(p => {
+    p.style.transform = 'scale(0.3)';
+    p.style.opacity = '0';
+  });
+});
+</script>
+</body>
+</html>

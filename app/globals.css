@@ -30,29 +30,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Lenis smooth scroll — hands native scroll-behavior over to the JS engine */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-/* Whenever Lenis is active, native smooth-scroll MUST be off or the browser
-   fights Lenis on every scroll (the jump-up-then-settle racing). Match on the
-   `lenis` class alone — Lenis does not always add `lenis-smooth`. */
-html.lenis {
-  scroll-behavior: auto !important;
-}
-
-html.lenis [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
+/* Anchor targets get offset so they don't hide behind the fixed nav */
+[id] {
+  scroll-margin-top: 100px;
 }
 
 body {
