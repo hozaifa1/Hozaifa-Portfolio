@@ -1,3 +1,6 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import AwardRows from '@/components/AwardRows';
 import ContactSection from '@/components/ContactSection';
 import InteractiveCourseRow from '@/components/InteractiveCourseRow';
 import InteractiveWorkCard from '@/components/InteractiveWorkCard';
@@ -9,6 +12,12 @@ import {
   marqueeItems,
   publications,
 } from '@/lib/site-content';
+import { identity } from '@/lib/seo';
+
+export const metadata: Metadata = {
+  description: identity.oneLineBio,
+  alternates: { canonical: '/' },
+};
 
 export default function Home() {
   return (
@@ -16,17 +25,19 @@ export default function Home() {
       <section id="hero" data-theme="dark">
         <div className="content">
           <div className="hero-grid">
+            <h1 className="hero-name">{identity.name}</h1>
             <div className="hero-tagline">
-              I build <em>intelligent systems</em> that turn complex data into working
-              products.
+              I build <em>brain-inspired hardware</em>, from transistor physics to
+              working AI systems.
             </div>
             <div className="hero-meta">
-              <span className="role">AI/ML Engineer &amp; Full-Stack Developer</span>
-              <p>Computer Vision</p>
-              <p>NLP &amp; LLMs</p>
-              <p>Production AI</p>
+              <span className="role">Semiconductor Device &amp; Neuromorphic Hardware Researcher</span>
+              <p>TCAD &amp; Device Physics</p>
+              <p>FeFET Neuromorphic Hardware</p>
+              <p>AI/ML &amp; Full-Stack</p>
               <p style={{ marginTop: '14px' }}>{contactInfo.location}</p>
             </div>
+            <p className="hero-bio">{identity.bio}</p>
             <div className="hero-sub">
               <span>Portfolio &middot; 2026</span>
             </div>
@@ -119,6 +130,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="awards" data-theme="cream">
+        <div className="content">
+          <p className="section-eyebrow">Honors</p>
+          <h2 className="section-title">
+            Awards &amp;
+            <br />
+            recognition
+          </h2>
+          <AwardRows />
+          <p style={{ marginTop: '32px' }}>
+            <Link href="/awards" className="text-link">
+              Full details on every award &rarr;
+            </Link>
+            {' '}&middot;{' '}
+            <Link href="/research" className="text-link">
+              Research &rarr;
+            </Link>
+            {' '}&middot;{' '}
+            <Link href="/publications" className="text-link">
+              All publications &rarr;
+            </Link>
+          </p>
+        </div>
+      </section>
+
       <section id="principles" data-theme="ink">
         <div className="content">
           <div className="principles-grid">
@@ -132,14 +168,14 @@ export default function Home() {
             </div>
             <div className="principles-desc">
               <p>
-                Good ML engineering is more than a high score on a validation set. It
-                means models that survive real data, pipelines that don&apos;t quietly fail
-                at 3 a.m., and systems that solve problems people actually have.
+                Good research is more than a headline number. It means devices and models
+                that survive real data, simulations you can reproduce, and systems that
+                solve problems people actually have.
               </p>
               <p>
-                I work at the intersection of research rigor and production pragmatism,
-                trained on EEE fundamentals and sharpened by peer review and production
-                users.
+                I work between semiconductor device physics, neuromorphic hardware, and
+                production software, trained on EEE fundamentals and sharpened by peer
+                review and real users.
               </p>
               <a href={`mailto:${contactInfo.email}`} className="cta-pill">
                 Start a conversation
@@ -187,7 +223,7 @@ export default function Home() {
             </div>
             <div className="edu-right">
               <h3 className="edu-degree">B.Sc. in Electrical &amp; Electronic Engineering</h3>
-              <p className="edu-meta">Expected July 2026 &middot; CGPA 3.74 / 4.00</p>
+              <p className="edu-meta">Graduated 2026 &middot; CGPA 3.72 / 4.00</p>
             </div>
           </div>
         </div>

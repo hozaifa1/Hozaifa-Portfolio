@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { identity } from '@/lib/seo';
 import { contactInfo } from '@/lib/site-content';
 
 export default function ContactSection() {
@@ -29,9 +31,9 @@ export default function ContactSection() {
             </a>
           </div>
           <div className="contact-link-card">
-            <span className="label">Portfolio</span>
-            <a className="value" href={contactInfo.portfolio} target="_blank" rel="noreferrer">
-              hozaifa-space.vercel.app
+            <span className="label">LinkedIn</span>
+            <a className="value" href={contactInfo.linkedin} target="_blank" rel="noreferrer">
+              linkedin.com/in/s-m-hozaifa-hossain
             </a>
           </div>
           <div className="contact-link-card">
@@ -41,8 +43,17 @@ export default function ContactSection() {
             </a>
           </div>
         </div>
+        <nav className="contact-links" aria-label="Site pages" style={{ marginTop: '48px' }}>
+          <Link className="value" href="/research">Research</Link>
+          <Link className="value" href="/awards">Awards</Link>
+          <Link className="value" href="/publications">Publications</Link>
+          <Link className="value" href="/about">About</Link>
+          <a className="value" href={identity.agencyUrl} target="_blank" rel="noreferrer">
+            Nexora Systems
+          </a>
+        </nav>
         <div className="footer-bottom">
-          <span>S. M. Hozaifa Hossain &middot; {contactInfo.location}</span>
+          <span>{identity.name} &middot; {contactInfo.location}</span>
           <span>&copy; 2026 &middot; Designed in Dhaka</span>
         </div>
       </div>

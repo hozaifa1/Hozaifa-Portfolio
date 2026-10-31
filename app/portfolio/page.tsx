@@ -1,7 +1,19 @@
+import type { Metadata } from 'next';
+import { pageSocial } from '@/lib/seo';
 import ContactSection from '@/components/ContactSection';
 import InteractiveWorkCard from '@/components/InteractiveWorkCard';
 import { projects } from '@/lib/data';
 import { getProjectShowcase, marqueeItems } from '@/lib/site-content';
+
+const description =
+  'Selected software and AI case studies by S M Hozaifa Hossain: production ERP and LMS systems, Android tools, LLM experiments and computer vision prototypes.';
+
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description,
+  alternates: { canonical: '/portfolio' },
+  ...pageSocial('/portfolio', 'Portfolio · S M Hozaifa Hossain', description),
+};
 
 export default function PortfolioPage() {
   const visibleProjects = projects.slice(0, 8);
@@ -11,10 +23,10 @@ export default function PortfolioPage() {
       <section id="hero" data-theme="dark">
         <div className="content">
           <div className="hero-grid">
-            <div className="hero-tagline">
+            <h1 className="hero-tagline">
               Case studies with the <em>same tactile design language</em> carried through
               every project.
-            </div>
+            </h1>
             <div className="hero-meta">
               <span className="role">Selected builds</span>
               <p>Production software</p>

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -5,12 +6,30 @@ import ContactSection from '@/components/ContactSection';
 import FlipUp from '@/components/FlipUp';
 import InteractiveCourseRow from '@/components/InteractiveCourseRow';
 import { projects } from '@/lib/data';
+import { pageSocial } from '@/lib/seo';
 import { contactInfo } from '@/lib/site-content';
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const project = projects.find((item) => item.id === id);
+  if (!project) return {};
+  const title = `${project.title} (${project.client})`;
+  return {
+    title,
+    description: project.description,
+    alternates: { canonical: `/portfolio/${project.id}` },
+    ...pageSocial(`/portfolio/${project.id}`, `${title} · S M Hozaifa Hossain`, project.description, 'article'),
+  };
 }
 
 const erpFeatures = [
@@ -133,11 +152,11 @@ export default async function ProjectDetailPage({
       <section id="hero" data-theme="dark">
         <div className="content">
           <div className="hero-grid">
-            <div className="hero-tagline">
+            <h1 className="hero-tagline">
               {project.title}
               <br />
               <em>{project.client}</em>
-            </div>
+            </h1>
             <div className="hero-meta">
               <span className="role">Case study</span>
               <p>{project.category}</p>

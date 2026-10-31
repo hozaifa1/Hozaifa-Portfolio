@@ -1,24 +1,71 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import ContactSection from '@/components/ContactSection';
 import FlipUp from '@/components/FlipUp';
 import InteractiveCourseRow from '@/components/InteractiveCourseRow';
 import InteractiveWorkCard from '@/components/InteractiveWorkCard';
+import JsonLd from '@/components/JsonLd';
+import { leadership } from '@/lib/academic';
+import { SITE_URL, identity, knowsAbout, personId, websiteId, pageSocial } from '@/lib/seo';
 import { contactInfo, courses, publications } from '@/lib/site-content';
+
+const description =
+  'About S M Hozaifa Hossain: semiconductor device and neuromorphic hardware researcher, EEE graduate of the University of Dhaka, CREST 2027 Research Fellow and founder of Nexora Systems.';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description,
+  alternates: { canonical: '/about' },
+  ...pageSocial('/about', 'About · S M Hozaifa Hossain', description, 'profile'),
+};
+
+const profilePage = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${SITE_URL}/about#profile`,
+  url: `${SITE_URL}/about`,
+  name: `About ${identity.name}`,
+  isPartOf: { '@id': websiteId },
+  mainEntity: { '@id': personId },
+};
+
+const qa = [
+  {
+    q: 'Who is S M Hozaifa Hossain?',
+    a: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. He graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00), is a CREST 2027 Research Fellow at Silicon River Bangladesh, and founded Nexora Systems.',
+  },
+  {
+    q: 'What does S M Hozaifa Hossain research?',
+    a: 'He researches ferroelectric gate-all-around transistors (FeFETs) as low-energy artificial synapses for neuromorphic computing. His work combines Synopsys Sentaurus TCAD device simulation, spiking neural networks and high-level synthesis. His thesis device reached a 5410x memory window, and a spiking network built on it classified ECG heartbeats at 83.04% accuracy.',
+  },
+  {
+    q: 'What has he won?',
+    a: 'He is a CREST 2027 Research Fellow, won first place at the Siemens EDA HLS Hackathon 2026, and was one of three winners of the IEEE EDS TCAD Hackathon 2026, the first from Bangladesh. He also took Best-in-Track at the Tesseract Hackathon 2026 and received an IEEE Humanitarian Technologies Board recognition in 2025.',
+  },
+  {
+    q: 'Where did he study?',
+    a: 'He studied Electrical and Electronic Engineering at the University of Dhaka, graduating in 2026 with a CGPA of 3.72 out of 4.00. His undergraduate thesis, defended in September 2026 under Dr. Mainul Hossain, modeled ferroelectric gate-all-around FETs for neuromorphic systems and implemented a spiking network on top of them.',
+  },
+];
 
 export default function AboutPage() {
   return (
     <main>
+      <JsonLd data={profilePage} />
       <section id="hero" data-theme="dark">
         <div className="content">
           <div className="hero-grid">
+            <h1 className="hero-name">{identity.name}</h1>
             <div className="hero-tagline">
               I care about the <em>thinking behind the build</em> as much as the shipped
               surface.
             </div>
             <div className="hero-meta">
-              <span className="role">Research, leadership &amp; academic context</span>
-              <p>University of Dhaka</p>
-              <p>Emerging Nanodevices Research Group</p>
-              <p>IEEE SIGHT Student Branch</p>
+              <span className="role">Research Fellow &amp; Founder</span>
+              <p>University of Dhaka (EEE, 2026)</p>
+              <p>CREST 2027, Silicon River Bangladesh</p>
+              <p>Founder, Nexora Systems</p>
               <p style={{ marginTop: '14px' }}>{contactInfo.location}</p>
             </div>
             <div className="hero-sub">
@@ -39,21 +86,36 @@ export default function AboutPage() {
                 stays close to reality.
               </h2>
               <p className="route-copy" style={{ marginTop: '32px' }}>
-                I&apos;m S. M. Hozaifa Hossain, an Electrical and Electronic Engineering
-                student at the University of Dhaka working across AI systems, software
-                products, and computational research. I enjoy taking messy, high-context
-                problems and turning them into interfaces, models, and pipelines that feel
-                deliberate.
+                I&apos;m {identity.name}, a semiconductor device and neuromorphic hardware
+                researcher. I graduated in Electrical and Electronic Engineering from the
+                University of Dhaka in 2026, and I work across TCAD device simulation,
+                spiking neural networks, AI systems, and software products. I also founded
+                and run{' '}
+                <a className="text-link" href={identity.agencyUrl} target="_blank" rel="noreferrer">
+                  {identity.agencyName}
+                </a>
+                , a software and AI agency.
               </p>
             </div>
             <div className="route-copy-side">
+              <div className="headshot-frame">
+                <Image
+                  src={identity.imagePath}
+                  alt={identity.name}
+                  fill
+                  priority
+                  sizes="(max-width: 960px) 100vw, 320px"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className="note-grid">
                 <FlipUp>
                   <div className="note-card">
                     <h3>Research lens</h3>
                     <p>
-                      Neuromorphic devices, photovoltaic optimization, and computer vision
-                      have shaped how I think about rigor, validation, and constraints.
+                      Neuromorphic devices, TCAD, photovoltaic optimization, and computer
+                      vision have shaped how I think about rigor, validation, and
+                      constraints.
                     </p>
                   </div>
                 </FlipUp>
@@ -61,8 +123,11 @@ export default function AboutPage() {
                   <div className="note-card">
                     <h3>Leadership</h3>
                     <p>
-                      As Chair of IEEE SIGHT at DU, I led Project Archer and coordinated
-                      real deployments in underserved communities.
+                      Chair of the IEEE SIGHT Student Branch at DU (2025), where I directed
+                      IEEE HTB Project 23-HTB-115 in rural schools. Treasurer of Optica
+                      Bangladesh Student Chapter, DU (2023 to present). Joint Secretary
+                      (Technical Affairs), Silicon River Student Branch Central Committee
+                      (2026 to 2027).
                     </p>
                   </div>
                 </FlipUp>
@@ -81,7 +146,60 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="publications" data-theme="pearl">
+      <section id="faq" className="route-panel" data-theme="pearl">
+        <div className="content">
+          <p className="section-eyebrow">Quick answers</p>
+          <h2 className="section-title" style={{ marginBottom: '56px' }}>
+            In short
+          </h2>
+          {qa.map((item) => (
+            <div key={item.q} className="qa-block">
+              <h2>{item.q}</h2>
+              <p>{item.a}</p>
+              {item.q.startsWith('Who') ? (
+                <p>
+                  Founder of{' '}
+                  <a className="text-link" href={identity.agencyUrl} target="_blank" rel="noreferrer">
+                    {identity.agencyName}
+                  </a>
+                  . Email{' '}
+                  <a className="text-link" href={`mailto:${identity.email}`}>
+                    {identity.email}
+                  </a>
+                  ,{' '}
+                  <a className="text-link" href={identity.linkedin} target="_blank" rel="noreferrer">
+                    LinkedIn
+                  </a>
+                  ,{' '}
+                  <a className="text-link" href={identity.github} target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                  .
+                </p>
+              ) : null}
+              {item.q.startsWith('What does') ? (
+                <p>
+                  Expertise: {knowsAbout.join(', ')}.{' '}
+                  <Link href="/research" className="text-link">
+                    Read the research
+                  </Link>
+                  .
+                </p>
+              ) : null}
+              {item.q.startsWith('What has') ? (
+                <p>
+                  <Link href="/awards" className="text-link">
+                    See all awards
+                  </Link>
+                  .
+                </p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="publications" data-theme="cream">
         <div className="content">
           <p className="section-eyebrow">Academic output</p>
           <h2 className="section-title">
@@ -176,24 +294,22 @@ export default function AboutPage() {
               </div>
               <div className="edu-right">
                 <h3 className="edu-degree">B.Sc. in Electrical &amp; Electronic Engineering</h3>
-                <p className="edu-meta">Expected July 2026 &middot; CGPA 3.74 / 4.00</p>
+                <p className="edu-meta">Graduated 2026 &middot; CGPA 3.72 / 4.00</p>
                 <div className="course-list">
                   <div>
-                    <span>Emerging Nanodevices Research Group</span>
+                    <span>Thesis: Ferroelectric GAA FETs for neuromorphic systems</span>
+                    <span>Defended Sep 2026</span>
+                  </div>
+                  <div>
+                    <span>Advisor: Dr. Mainul Hossain</span>
                     <span>Research</span>
                   </div>
-                  <div>
-                    <span>Chair, IEEE SIGHT Student Branch</span>
-                    <span>Leadership</span>
-                  </div>
-                  <div>
-                    <span>Nurses&apos; Skill Assessment via CV</span>
-                    <span>Publication</span>
-                  </div>
-                  <div>
-                    <span>Project Archer field deployment</span>
-                    <span>Impact</span>
-                  </div>
+                  {leadership.map((item) => (
+                    <div key={item.role}>
+                      <span>{item.role}</span>
+                      <span>{item.period}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

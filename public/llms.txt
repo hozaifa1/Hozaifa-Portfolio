@@ -1,0 +1,21 @@
+# S M Hozaifa Hossain
+
+> Semiconductor device & neuromorphic hardware researcher. EEE, University of Dhaka. CREST 2027 Fellow. Siemens EDA + IEEE EDS hackathon winner.
+
+S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Bangladesh. An EEE graduate of the University of Dhaka (2026), he is a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain, and won the Siemens EDA HLS Hackathon 2026 and the IEEE EDS TCAD Hackathon 2026.
+
+## Pages
+
+- [Home](https://hozaifa.dev/): overview, awards and selected work
+- [About](https://hozaifa.dev/about): who he is, what he researches, what he has won, where he studied
+- [Research](https://hozaifa.dev/research): ferroelectric GAA FET thesis, CREST 2027 project, TCAD nanowire design, Differentiable Silicon, HLS accelerator
+- [Awards](https://hozaifa.dev/awards): CREST 2027, Siemens EDA HLS, IEEE EDS TCAD, Tesseract 2026, IEEE HTB
+- [Publications](https://hozaifa.dev/publications): full citation list (IJABC 2024, Social Network Analysis and Mining 2026, IEEE EDTM 2026)
+- [Software portfolio](https://hozaifa.dev/portfolio): production ERP, LMS and AI case studies
+
+## Profiles
+
+- [LinkedIn](https://www.linkedin.com/in/s-m-hozaifa-hossain)
+- [GitHub](https://github.com/hozaifa1)
+- [Nexora Systems (agency founded by Hozaifa)](https://nexora-solves.vercel.app)
+- Email: 20hozaifa02@gmail.com

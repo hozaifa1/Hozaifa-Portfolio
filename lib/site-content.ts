@@ -1,11 +1,13 @@
 import { projects } from '@/lib/data';
+import { identity, SITE_URL } from '@/lib/seo';
 
 export const contactInfo = {
-  email: '20hozaifa02@gmail.com',
-  github: 'https://github.com/hozaifa1',
-  portfolio: 'https://hozaifa-space.vercel.app',
+  email: identity.email,
+  github: identity.github,
+  linkedin: identity.linkedin,
+  portfolio: SITE_URL,
   phone: '+8801615001456',
-  location: 'Dhaka, Bangladesh',
+  location: identity.location,
 };
 
 export type SpecialtyItem = {
@@ -91,13 +93,13 @@ export const featuredWork: ShowcaseCard[] = [
     titleLines: ['Designing light', 'with neural nets'],
     brand: 'Nanophotonic',
     brandMeta: 'Inverse Design',
-    brandMark: '\\u03bb',
+    brandMark: 'λ',
     background: '#b8e4cc',
     motif: 'rgba(30,60,45,0.25)',
     motif2: 'rgba(30,60,45,0.18)',
     client: 'IEEE EDTM 2026',
-    subtitle: 'Tandem Networks for Metasurface Inverse Design',
-    href: '/about#publications',
+    subtitle: 'Deep-Learning Driven Inverse Design of Nanophotonic Metasurfaces for Enhanced Light Trapping in Tandem Solar Cells',
+    href: '/publications',
     pillLabel: 'Read Paper',
     motif2Style: { right: '5%', top: '40%' },
   },
@@ -146,31 +148,47 @@ export const featuredWork: ShowcaseCard[] = [
 
 export const publications: ShowcaseCard[] = [
   {
-    titleLines: ['Designing solar cells', 'at the speed of thought.'],
+    titleLines: ['Designing light traps', 'with deep learning.'],
     brand: 'IEEE EDTM',
     brandMeta: 'Accepted, 2026',
-    brandMark: '\\u26a1',
+    brandMark: '\u26a1',
     background: '#b8d4f0',
     motif: 'rgba(20,40,80,0.2)',
     motif2: 'rgba(20,40,80,0.14)',
     client: 'IEEE EDTM 2026',
-    subtitle: 'ML-Assisted Solar Cell Design via Tandem Neural Networks',
-    href: '/about#publications',
+    subtitle:
+      'Deep-Learning Driven Inverse Design of Nanophotonic Metasurfaces for Enhanced Light Trapping in Tandem Solar Cells',
+    href: '/publications',
     pillLabel: 'Read Paper',
+  },
+  {
+    titleLines: ['Reading conflict', 'in Reddit comments.'],
+    brand: 'Springer Nature',
+    brandMeta: 'Published, 2026',
+    brandMark: '\u03a3',
+    background: '#ede9b0',
+    motif: 'rgba(58,50,0,0.18)',
+    motif2: 'rgba(58,50,0,0.12)',
+    client: 'SNAM 2026',
+    subtitle:
+      'Social Media Polarization During Conflict: Insights from an Ideological Stance Dataset on Reddit Comments',
+    href: '/publications',
+    pillLabel: 'Read Paper',
+    reverse: true,
   },
   {
     titleLines: ['Scoring skill', 'from motion.'],
     brand: 'IJABC',
     brandMeta: 'Published, 2024',
-    brandMark: '\\u25ce',
+    brandMark: '25ce',
     background: '#d4c9f0',
     motif: 'rgba(26,16,64,0.22)',
     motif2: 'rgba(26,16,64,0.15)',
     client: 'IJABC 2024',
-    subtitle: "Nurses' Skill Assessment via Computer Vision",
-    href: '/about#publications',
+    subtitle:
+      'Enhancing Nursing Activity Recognition During Endotracheal Suctioning Through Video-Based Pose Estimation and Machine Learning',
+    href: '/publications',
     pillLabel: 'Read Paper',
-    reverse: true,
   },
 ];
 
@@ -273,7 +291,7 @@ export const detailThemes = [
     background: '#d4c9f0',
     motif: 'rgba(26,16,64,0.22)',
     motif2: 'rgba(26,16,64,0.15)',
-    brandMark: '\\u25ce',
+    brandMark: '◎',
   },
   {
     background: '#ede9b0',

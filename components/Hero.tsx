@@ -107,7 +107,7 @@ export default function Hero() {
                     <Github className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/hozaifa1/"
+                    href="https://www.linkedin.com/in/s-m-hozaifa-hossain"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
@@ -151,7 +151,7 @@ export default function Hero() {
                   <div className="floating-card w-56">
                     <p className="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">Current CGPA</p>
                     <div className="text-4xl font-light text-[var(--accent-primary)]">
-                      <AnimatedCounter target={3.74} decimals={2} />
+                      <AnimatedCounter target={3.72} decimals={2} />
                     </div>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">University of Dhaka</p>
                   </div>

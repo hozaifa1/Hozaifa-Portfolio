@@ -92,7 +92,7 @@ export default function Certifications() {
     },
     {
       title: "Academic Transcript",
-      description: "University of Dhaka - CGPA 3.74/4.00",
+      description: "University of Dhaka - CGPA 3.72/4.00",
       icon: GraduationCap,
       color: "from-cyan-500/20 to-blue-500/20 border-cyan-500/50",
       iconColor: "text-cyan-400",

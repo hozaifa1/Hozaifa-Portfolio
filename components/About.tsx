@@ -34,7 +34,7 @@ export default function About() {
                   <div className="space-y-5 text-[var(--text-secondary)] leading-relaxed">
                     <p>
                       <TextReveal delay={200} duration={30}>
-                        I&apos;m S. M. Hozaifa Hossain, a developer passionate about building scalable web applications and exploring the frontiers of AI.
+                        I&apos;m S M Hozaifa Hossain, a developer passionate about building scalable web applications and exploring the frontiers of AI.
                       </TextReveal>
                     </p>
                     <p>
@@ -71,7 +71,7 @@ export default function About() {
                       <h4 className="text-white font-medium text-lg mb-1">Education</h4>
                       <p className="text-white/90">University of Dhaka</p>
                       <p className="text-[var(--text-muted)] text-sm">B.Sc. Electrical & Electronic Engineering</p>
-                      <p className="text-[var(--accent-primary)] font-medium text-sm mt-2">CGPA: 3.74/4.00</p>
+                      <p className="text-[var(--accent-primary)] font-medium text-sm mt-2">CGPA: 3.72/4.00</p>
                     </div>
                   </div>
                 </div>

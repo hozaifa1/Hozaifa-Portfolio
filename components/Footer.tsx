@@ -13,14 +13,17 @@ export default function Footer() {
               hozaifa
             </Link>
             <p className="text-[var(--text-secondary)] max-w-sm leading-relaxed">
-              Building production-grade web applications and AI solutions. Currently studying EEE at the University of Dhaka.
+              Building production-grade web applications and AI solutions. EEE graduate of the University of Dhaka (2026), semiconductor and neuromorphic hardware researcher.
             </p>
           </div>
 
           <div>
             <h4 className="text-white font-medium mb-4">Navigate</h4>
             <div className="space-y-3">
-              <Link href="#about" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">About</Link>
+              <Link href="/about" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">About</Link>
+              <Link href="/research" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">Research</Link>
+              <Link href="/awards" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">Awards</Link>
+              <Link href="/publications" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">Publications</Link>
               <Link href="#portfolio" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">Projects</Link>
               <Link href="#certifications" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">Credentials</Link>
               <Link href="#contact" className="block text-[var(--text-muted)] hover:text-white transition-colors text-sm">Contact</Link>
@@ -40,7 +43,7 @@ export default function Footer() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com/in/hozaifa1/"
+                href="https://www.linkedin.com/in/s-m-hozaifa-hossain"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
