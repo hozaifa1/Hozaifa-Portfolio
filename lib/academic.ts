@@ -114,26 +114,6 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
-    id: 'J1',
-    type: 'Journal article',
-    title:
-      'Enhancing Nursing Activity Recognition During Endotracheal Suctioning Through Video-Based Pose Estimation and Machine Learning',
-    authors: [
-      'Samiul Islam',
-      'S M Hozaifa Hossain',
-      'Md. Zasim Uddin',
-      'Shahera Hossain',
-      'Md Atiqur Rahman Ahad',
-    ],
-    venue: 'International Journal of Activity and Behavior Computing (IJABC)',
-    venueDetail: 'vol. 6, no. 2, pp. 1-15',
-    year: 2024,
-    status: 'Published',
-    note: 'Samiul Islam and S M Hozaifa Hossain contributed equally.',
-    summary:
-      'A YOLOv7 pose estimation and XGBoost classification pipeline for nine critical medical procedures, reaching 97.0% F1-score on the 6th ABC Challenge dataset.',
-  },
-  {
     id: 'J2',
     type: 'Journal article',
     title:
@@ -165,6 +145,26 @@ export const publications: Publication[] = [
     note: 'Mohammad Ajmain Fatin and Arpan Saha contributed equally.',
     summary:
       'A multi-branch tandem neural network trained on 6,000 FDTD-simulated metasurface designs: 95.6% shape-parameter classification accuracy, forward-model MSE of 3.20e-5, and simulated power conversion efficiency raised from 23.47% to 27.93% for perovskite tandem cells.',
+  },
+  {
+    id: 'J1',
+    type: 'Journal article',
+    title:
+      'Enhancing Nursing Activity Recognition During Endotracheal Suctioning Through Video-Based Pose Estimation and Machine Learning',
+    authors: [
+      'Samiul Islam',
+      'S M Hozaifa Hossain',
+      'Md. Zasim Uddin',
+      'Shahera Hossain',
+      'Md Atiqur Rahman Ahad',
+    ],
+    venue: 'International Journal of Activity and Behavior Computing (IJABC)',
+    venueDetail: 'vol. 6, no. 2, pp. 1-15',
+    year: 2024,
+    status: 'Published',
+    note: 'Samiul Islam and S M Hozaifa Hossain contributed equally.',
+    summary:
+      'A YOLOv7 pose estimation and XGBoost classification pipeline for nine critical medical procedures, reaching 97.0% F1-score on the 6th ABC Challenge dataset.',
   },
 ];
 

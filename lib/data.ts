@@ -105,46 +105,6 @@ export const projects = [
     }
   },
   {
-    id: "prova-erp",
-    title: "Provabook - Production OS",
-    client: "Prova Fashion",
-    category: "Production / SaaS",
-    description: "The operating system for textile buying houses. Replaces WhatsApp/Excel chaos with a single source of truth from inquiry to shipment.",
-    highlights: [
-      "Live Production Cockpit: Real-time progress bars for knitting, dyeing, and finishing",
-      "Precision Loss Tracking: Automatic calculation of Process Loss % and mixed fabric usage",
-      "The 'Mega-Timeline': Centralized activity log and document stack for full accountability"
-    ],
-    tech: ["Next.js", "Django", "PostgreSQL", "Google Cloud Storage", "DigitalOcean"],
-    image: "/projects/prova-erp.png",
-    status: "Production",
-    impact: {
-      visibility: "Realtime Order & Inventory Tracking",
-      automation: "100% Automated Ledgers"
-    }
-  },
-  {
-    id: "igmis-lms",
-    title: "University Learning Management System",
-    client: "IGMIS College, Chattogram",
-    category: "Academic / Production",
-    description: "Deployed an LMS for an institution affiliated with National University serving BBA, MBA, CSE, and THM programs.",
-    highlights: [
-      "Integrated biometric attendance sync for 500+ students",
-      "Automated result generation securing academic payment processing",
-      "Multi-program curriculum management (BBA, MBA, CSE, THM)"
-    ],
-    tech: ["Django REST", "React", "Vite", "PostgreSQL", "Vercel"],
-    image: "/projects/igmis-lms.png",
-    github: "https://github.com/hozaifa1/uni-management-sys",
-    status: "Production",
-    impact: {
-      users: "500+ Students & Staff",
-      programs: "4 Academic Programs",
-      uptime: "99.9% Availability"
-    }
-  },
-  {
     id: "streamsync",
     title: "StreamSync: Real-time Audio Routing",
     client: "Android app",
@@ -279,6 +239,46 @@ export const projects = [
       platform: "Android",
       content: "Quranic verses on breaks",
       language: "Kotlin"
+    }
+  },
+  {
+    id: "prova-erp",
+    title: "Provabook - Production OS",
+    client: "Prova Fashion",
+    category: "Production / SaaS",
+    description: "The operating system for textile buying houses. Replaces WhatsApp/Excel chaos with a single source of truth from inquiry to shipment.",
+    highlights: [
+      "Live Production Cockpit: Real-time progress bars for knitting, dyeing, and finishing",
+      "Precision Loss Tracking: Automatic calculation of Process Loss % and mixed fabric usage",
+      "The 'Mega-Timeline': Centralized activity log and document stack for full accountability"
+    ],
+    tech: ["Next.js", "Django", "PostgreSQL", "Google Cloud Storage", "DigitalOcean"],
+    image: "/projects/prova-erp.png",
+    status: "Production",
+    impact: {
+      visibility: "Realtime Order & Inventory Tracking",
+      automation: "100% Automated Ledgers"
+    }
+  },
+  {
+    id: "igmis-lms",
+    title: "University Learning Management System",
+    client: "IGMIS College, Chattogram",
+    category: "Academic / Production",
+    description: "Deployed an LMS for an institution affiliated with National University serving BBA, MBA, CSE, and THM programs.",
+    highlights: [
+      "Integrated biometric attendance sync for 500+ students",
+      "Automated result generation securing academic payment processing",
+      "Multi-program curriculum management (BBA, MBA, CSE, THM)"
+    ],
+    tech: ["Django REST", "React", "Vite", "PostgreSQL", "Vercel"],
+    image: "/projects/igmis-lms.png",
+    github: "https://github.com/hozaifa1/uni-management-sys",
+    status: "Production",
+    impact: {
+      users: "500+ Students & Staff",
+      programs: "4 Academic Programs",
+      uptime: "99.9% Availability"
     }
   }
 ];
