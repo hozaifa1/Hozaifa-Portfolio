@@ -8,12 +8,14 @@ export const identity = {
   imagePath: '/headshot.jpg',
   email: '20hozaifa02@gmail.com',
   location: 'Dhaka, Bangladesh',
-  jobTitle: 'Research Fellow',
+  jobTitle: 'IT Consultant',
   oneLineBio:
     'Semiconductor device & neuromorphic hardware researcher. EEE, University of Dhaka. CREST 2027 Fellow. Siemens EDA + IEEE EDS hackathon winner.',
-  bio: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Bangladesh. An EEE graduate of the University of Dhaka (2026), he is a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain, and won the Siemens EDA HLS Hackathon 2026 and the IEEE EDS TCAD Hackathon 2026.',
+  bio: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Bangladesh. An EEE graduate of the University of Dhaka (2026), he is an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) and a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain, and won the Siemens EDA HLS Hackathon 2026 and the IEEE EDS TCAD Hackathon 2026.',
   linkedin: 'https://www.linkedin.com/in/s-m-hozaifa-hossain',
   github: 'https://github.com/hozaifa1',
+  employerName: 'Rahman Rahman Huq',
+  employerUrl: 'https://rrh.com.bd',
   agencyName: 'Nexora Systems',
   agencyUrl: 'https://nexora-solves.vercel.app',
 } as const;

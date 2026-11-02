@@ -211,6 +211,26 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="experience" data-theme="cream">
+        <div className="content">
+          <p className="section-eyebrow">Current work</p>
+          <h2 className="section-title" style={{ marginBottom: '24px' }}>
+            Experience
+          </h2>
+          <div className="edu-block flip-up visible">
+            <div className="edu-left">
+              <div className="edu-label">Rahman Rahman Huq</div>
+            </div>
+            <div className="edu-right">
+              <h3 className="edu-degree">IT Consultant</h3>
+              <p className="edu-meta">
+                Dhaka &middot; September 2026 to present &middot; formerly KPMG Bangladesh
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="education" data-theme="olive">
         <div className="content">
           <p className="section-eyebrow">Academic grounding</p>

@@ -11,7 +11,7 @@ import { SITE_URL, identity, knowsAbout, personId, websiteId, pageSocial } from 
 import { contactInfo, courses, publications } from '@/lib/site-content';
 
 const description =
-  'About S M Hozaifa Hossain: semiconductor device and neuromorphic hardware researcher, EEE graduate of the University of Dhaka, CREST 2027 Research Fellow and founder of Nexora Systems.';
+  'About S M Hozaifa Hossain: semiconductor device and neuromorphic hardware researcher, EEE graduate of the University of Dhaka, IT Consultant at Rahman Rahman Huq, CREST 2027 Research Fellow and founder of Nexora Systems.';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -33,7 +33,7 @@ const profilePage = {
 const qa = [
   {
     q: 'Who is S M Hozaifa Hossain?',
-    a: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. He graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00), is a CREST 2027 Research Fellow at Silicon River Bangladesh, and founded Nexora Systems.',
+    a: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. He graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00), is an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh), is a CREST 2027 Research Fellow at Silicon River Bangladesh, and founded Nexora Systems.',
   },
   {
     q: 'What does S M Hozaifa Hossain research?',
@@ -63,6 +63,7 @@ export default function AboutPage() {
             </div>
             <div className="hero-meta">
               <span className="role">Research Fellow &amp; Founder</span>
+              <p>IT Consultant, Rahman Rahman Huq</p>
               <p>University of Dhaka (EEE, 2026)</p>
               <p>CREST 2027, Silicon River Bangladesh</p>
               <p>Founder, Nexora Systems</p>
@@ -278,6 +279,41 @@ export default function AboutPage() {
               <InteractiveCourseRow key={course.name} index={index} {...course} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="experience" data-theme="cream">
+        <div className="content">
+          <p className="section-eyebrow">Current work</p>
+          <h2 className="section-title" style={{ marginBottom: '24px' }}>
+            Experience
+          </h2>
+          <FlipUp>
+            <div className="edu-block">
+              <div className="edu-left">
+                <div className="edu-label">Rahman Rahman Huq</div>
+              </div>
+              <div className="edu-right">
+                <h3 className="edu-degree">IT Consultant</h3>
+                <p className="edu-meta">
+                  Dhaka &middot; September 2026 to present &middot; formerly KPMG Bangladesh
+                </p>
+                <div className="course-list">
+                  <div>
+                    <span>
+                      Consultant for the design and development of the firm&apos;s official
+                      website, rrh.com.bd (Next.js + Payload CMS)
+                    </span>
+                    <span>Website</span>
+                  </div>
+                  <div>
+                    <span>Client-side technical lead; wrote the content seeding pipeline</span>
+                    <span>Lead</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FlipUp>
         </div>
       </section>
 

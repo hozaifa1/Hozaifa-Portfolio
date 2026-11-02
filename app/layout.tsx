@@ -63,6 +63,12 @@ const graph = {
       image: identity.image,
       description: identity.bio,
       jobTitle: identity.jobTitle,
+      worksFor: {
+        '@type': 'Organization',
+        name: identity.employerName,
+        alternateName: 'KPMG Bangladesh (former name)',
+        url: identity.employerUrl,
+      },
       affiliation: { '@type': 'Organization', name: 'Silicon River Bangladesh' },
       alumniOf: {
         '@type': 'CollegeOrUniversity',
