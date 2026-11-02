@@ -1,5 +1,110 @@
 export const projects = [
   {
+    id: "differentiable-silicon",
+    title: "Differentiable Silicon",
+    client: "Tesseract Hackathon 2026",
+    category: "Research / Differentiable TCAD",
+    description: "One gradient from an ECG classification loss, through a PyTorch spiking network and a JAX device model, into Synopsys Sentaurus TCAD. Best-in-Track winner, Hybrid ML and Mechanistic Models track.",
+    highlights: [
+      "Sentaurus is a closed binary with no adjoint, so the gradient comes from trust-region finite differences plus a Broyden update",
+      "Balanced cross-entropy 1.400 to 1.018 and accuracy 0.250 to 0.688 in 64 solver calls",
+      "An open DEVSIM backend can replace Sentaurus without changing the pipeline"
+    ],
+    tech: ["Python", "PyTorch", "JAX", "Tesseract", "Sentaurus TCAD", "DEVSIM"],
+    github: "https://github.com/hozaifa1/differentiable-silicon",
+    status: "Open Source",
+    impact: {
+      loss: "1.400 to 1.018",
+      accuracy: "0.250 to 0.688",
+      solverCalls: "64 calls"
+    }
+  },
+  {
+    id: "tesseract-upstream",
+    title: "Upstream contributions to Tesseract",
+    client: "Pasteur Labs / Open Source",
+    category: "Research / Open Source",
+    description: "Pull requests to Pasteur Labs' open-source tesseract-core (#712) and tesseract-jax (#248), made while building Differentiable Silicon. The work found two bugs in tesseract-jax.",
+    highlights: [
+      "tesseract-core pull request #712",
+      "tesseract-jax pull request #248",
+      "Found while wiring four Tesseracts (spiking network, JAX circuit model, Sentaurus over SSH, adjoint shim) into one gradient"
+    ],
+    tech: ["Python", "JAX", "Tesseract"],
+    links: [
+      { label: "tesseract-core #712", href: "https://github.com/pasteurlabs/tesseract-core/pull/712" },
+      { label: "tesseract-jax #248", href: "https://github.com/pasteurlabs/tesseract-jax/pull/248" }
+    ],
+    status: "Open Source",
+    impact: {
+      pullRequests: "2 upstream PRs",
+      bugsFound: "2 in tesseract-jax",
+      gradientChecks: "56 of 56 passed"
+    }
+  },
+  {
+    id: "prohori",
+    title: "PROHORI: Crack Width from a Phone Photo",
+    client: "OpenCV AI Competition 2026",
+    category: "AI Systems / Computer Vision",
+    description: "A solo entry that measures structural crack width in millimetres from one phone photo of a crack beside a ChArUco board, then tells the user what to do next.",
+    highlights: [
+      "A conformal risk-control gate labels each reading certified, indicative or refused",
+      "An agent (rules, or Amazon Bedrock Nova Lite) turns the reading into plain instructions",
+      "Width error 0.070 mm MAE over 63 cracks on 8 held-out photos (0.056 mm on certified readings)"
+    ],
+    tech: ["Python", "OpenCV 5", "Conformal prediction", "Amazon Bedrock", "AWS Graviton4"],
+    github: "https://github.com/hozaifa1/prohori",
+    live: "https://184-194-241-186.sslip.io",
+    status: "Competition entry",
+    impact: {
+      widthError: "0.070 mm MAE",
+      certified: "0.056 mm MAE",
+      heldOut: "8 held-out photos"
+    }
+  },
+  {
+    id: "groundtrack",
+    title: "Groundtrack: Graded Anomaly Detection",
+    client: "AI Builders Challenge with IBM Bob",
+    category: "AI Systems / Agents",
+    description: "IBM Bob wrote a spacecraft telemetry fault detector. The grader was locked first and 26 of 81 NASA recordings were held out, so every improvement is scored on data the agent never saw.",
+    highlights: [
+      "Held-out F1 rose from 0.266 to 0.623 and false alarms fell from 128 to 7",
+      "Eight rounds were tried and the grader kept one",
+      "IBM Granite writes the operator briefs; a live console shows the results"
+    ],
+    tech: ["Python", "IBM Bob", "IBM Granite", "Vercel"],
+    github: "https://github.com/hozaifa1/groundtrack",
+    live: "https://groundtrack-console.vercel.app",
+    status: "Competition entry",
+    impact: {
+      heldOutF1: "0.266 to 0.623",
+      falseAlarms: "128 to 7",
+      precision: "0.163 to 0.731"
+    }
+  },
+  {
+    id: "titan-title-review",
+    title: "Titan Title Review AI",
+    client: "Real-estate title review",
+    category: "AI Systems / RAG",
+    description: "Turns real-estate title PDFs into a cited, eight-section ALTA Title Review Summary, and learns from the edits the operator makes.",
+    highlights: [
+      "PDF parsing with pdfplumber and Docling, structured extraction with BAML",
+      "Hybrid retrieval: BM25 and BGE-M3 in Qdrant, fused with RRF and reranked",
+      "Operator edits feed back into later summaries; Streamlit interface"
+    ],
+    tech: ["Python", "BAML", "Qdrant", "BGE-M3", "Streamlit"],
+    github: "https://github.com/hozaifa1/titan-title-review-ai",
+    status: "Prototype",
+    impact: {
+      output: "Cited 8-section summary",
+      retrieval: "BM25 + BGE-M3 + RRF",
+      feedback: "Learns from edits"
+    }
+  },
+  {
     id: "prova-erp",
     title: "Provabook - Production OS",
     client: "Prova Fashion",
@@ -12,7 +117,6 @@ export const projects = [
     ],
     tech: ["Next.js", "Django", "PostgreSQL", "Google Cloud Storage", "DigitalOcean"],
     image: "/projects/prova-erp.png",
-    github: "https://github.com/farihafhf/provabook-3",
     status: "Production",
     impact: {
       visibility: "Realtime Order & Inventory Tracking",
@@ -30,7 +134,7 @@ export const projects = [
       "Automated result generation securing academic payment processing",
       "Multi-program curriculum management (BBA, MBA, CSE, THM)"
     ],
-    tech: ["Next.js", "Django", "PostgreSQL", "Cloudinary", "Vercel"],
+    tech: ["Django REST", "React", "Vite", "PostgreSQL", "Vercel"],
     image: "/projects/igmis-lms.png",
     github: "https://github.com/hozaifa1/uni-management-sys",
     status: "Production",
@@ -43,42 +147,22 @@ export const projects = [
   {
     id: "streamsync",
     title: "StreamSync: Real-time Audio Routing",
-    client: "Commercial Beta",
+    client: "Android app",
     category: "Mobile / Android",
-    description: "Developed a low-latency Android app to transmit in-app audio and voice during HD screen sharing sessions.",
+    description: "An Android 10+ watch-party app that bridges in-app audio to a viewer during screen sharing, built on MediaProjection and WebRTC.",
     highlights: [
       "Overcame standard Android limitations for dual-channel audio",
-      "Optimized for mobile gaming and remote collaboration",
-      "Achieved <50ms audio latency for real-time communication"
+      "MediaProjection audio capture on Android 10+",
+      "WebRTC with Firebase signaling and a Cloudflare TURN relay"
     ],
-    tech: ["Kotlin", "Java", "Android Studio", "Firebase"],
+    tech: ["Kotlin", "Jetpack Compose", "WebRTC", "Firebase", "Cloudflare TURN"],
     image: "/projects/voicelink.png",
+    github: "https://github.com/hozaifa1/streamsync",
     status: "Beta",
     impact: {
-      latency: "<50ms Audio Delay",
+      transport: "WebRTC + TURN",
       compatibility: "Android 10+ Devices",
       sessions: "HD Screen Sharing"
-    }
-  },
-  {
-    id: "torbiz",
-    title: "Torbiz: Distributed LLM Inference",
-    client: "Open Source / ML",
-    category: "AI/ML / Desktop",
-    description: "Launched a decentralized chatbot system using the Petals library, enabling shard hosting on consumer-grade CPUs.",
-    highlights: [
-      "Designed P2P exchange mechanism for distributed model execution",
-      "Cross-platform desktop app using Tauri (Windows, macOS, Linux)",
-      "Democratized access to large language models"
-    ],
-    tech: ["Python", "Petals", "Rust", "Tauri", "React"],
-    image: "/projects/torbiz.png",
-    github: "https://github.com/hozaifa1/torbiz-desktop",
-    status: "Open Source",
-    impact: {
-      model: "Distributed LLM Hosting",
-      platforms: "Windows, macOS, Linux",
-      community: "Open Source"
     }
   },
   {
@@ -93,7 +177,6 @@ export const projects = [
       "Multi-person recognition (TANVIR, ANIK, TOUFIQ, IMRAN, MUFRAD, EMON, SHAFAYET, FAISAL)"
     ],
     tech: ["Python", "OpenCV", "Roboflow", "DETR", "Computer Vision"],
-    github: "https://github.com/hozaifa1/Waiter_Calling_Job_Challenge",
     status: "Prototype",
     impact: {
       accuracy: "0.42+ Confidence Threshold",
@@ -113,7 +196,6 @@ export const projects = [
       "Achieved 89% similarity match for complex queries"
     ],
     tech: ["Python", "OpenAI Whisper", "FuzzyWuzzy", "NLP"],
-    github: "https://github.com/hozaifa1/Video_Transcription_Timestamp",
     status: "Prototype",
     impact: {
       accuracy: "89% Query Match Success",
@@ -129,11 +211,10 @@ export const projects = [
     description: "Intelligent video frame extraction and panoramic image stitching system using OpenCV.",
     highlights: [
       "Automatic frame extraction at configurable intervals (30 frames)",
-      "OpenCV Stitcher for seamless panorama creation",
+      "OpenCV Stitcher for panorama creation",
       "Error handling for insufficient keypoints and homography estimation"
     ],
     tech: ["Python", "OpenCV", "NumPy", "Computer Vision"],
-    github: "https://github.com/hozaifa1/Pano_Maker",
     status: "Prototype",
     impact: {
       stitching: "9 Frame Processing",
@@ -153,7 +234,6 @@ export const projects = [
       "Semantic similarity scoring with cosine similarity"
     ],
     tech: ["Python", "Sentence-Transformers", "CLIP", "PyTorch", "Multimodal AI"],
-    github: "https://github.com/hozaifa1/Meme_Searcher",
     status: "Prototype",
     impact: {
       model: "CLIP ViT-L-14",
@@ -174,7 +254,6 @@ export const projects = [
     ],
     tech: ["PHP", "Laravel", "Bagisto", "MySQL", "Tailwind CSS"],
     image: "/projects/ecommerce-platform.png",
-    github: "https://github.com/hozaifa1/Ecommerce",
     status: "Development",
     impact: {
       products: "15+ Categories",
@@ -183,51 +262,54 @@ export const projects = [
     }
   },
   {
-    id: "reminder-app",
-    title: "Break Enforcer: Screen Time Guardian",
+    id: "screen-rest",
+    title: "ScreenRest: Break Reminders",
     client: "Productivity / Android",
     category: "Mobile / Android",
-    description: "A native Android break enforcer app that monitors continuous screen usage and enforces healthy break intervals with full-screen overlay blocking.",
+    description: "A Kotlin Android app that reminds you to take screen breaks and shows a Quranic verse during each break.",
     highlights: [
-      "UsageStatsManager integration for precise screen-time tracking",
-      "Full-screen overlay enforcement with immersive mode blocking",
-      "Foreground service for persistent background monitoring",
-      "Jetpack Compose UI with Material 3 design system"
+      "Native Kotlin Android app",
+      "Break reminders that display Quranic verses",
+      "A matching desktop version is in a separate repository"
     ],
-    tech: ["Kotlin", "Jetpack Compose", "Android Studio", "Material 3", "Room DB"],
-    github: "https://github.com/hozaifa1/reminder-app",
+    tech: ["Kotlin", "Android Studio"],
+    github: "https://github.com/hozaifa1/screen-rest-app",
     status: "Development",
     impact: {
-      tracking: "Real-time Usage Stats",
-      enforcement: "Full-screen Overlay",
-      platform: "Android 10+"
+      platform: "Android",
+      content: "Quranic verses on breaks",
+      language: "Kotlin"
     }
   }
 ];
 
 export const skills = [
   {
-    category: "Frontend Development",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
+    category: "Device Simulation",
+    technologies: ["Synopsys Sentaurus TCAD", "Sentaurus Structure Editor", "DEVSIM", "FDTD"]
   },
   {
-    category: "Backend Development",
-    technologies: ["Django", "FastAPI", "Node.js", "PostgreSQL", "MySQL"]
+    category: "Ferroelectric FETs",
+    technologies: ["HZO", "GAA-FeFET", "Preisach model", "Analog synapses"]
   },
   {
-    category: "Mobile Development",
-    technologies: ["Kotlin", "Android Studio", "React Native", "Firebase"]
+    category: "Neuromorphic Hardware",
+    technologies: ["Spiking neural networks", "LIF neurons", "SpikingJelly", "MIT-BIH ECG"]
   },
   {
-    category: "AI/ML",
-    technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "Whisper", "CLIP"]
+    category: "Hardware Acceleration",
+    technologies: ["Siemens Catapult HLS", "hls4ml", "QKeras", "PowerPro"]
   },
   {
-    category: "DevOps & Cloud",
-    technologies: ["Docker", "DigitalOcean", "Vercel", "Cloudflare", "Git"]
+    category: "Scientific & Differentiable ML",
+    technologies: ["PyTorch", "JAX", "Tesseract", "Python"]
   },
   {
-    category: "Desktop Development",
-    technologies: ["Rust", "Tauri", "Electron"]
+    category: "Agentic AI & RAG",
+    technologies: ["Agents", "BM25 + BGE-M3", "Qdrant", "Conformal prediction"]
+  },
+  {
+    category: "Full-Stack Web",
+    technologies: ["Next.js", "Payload CMS", "TypeScript", "Django REST", "PostgreSQL"]
   }
 ];

@@ -6,7 +6,7 @@ import { projects } from '@/lib/data';
 import { getProjectShowcase, marqueeItems } from '@/lib/site-content';
 
 const description =
-  'Selected software and AI case studies by S M Hozaifa Hossain: production ERP and LMS systems, Android tools, LLM experiments and computer vision prototypes.';
+  'Selected software and AI case studies by S M Hozaifa Hossain: differentiable TCAD research, open-source contributions, agentic AI and RAG systems, production ERP and LMS systems, and Android tools.';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  const visibleProjects = projects.slice(0, 8);
+  const visibleProjects = projects;
 
   return (
     <main>
@@ -24,14 +24,13 @@ export default function PortfolioPage() {
         <div className="content">
           <div className="hero-grid">
             <h1 className="hero-tagline">
-              Case studies with the <em>same tactile design language</em> carried through
-              every project.
+              Case studies from <em>research, AI systems and production software.</em>
             </h1>
             <div className="hero-meta">
               <span className="role">Selected builds</span>
-              <p>Production software</p>
-              <p>AI prototypes</p>
-              <p>Research-to-product systems</p>
+              <p>Research and hardware</p>
+              <p>AI systems</p>
+              <p>Apps and web</p>
             </div>
             <div className="hero-sub">
               <span>Portfolio index &middot; {visibleProjects.length} projects</span>
@@ -98,10 +97,10 @@ export default function PortfolioPage() {
             </div>
             <div className="route-copy-side">
               <p className="route-copy">
-                The collection spans production SaaS, university systems, Android tools,
-                LLM experiments, and computer vision prototypes. Every case study keeps
-                the same motion language, hover response, and tonal palette as the main
-                homepage.
+                The archive runs from research and hardware work (differentiable TCAD, open-source
+                contributions to Tesseract), through AI systems (crack measurement, graded
+                anomaly detection, retrieval over title documents), to production apps and
+                web products.
               </p>
             </div>
           </div>

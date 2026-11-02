@@ -1330,7 +1330,7 @@ body.theme-light .stack-pill {
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid currentColor;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .text-link {
@@ -1440,4 +1440,87 @@ body.theme-light .stack-pill {
   margin-top: 20px;
   font-size: clamp(16px, 1.2vw, 19px);
   opacity: 0.55;
+}
+
+/* Slide figures and official-page screenshots */
+.award-shot {
+  display: block;
+  margin-top: 20px;
+  max-width: 640px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.award-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.award-shot:hover,
+.award-shot:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.research-figure {
+  margin: 36px 0 0;
+  max-width: 52rem;
+}
+
+.research-figure-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.research-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.research-figure figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.7;
+  max-width: 46rem;
+}
+
+.text-link:focus-visible,
+.award-shot:focus-visible,
+.cta-pill:focus-visible,
+.ghost-cta:focus-visible,
+.big-cta:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .award-text,
+  .award-text a {
+    overflow-wrap: anywhere;
+  }
+}
+
+.nav-link:focus-visible,
+.nav-cta:focus-visible,
+.nav-brand:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    min-width: 0;
+    flex: 1 1 auto;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
+    padding-right: 14px;
+  }
 }

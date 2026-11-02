@@ -2,11 +2,30 @@
 
 > Semiconductor device & neuromorphic hardware researcher. EEE, University of Dhaka. CREST 2027 Fellow. Siemens EDA + IEEE EDS hackathon winner.
 
-S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Bangladesh. An EEE graduate of the University of Dhaka (2026), he is an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) and a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain, and won the Siemens EDA HLS Hackathon 2026 and the IEEE EDS TCAD Hackathon 2026.
+S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Bangladesh. An EEE graduate of the University of Dhaka (2026), he has been an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) since September 2026 and is a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain, and won the Siemens EDA HLS Hackathon 2026 and the IEEE EDS TCAD Hackathon 2026.
 
 ## Work
 
-- IT Consultant, Rahman Rahman Huq (formerly KPMG Bangladesh), Dhaka, since September 2026. Consultant for the design and development of the firm's official website, rrh.com.bd (Next.js + Payload CMS), as client-side technical lead; wrote the content seeding pipeline.
+- IT Consultant, Rahman Rahman Huq (formerly KPMG Bangladesh), Dhaka, September 2026 to present.
+- Web Design and Development Consultant (contract), Rahman Rahman Huq (formerly KPMG Bangladesh), 2026, completed. Consultant for the design and development of the firm's official website, https://rrh.com.bd (Next.js + Payload CMS), as client-side technical lead; wrote the content seeding pipeline.
+
+## Education
+
+- B.Sc. in Electrical and Electronic Engineering, University of Dhaka, 2021 to 2026, CGPA 3.72 / 4.00. IELTS Academic 8.0 overall.
+
+## Awards (with sources)
+
+- CREST 2027 Research Fellow, Silicon River Bangladesh (selected 30 October 2026), advised by Dr. Mainul Hossain.
+- 1st place, Siemens EDA "Accelerating Inferencing Using HLS" Hackathon 2026: https://hls.academy/roadside-recognition-using-hls-hackathon/
+- Winner (one of three, and the first winner from Bangladesh), IEEE EDS TCAD Hackathon 2026: https://eds.ieee.org/education/competitions
+- Best-in-Track, Tesseract Hackathon 2026 (Hybrid ML and Mechanistic Models): https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-09-30-tesseract-hackathon-winners/#track-3-differentiable-silicon
+
+## Research
+
+- Thesis: ferroelectric GAA FeFET (HZO) synapse with a spiking network on MIT-BIH ECG. 5410x memory window at VGS = 0, retained threshold shift 0.405 V, 63.5 mV/dec subthreshold slope, 15 analog states.
+- CREST 2027 project: TCAD and machine-learning study of how channel curvature limits reliable analog states in GAA FeFET synapses.
+- Differentiable Silicon: one gradient from an ECG loss into Synopsys Sentaurus TCAD, with upstream pull requests tesseract-core #712 and tesseract-jax #248.
+- HLS accelerator: CNN accelerator in Siemens Catapult HLS, 915x lower energy per inference.
 
 ## Pages
 
@@ -15,7 +34,7 @@ S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware research
 - [Research](https://hozaifa.dev/research): ferroelectric GAA FET thesis, CREST 2027 project, TCAD nanowire design, Differentiable Silicon, HLS accelerator
 - [Awards](https://hozaifa.dev/awards): CREST 2027, Siemens EDA HLS, IEEE EDS TCAD, Tesseract 2026, IEEE HTB
 - [Publications](https://hozaifa.dev/publications): full citation list (IJABC 2024, Social Network Analysis and Mining 2026, IEEE EDTM 2026)
-- [Software portfolio](https://hozaifa.dev/portfolio): production ERP, LMS and AI case studies
+- [Software portfolio](https://hozaifa.dev/portfolio): research, AI systems and production software case studies
 
 ## Profiles
 

@@ -34,7 +34,7 @@ export default function Home() {
               <span className="role">Semiconductor Device &amp; Neuromorphic Hardware Researcher</span>
               <p>TCAD &amp; Device Physics</p>
               <p>FeFET Neuromorphic Hardware</p>
-              <p>AI/ML &amp; Full-Stack</p>
+              <p>AI Systems &amp; Full-Stack</p>
               <p style={{ marginTop: '14px' }}>{contactInfo.location}</p>
             </div>
             <p className="hero-bio">{identity.bio}</p>
@@ -213,7 +213,7 @@ export default function Home() {
 
       <section id="experience" data-theme="cream">
         <div className="content">
-          <p className="section-eyebrow">Current work</p>
+          <p className="section-eyebrow">Work</p>
           <h2 className="section-title" style={{ marginBottom: '24px' }}>
             Experience
           </h2>
@@ -225,6 +225,20 @@ export default function Home() {
               <h3 className="edu-degree">IT Consultant</h3>
               <p className="edu-meta">
                 Dhaka &middot; September 2026 to present &middot; formerly KPMG Bangladesh
+              </p>
+            </div>
+          </div>
+          <div className="edu-block flip-up visible">
+            <div className="edu-left">
+              <div className="edu-label">Rahman Rahman Huq</div>
+            </div>
+            <div className="edu-right">
+              <h3 className="edu-degree">Web Design and Development Consultant (contract)</h3>
+              <p className="edu-meta">
+                2026 &middot; completed &middot; formerly KPMG Bangladesh &middot;{' '}
+                <a className="text-link" href="https://rrh.com.bd" target="_blank" rel="noopener noreferrer">
+                  rrh.com.bd
+                </a>
               </p>
             </div>
           </div>

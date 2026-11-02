@@ -33,7 +33,7 @@ const profilePage = {
 const qa = [
   {
     q: 'Who is S M Hozaifa Hossain?',
-    a: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. He graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00), is an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh), is a CREST 2027 Research Fellow at Silicon River Bangladesh, and founded Nexora Systems.',
+    a: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. He graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00), has been an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) since September 2026, is a CREST 2027 Research Fellow at Silicon River Bangladesh, and founded Nexora Systems. Earlier in 2026 he completed a separate contract as Web Design and Development Consultant for the firm\'s official site, rrh.com.bd.',
   },
   {
     q: 'What does S M Hozaifa Hossain research?',
@@ -41,7 +41,7 @@ const qa = [
   },
   {
     q: 'What has he won?',
-    a: 'He is a CREST 2027 Research Fellow, won first place at the Siemens EDA HLS Hackathon 2026, and was one of three winners of the IEEE EDS TCAD Hackathon 2026, the first from Bangladesh. He also took Best-in-Track at the Tesseract Hackathon 2026 and received an IEEE Humanitarian Technologies Board recognition in 2025.',
+    a: 'He is a CREST 2027 Research Fellow, won first place at the Siemens EDA HLS Hackathon 2026, and was one of three winners of the IEEE EDS TCAD Hackathon 2026, the first winner from Bangladesh. He also took Best-in-Track at the Tesseract Hackathon 2026 and received an IEEE Humanitarian Technologies Board recognition in 2025.',
   },
   {
     q: 'Where did he study?',
@@ -284,7 +284,7 @@ export default function AboutPage() {
 
       <section id="experience" data-theme="cream">
         <div className="content">
-          <p className="section-eyebrow">Current work</p>
+          <p className="section-eyebrow">Work</p>
           <h2 className="section-title" style={{ marginBottom: '24px' }}>
             Experience
           </h2>
@@ -298,13 +298,33 @@ export default function AboutPage() {
                 <p className="edu-meta">
                   Dhaka &middot; September 2026 to present &middot; formerly KPMG Bangladesh
                 </p>
+              </div>
+            </div>
+          </FlipUp>
+          <FlipUp>
+            <div className="edu-block">
+              <div className="edu-left">
+                <div className="edu-label">Rahman Rahman Huq</div>
+              </div>
+              <div className="edu-right">
+                <h3 className="edu-degree">Web Design and Development Consultant (contract)</h3>
+                <p className="edu-meta">
+                  Dhaka &middot; 2026 &middot; completed &middot; formerly KPMG Bangladesh
+                </p>
                 <div className="course-list">
                   <div>
                     <span>
                       Consultant for the design and development of the firm&apos;s official
                       website, rrh.com.bd (Next.js + Payload CMS)
                     </span>
-                    <span>Website</span>
+                    <a
+                      className="text-link"
+                      href="https://rrh.com.bd"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Website
+                    </a>
                   </div>
                   <div>
                     <span>Client-side technical lead; wrote the content seeding pipeline</span>
@@ -332,6 +352,10 @@ export default function AboutPage() {
                 <h3 className="edu-degree">B.Sc. in Electrical &amp; Electronic Engineering</h3>
                 <p className="edu-meta">Graduated 2026 &middot; CGPA 3.72 / 4.00</p>
                 <div className="course-list">
+                  <div>
+                    <span>IELTS Academic: 8.0 overall</span>
+                    <span>Test score</span>
+                  </div>
                   <div>
                     <span>Thesis: Ferroelectric GAA FETs for neuromorphic systems</span>
                     <span>Defended Sep 2026</span>

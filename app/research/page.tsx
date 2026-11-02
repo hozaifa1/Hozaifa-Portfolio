@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import ContactSection from '@/components/ContactSection';
 import { identity, pageSocial } from '@/lib/seo';
@@ -22,7 +23,8 @@ type Block = {
   detail: string;
   numbersTitle: string;
   numbers: string[];
-  link?: { href: string; label: string };
+  links?: { href: string; label: string }[];
+  figures?: { src: string; width: number; height: number; alt: string; caption: string }[];
 };
 
 const blocks: Block[] = [
@@ -38,13 +40,29 @@ const blocks: Block[] = [
     numbersTitle: 'Key numbers',
     numbers: [
       'Memory window 5410x at VGS = 0 V',
-      'ΔVT 0.387 V',
+      'Retained ΔVT 0.405 V',
       'SS 63.5 mV/dec',
       '<1% retention loss over 9.9e5 read cycles',
       '15 analog conductance states over 3.79 decades',
       '~9 aJ per switching pulse',
       '83.04% accuracy, macro-F1 0.75',
       '535.8 pJ per heartbeat',
+    ],
+    figures: [
+      {
+        src: '/images/slides/thesis-transfer-curve.webp',
+        width: 1600,
+        height: 1117,
+        alt: 'Transfer curves of the erased and programmed GAA FeFET showing a 5,410x ratio at zero gate voltage and a retained threshold shift of 0.405 V',
+        caption: 'Erased and programmed transfer curves: 5,410x at VGS = 0 V, retained ΔVT 0.405 V.',
+      },
+      {
+        src: '/images/slides/thesis-ltp-states.webp',
+        width: 1600,
+        height: 563,
+        alt: 'Four panels showing the HZO dipole state and channel conductance at the erased state and after 3, 9 and 15 programming pulses',
+        caption: 'Channel conductance rises from the erased state to pulse 15 as HZO dipoles flip.',
+      },
     ],
   },
   {
@@ -53,9 +71,9 @@ const blocks: Block[] = [
     eyebrow: 'CREST 2027 · Silicon River Bangladesh',
     question: 'What is the CREST 2027 research project?',
     answer:
-      'As a CREST 2027 Research Fellow at Silicon River Bangladesh, he is working on calibrating analog FeFET synapses without a write-verify loop. Today, programming a ferroelectric synapse to a target conductance usually needs repeated write and read checks; removing that loop would save energy and time. He is advised by Dr. Mainul Hossain.',
+      'As a CREST 2027 Research Fellow at Silicon River Bangladesh, he will study how the curvature of the channel limits the number of reliable analog states in gate-all-around FeFET synapses. The study combines Sentaurus TCAD simulation with machine learning. A synapse that holds more distinguishable conductance levels stores more weights per device, so the question is where the geometry sets a ceiling.',
     detail:
-      'The fellowship runs January to December 2027 at the Center for Research Excellence on Semiconductor Technology, supported by Neural Semiconductor Ltd. It builds directly on the analog-conductance results from the thesis, where 15 states were extracted under write-verify at about 9 aJ per pulse.',
+      'The fellowship runs January to December 2027 at the Center for Research Excellence on Semiconductor Technology, supported by Neural Semiconductor Ltd. It builds on the thesis, where 15 analog conductance states were extracted for a GAA device and a planar reference supported 10. He is advised by Dr. Mainul Hossain.',
     numbersTitle: 'Fellowship',
     numbers: [
       'Selected 30 October 2026',
@@ -72,13 +90,29 @@ const blocks: Block[] = [
     answer:
       'Applying 1 GPa of uniaxial tensile stress along a 6 nm silicon nanowire repopulates its conduction-band subbands. In his Sentaurus TCAD design this gave 35% more on-current and 32% more transconductance, while band-to-band tunneling and quantum corrections kept off-state leakage at 0.99 pA.',
     detail:
-      'The nMOS has a 15 nm gate length, 6 nm diameter and 0.9 nm EOT (0.4 nm SiO2 interface layer plus 2.82 nm HfO2, κ = 22), built as a six-material 3D cylinder in Sentaurus Structure Editor with 0.2 nm radial mesh refinement. Simulation used deformation-potential and eSubBand models, density-gradient quantum correction and nonlocal-path band-to-band tunneling. This design made him one of three international winners of the IEEE EDS TCAD Hackathon 2026, and the first from Bangladesh.',
+      'The nMOS has a 15 nm gate length, 6 nm diameter and 0.9 nm EOT (0.4 nm SiO2 interface layer plus 2.82 nm HfO2, κ = 22), built as a six-material 3D cylinder in Sentaurus Structure Editor with 0.2 nm radial mesh refinement. Simulation used deformation-potential and eSubBand models, density-gradient quantum correction and nonlocal-path band-to-band tunneling. This design made him one of three international winners of the IEEE EDS TCAD Hackathon 2026, and the first winner from Bangladesh.',
     numbersTitle: 'Key numbers',
     numbers: [
       '+35% ION (5.42 µA, 287 µA/µm)',
       '+32% gm (2.10 mS/µm)',
       'IOFF 0.99 pA, ION/IOFF 5.5e6',
       'SS 61 mV/dec at VDD 0.7 V',
+    ],
+    figures: [
+      {
+        src: '/images/slides/nanowire-cross-section.webp',
+        width: 1600,
+        height: 742,
+        alt: 'Cross-section of the gate-all-around nanowire showing a 6 nm silicon core, 15 nm gate length and the oxide, HfO2, TiN and nitride layers',
+        caption: 'Device cross-section: 15 nm gate length, 6 nm silicon diameter.',
+      },
+      {
+        src: '/images/slides/nanowire-stress-iv.webp',
+        width: 1600,
+        height: 732,
+        alt: 'Drain current versus gate voltage on log and linear scales comparing 1 GPa tensile stress with the unstressed device, showing a 35 percent gain in on-current',
+        caption: 'Drain current with and without 1 GPa tensile stress: +35% ION.',
+      },
     ],
   },
   {
@@ -97,10 +131,32 @@ const blocks: Block[] = [
       'Accuracy 0.250 to 0.688',
       '64 solver calls',
     ],
-    link: {
-      href: 'https://github.com/hozaifa1/differentiable-silicon',
-      label: 'github.com/hozaifa1/differentiable-silicon',
-    },
+    links: [
+      {
+        href: 'https://github.com/hozaifa1/differentiable-silicon',
+        label: 'Code: github.com/hozaifa1/differentiable-silicon',
+      },
+      {
+        href: 'https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-09-30-tesseract-hackathon-winners/#track-3-differentiable-silicon',
+        label: 'Source: Pasteur Labs winners blog',
+      },
+    ],
+    figures: [
+      {
+        src: '/images/slides/differentiable-silicon-pipeline.webp',
+        width: 1600,
+        height: 471,
+        alt: 'Gradient path from ECG loss through a PyTorch spiking network and a JAX circuit model into Sentaurus, ending at the four fabrication parameters',
+        caption: 'Gradient path from the ECG loss back to four fabrication parameters. The solver has no adjoint, so the last step is estimated.',
+      },
+      {
+        src: '/images/slides/differentiable-silicon-results.webp',
+        width: 1600,
+        height: 462,
+        alt: 'Plots of memory window against subthreshold slope over the optimization and where each of the four fabrication parameters moved',
+        caption: 'How the memory window and slope traded off, and where the four parameters moved.',
+      },
+    ],
   },
   {
     id: 'hls',
@@ -118,6 +174,21 @@ const blocks: Block[] = [
       '95.3% accuracy',
       '365 synthesis runs',
       '45 nm ASIC library',
+    ],
+    links: [
+      {
+        href: 'https://hls.academy/roadside-recognition-using-hls-hackathon/?Watch%3A+How+the+Winning+Team+Did+It=expanded',
+        label: 'Source: HLS Academy results page',
+      },
+    ],
+    figures: [
+      {
+        src: '/images/slides/hls-cnn-reference-vs-final.webp',
+        width: 1600,
+        height: 471,
+        alt: 'Layer-by-layer comparison of the reference CNN and the final design, which drops one pooling and dense stage and uses 6-bit activations',
+        caption: 'Reference network (top) against the final design (bottom).',
+      },
     ],
   },
 ];
@@ -169,13 +240,27 @@ export default function ResearchPage() {
                   {block.answer}
                 </p>
                 <p className="route-copy">{block.detail}</p>
-                {block.link ? (
-                  <p className="route-copy">
-                    <a className="text-link" href={block.link.href} target="_blank" rel="noreferrer">
-                      {block.link.label}
+                {block.links?.map((link) => (
+                  <p key={link.href} className="route-copy">
+                    <a className="text-link" href={link.href} target="_blank" rel="noopener noreferrer">
+                      {link.label}
                     </a>
                   </p>
-                ) : null}
+                ))}
+                {block.figures?.map((fig) => (
+                  <figure key={fig.src} className="research-figure">
+                    <div className="research-figure-frame">
+                      <Image
+                        src={fig.src}
+                        alt={fig.alt}
+                        width={fig.width}
+                        height={fig.height}
+                        sizes="(max-width: 960px) 100vw, 640px"
+                      />
+                    </div>
+                    <figcaption>{fig.caption}</figcaption>
+                  </figure>
+                ))}
               </div>
               <div className="route-copy-side">
                 <div className="meta-card">

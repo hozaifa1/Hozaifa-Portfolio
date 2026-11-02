@@ -188,10 +188,20 @@ export default async function ProjectDetailPage({
                   Back to archive
                 </Link>
                 {project.github ? (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="big-cta">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="big-cta">
                     View source
                   </a>
                 ) : null}
+                {project.live ? (
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="ghost-cta">
+                    Live demo
+                  </a>
+                ) : null}
+                {project.links?.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="big-cta">
+                    {link.label}
+                  </a>
+                ))}
               </div>
             </div>
             <div className="route-copy-side">
@@ -267,9 +277,7 @@ export default async function ProjectDetailPage({
             </div>
             <div className="route-copy-side">
               <p className="route-copy">
-                The same motion language from the main homepage carries through here, but
-                the content turns toward the architecture, workflow, and operational
-                details that made this project useful.
+                The architecture, workflow and results that made this project useful.
               </p>
             </div>
           </div>

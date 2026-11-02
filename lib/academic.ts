@@ -8,6 +8,9 @@ export type Award = {
   built: string;
   numbers: string[];
   href?: string;
+  sourceHref?: string;
+  sourceLabel?: string;
+  image?: { src: string; width: number; height: number; alt: string };
   background: string;
 };
 
@@ -20,7 +23,7 @@ export const awards: Award[] = [
     organiser: 'Silicon River Bangladesh (Center for Research Excellence on Semiconductor Technology)',
     summary: 'Research fellowship at Silicon River Bangladesh, advised by Dr. Mainul Hossain.',
     built:
-      'Selected through a competitive national review for the Center for Research Excellence on Semiconductor Technology, supported by Neural Semiconductor Ltd. Project: calibrating analog FeFET synapses without a write-verify loop, advised by Dr. Mainul Hossain.',
+      'Selected through a competitive national review for the Center for Research Excellence on Semiconductor Technology, supported by Neural Semiconductor Ltd. Project: a TCAD and machine-learning study of how channel curvature limits the number of reliable analog states in GAA FeFET synapses, advised by Dr. Mainul Hossain.',
     numbers: ['Fellowship: Jan to Dec 2027', 'Advisor: Dr. Mainul Hossain'],
     background: '#b8e4cc',
   },
@@ -38,6 +41,9 @@ export const awards: Award[] = [
       '95.3% accuracy',
       '365 synthesis runs',
     ],
+    sourceHref: 'https://hls.academy/roadside-recognition-using-hls-hackathon/?Watch%3A+How+the+Winning+Team+Did+It=expanded',
+    sourceLabel: 'HLS Academy results page',
+    image: { src: '/images/slides/hls-academy-results.webp', width: 1482, height: 826, alt: 'HLS Academy results page for the Roadside Recognition Using HLS hackathon, with the winning-team video' },
     background: '#ede9b0',
   },
   {
@@ -46,7 +52,7 @@ export const awards: Award[] = [
     shortDate: '2026',
     title: 'Winner (one of three), IEEE EDS TCAD Hackathon',
     organiser: 'IEEE Electron Devices Society (EDS) Educational Activities Committee',
-    summary: 'One of three international winners, and the first from Bangladesh.',
+    summary: 'One of three international winners, and the first winner from Bangladesh.',
     built:
       'A sub-10 nm stress-engineered gate-all-around (GAA) silicon nanowire nMOS, designed, simulated and optimized in Synopsys Sentaurus TCAD on consumer hardware, showing quantum transport and subthreshold physics. Geometry: gate length 15 nm, diameter 6 nm, EOT 0.9 nm.',
     numbers: [
@@ -54,6 +60,9 @@ export const awards: Award[] = [
       'SS 61 mV/dec at VDD 0.7 V',
       'ION/IOFF 5.5e6, IOFF 0.99 pA',
     ],
+    sourceHref: 'https://eds.ieee.org/education/competitions',
+    sourceLabel: 'IEEE EDS competitions page',
+    image: { src: '/images/slides/ieee-eds-tcad-results.webp', width: 1487, height: 817, alt: 'IEEE EDS 2026 TCAD Hackathon results announcement listing the three winners' },
     background: '#d4c9f0',
   },
   {
@@ -71,6 +80,9 @@ export const awards: Award[] = [
       '64 solver calls',
     ],
     href: 'https://github.com/hozaifa1/differentiable-silicon',
+    sourceHref: 'https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-09-30-tesseract-hackathon-winners/#track-3-differentiable-silicon',
+    sourceLabel: 'Pasteur Labs winners blog',
+    image: { src: '/images/slides/tesseract-winners-blog.webp', width: 1474, height: 777, alt: 'Pasteur Labs Tesseract Hackathon winners blog, Track 3 Differentiable Silicon' },
     background: '#f0816a',
   },
   {
