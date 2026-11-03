@@ -48,9 +48,6 @@ export default function ContactSection() {
           <Link className="value" href="/awards">Awards</Link>
           <Link className="value" href="/publications">Publications</Link>
           <Link className="value" href="/about">About</Link>
-          <a className="value" href={identity.agencyUrl} target="_blank" rel="noreferrer">
-            Nexora Systems
-          </a>
         </nav>
         <div className="footer-bottom">
           <span>{identity.name} &middot; {contactInfo.location}</span>

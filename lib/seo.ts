@@ -18,15 +18,12 @@ export const identity = {
   github: 'https://github.com/hozaifa1',
   employerName: 'Rahman Rahman Huq',
   employerUrl: 'https://rrh.com.bd',
-  agencyName: 'Nexora Systems',
-  agencyUrl: 'https://nexora-solves.vercel.app',
 } as const;
 
 export const sameAs = [identity.linkedin, identity.github];
 
 export const personId = `${SITE_URL}/#person`;
 export const websiteId = `${SITE_URL}/#website`;
-export const agencyId = `${SITE_URL}/#nexora`;
 
 export const knowsAbout = [
   'Neuromorphic computing',

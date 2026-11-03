@@ -7,7 +7,6 @@ import SmoothScroll from '@/components/SmoothScroll';
 import JsonLd from '@/components/JsonLd';
 import {
   SITE_URL,
-  agencyId,
   awardStrings,
   identity,
   keywords,
@@ -80,13 +79,6 @@ const graph = {
       email: `mailto:${identity.email}`,
       address: { '@type': 'PostalAddress', addressLocality: 'Dhaka', addressCountry: 'BD' },
       sameAs,
-    },
-    {
-      '@type': 'Organization',
-      '@id': agencyId,
-      name: identity.agencyName,
-      url: identity.agencyUrl,
-      founder: { '@id': personId },
     },
     {
       '@type': 'WebSite',

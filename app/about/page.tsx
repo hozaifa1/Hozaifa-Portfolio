@@ -11,7 +11,7 @@ import { SITE_URL, identity, knowsAbout, personId, websiteId, pageSocial } from 
 import { contactInfo, courses, publications } from '@/lib/site-content';
 
 const description =
-  'About S M Hozaifa Hossain: semiconductor device and neuromorphic hardware researcher, EEE graduate of the University of Dhaka, IT Consultant at Rahman Rahman Huq, CREST 2027 Research Fellow and founder of Nexora Systems.';
+  'About S M Hozaifa Hossain: semiconductor device and neuromorphic hardware researcher, EEE graduate of the University of Dhaka, IT Consultant at Rahman Rahman Huq and CREST 2027 Research Fellow.';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -33,7 +33,7 @@ const profilePage = {
 const qa = [
   {
     q: 'Who am I?',
-    a: 'I\'m a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. I graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00). Since September 2026 I\'ve worked as an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh). I\'m also a CREST 2027 Research Fellow at Silicon River Bangladesh, and I founded Nexora Systems. Earlier in 2026 I completed a separate contract as Web Design and Development Consultant for the firm\'s official site, rrh.com.bd.',
+    a: 'I\'m a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. I graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00). Since September 2026 I\'ve worked as an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh). I\'m also a CREST 2027 Research Fellow at Silicon River Bangladesh. Earlier in 2026 I completed a separate contract as Web Design and Development Consultant for the firm\'s official site, rrh.com.bd.',
   },
   {
     q: 'What do I research?',
@@ -62,11 +62,10 @@ export default function AboutPage() {
               surface.
             </div>
             <div className="hero-meta">
-              <span className="role">Research Fellow &amp; Founder</span>
+              <span className="role">Research Fellow &amp; IT Consultant</span>
               <p>IT Consultant, Rahman Rahman Huq</p>
               <p>University of Dhaka (EEE, 2026)</p>
               <p>CREST 2027, Silicon River Bangladesh</p>
-              <p>Founder, Nexora Systems</p>
               <p style={{ marginTop: '14px' }}>{contactInfo.location}</p>
             </div>
             <div className="hero-sub">
@@ -90,12 +89,7 @@ export default function AboutPage() {
                 I&apos;m {identity.name}, a semiconductor device and neuromorphic hardware
                 researcher. I graduated in Electrical and Electronic Engineering from the
                 University of Dhaka in 2026, and I work across TCAD device simulation,
-                spiking neural networks, AI systems, and software products. I also founded
-                and run{' '}
-                <a className="text-link" href={identity.agencyUrl} target="_blank" rel="noreferrer">
-                  {identity.agencyName}
-                </a>
-                , a software and AI agency.
+                spiking neural networks, AI systems, and software products.
               </p>
             </div>
             <div className="route-copy-side">
@@ -159,11 +153,7 @@ export default function AboutPage() {
               <p>{item.a}</p>
               {item.q.startsWith('Who') ? (
                 <p>
-                  Founder of{' '}
-                  <a className="text-link" href={identity.agencyUrl} target="_blank" rel="noreferrer">
-                    {identity.agencyName}
-                  </a>
-                  . Email{' '}
+                  Email{' '}
                   <a className="text-link" href={`mailto:${identity.email}`}>
                     {identity.email}
                   </a>
