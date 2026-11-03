@@ -32,9 +32,9 @@ const blocks: Block[] = [
     id: 'thesis',
     theme: 'cream',
     eyebrow: 'Undergraduate thesis · defended September 2026',
-    question: 'What did S M Hozaifa Hossain’s undergraduate thesis show?',
+    question: 'What did my undergraduate thesis show?',
     answer:
-      'His thesis models a gate-all-around ferroelectric FET with a 7 nm HZO gate stack in Synopsys Sentaurus TCAD, then uses it as an artificial synapse in a spiking network. The device shows a 5410x memory window and a 63.5 mV/dec subthreshold slope, and the network classifies ECG heartbeats with 83.04% accuracy.',
+      'My thesis models a gate-all-around ferroelectric FET with a 7 nm HZO gate stack in Synopsys Sentaurus TCAD, then uses it as an artificial synapse in a spiking network. The device shows a 5410x memory window and a 63.5 mV/dec subthreshold slope, and the network classifies ECG heartbeats with 83.04% accuracy.',
     detail:
       'Title: Ferroelectric Gate-All-Around FETs for Next-Generation Neuromorphic Systems: Device Modeling and Spiking Network Implementation. Advisor: Dr. Mainul Hossain, University of Dhaka. The sub-100 nm device was calibrated with Preisach polarization dynamics against experimental data. Conductance-level placement mattered more to SNN accuracy than the number of levels. The calibrated conductance states were deployed in a PyTorch spiking recurrent network (SpikingJelly, leaky integrate-and-fire neurons) for 4-class arrhythmia classification on the MIT-BIH database.',
     numbersTitle: 'Key numbers',
@@ -71,9 +71,9 @@ const blocks: Block[] = [
     eyebrow: 'CREST 2027 · Silicon River Bangladesh',
     question: 'What is the CREST 2027 research project?',
     answer:
-      'As a CREST 2027 Research Fellow at Silicon River Bangladesh, he will study how the curvature of the channel limits the number of reliable analog states in gate-all-around FeFET synapses. The study combines Sentaurus TCAD simulation with machine learning. A synapse that holds more distinguishable conductance levels stores more weights per device, so the question is where the geometry sets a ceiling.',
+      'As a CREST 2027 Research Fellow at Silicon River Bangladesh, I will study how the curvature of the channel limits the number of reliable analog states in gate-all-around FeFET synapses. The study combines Sentaurus TCAD simulation with machine learning. A synapse that holds more distinguishable conductance levels stores more weights per device, so the question is where the geometry sets a ceiling.',
     detail:
-      'The fellowship runs January to December 2027 at the Center for Research Excellence on Semiconductor Technology, supported by Neural Semiconductor Ltd. It builds on the thesis, where 15 analog conductance states were extracted for a GAA device and a planar reference supported 10. He is advised by Dr. Mainul Hossain.',
+      'The fellowship runs January to December 2027 at the Center for Research Excellence on Semiconductor Technology, supported by Neural Semiconductor Ltd. It builds on the thesis, where 15 analog conductance states were extracted for a GAA device and a planar reference supported 10. My advisor is Dr. Mainul Hossain.',
     numbersTitle: 'Fellowship',
     numbers: [
       'Selected 30 October 2026',
@@ -88,9 +88,9 @@ const blocks: Block[] = [
     eyebrow: 'IEEE EDS TCAD Hackathon 2026',
     question: 'How does stress improve a sub-10 nm gate-all-around nanowire transistor?',
     answer:
-      'Applying 1 GPa of uniaxial tensile stress along a 6 nm silicon nanowire repopulates its conduction-band subbands. In his Sentaurus TCAD design this gave 35% more on-current and 32% more transconductance, while band-to-band tunneling and quantum corrections kept off-state leakage at 0.99 pA.',
+      'Applying 1 GPa of uniaxial tensile stress along a 6 nm silicon nanowire repopulates its conduction-band subbands. In my Sentaurus TCAD design this gave 35% more on-current and 32% more transconductance, while band-to-band tunneling and quantum corrections kept off-state leakage at 0.99 pA.',
     detail:
-      'The nMOS has a 15 nm gate length, 6 nm diameter and 0.9 nm EOT (0.4 nm SiO2 interface layer plus 2.82 nm HfO2, κ = 22), built as a six-material 3D cylinder in Sentaurus Structure Editor with 0.2 nm radial mesh refinement. Simulation used deformation-potential and eSubBand models, density-gradient quantum correction and nonlocal-path band-to-band tunneling. This design made him one of three international winners of the IEEE EDS TCAD Hackathon 2026, and the first winner from Bangladesh.',
+      'The nMOS has a 15 nm gate length, 6 nm diameter and 0.9 nm EOT (0.4 nm SiO2 interface layer plus 2.82 nm HfO2, κ = 22), built as a six-material 3D cylinder in Sentaurus Structure Editor with 0.2 nm radial mesh refinement. Simulation used deformation-potential and eSubBand models, density-gradient quantum correction and nonlocal-path band-to-band tunneling. This design made me one of three international winners of the IEEE EDS TCAD Hackathon 2026, and the first winner from Bangladesh.',
     numbersTitle: 'Key numbers',
     numbers: [
       '+35% ION (5.42 µA, 287 µA/µm)',
@@ -164,7 +164,7 @@ const blocks: Block[] = [
     eyebrow: 'Siemens EDA HLS Hackathon 2026 · 1st place',
     question: 'How was a CNN accelerator made 915 times more energy efficient?',
     answer:
-      'He designed an ultra-low-power CNN accelerator for roadside-object recognition by exploring many high-level synthesis configurations, then measuring real gate-level power. Energy per inference fell from 6,877 nJ to 7.51 nJ, a 915x reduction, at 95.3% accuracy. The result took first place in the Siemens EDA hackathon.',
+      'I designed an ultra-low-power CNN accelerator for roadside-object recognition by exploring many high-level synthesis configurations, then measuring real gate-level power. Energy per inference fell from 6,877 nJ to 7.51 nJ, a 915x reduction, at 95.3% accuracy. The result took first place in the Siemens EDA hackathon.',
     detail:
       'The flow used QKeras and hls4ml to move the quantized network into Siemens Catapult HLS, targeted a 45 nm ASIC library, and measured power with PowerPro at gate level. The final design came from 365 synthesis runs.',
     numbersTitle: 'Key numbers',

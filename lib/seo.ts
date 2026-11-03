@@ -12,6 +12,8 @@ export const identity = {
   oneLineBio:
     'Semiconductor device & neuromorphic hardware researcher. EEE, University of Dhaka. CREST 2027 Fellow. Siemens EDA + IEEE EDS hackathon winner.',
   bio: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Bangladesh. An EEE graduate of the University of Dhaka (2026), he has been an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) since September 2026 and is a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain, and won the Siemens EDA HLS Hackathon 2026 and the IEEE EDS TCAD Hackathon 2026.',
+  bioFirstPerson:
+    'I\'m a semiconductor device and neuromorphic hardware researcher from Bangladesh. I graduated in EEE from the University of Dhaka in 2026, and I\'ve worked as an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) since September 2026. I\'m also a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain. I won first place at the Siemens EDA HLS Hackathon 2026 and was one of three winners of the IEEE EDS TCAD Hackathon 2026.',
   linkedin: 'https://www.linkedin.com/in/s-m-hozaifa-hossain',
   github: 'https://github.com/hozaifa1',
   employerName: 'Rahman Rahman Huq',

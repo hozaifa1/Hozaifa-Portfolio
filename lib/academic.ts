@@ -54,7 +54,7 @@ export const awards: Award[] = [
     organiser: 'IEEE Electron Devices Society (EDS) Educational Activities Committee',
     summary: 'One of three international winners, and the first winner from Bangladesh.',
     built:
-      'A sub-10 nm stress-engineered gate-all-around (GAA) silicon nanowire nMOS, designed, simulated and optimized in Synopsys Sentaurus TCAD on consumer hardware, showing quantum transport and subthreshold physics. Geometry: gate length 15 nm, diameter 6 nm, EOT 0.9 nm. He is the first winner from Bangladesh.',
+      'A sub-10 nm stress-engineered gate-all-around (GAA) silicon nanowire nMOS, designed, simulated and optimized in Synopsys Sentaurus TCAD on consumer hardware, showing quantum transport and subthreshold physics. Geometry: gate length 15 nm, diameter 6 nm, EOT 0.9 nm. I am the first winner from Bangladesh.',
     numbers: [
       '+35% ION and +32% gm from 1 GPa uniaxial tensile stress',
       'SS 61 mV/dec at VDD 0.7 V',

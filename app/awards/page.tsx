@@ -44,9 +44,9 @@ export default function AwardsPage() {
         <div className="content">
           <p className="section-eyebrow">Honors &amp; awards</p>
           <h2 className="section-title">
-            What has
+            What have
             <br />
-            he won?
+            I won?
           </h2>
           <AwardRows detailed />
         </div>

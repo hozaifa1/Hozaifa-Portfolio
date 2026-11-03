@@ -32,20 +32,20 @@ const profilePage = {
 
 const qa = [
   {
-    q: 'Who is S M Hozaifa Hossain?',
-    a: 'S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. He graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00), has been an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) since September 2026, is a CREST 2027 Research Fellow at Silicon River Bangladesh, and founded Nexora Systems. Earlier in 2026 he completed a separate contract as Web Design and Development Consultant for the firm\'s official site, rrh.com.bd.',
+    q: 'Who am I?',
+    a: 'I\'m a semiconductor device and neuromorphic hardware researcher from Dhaka, Bangladesh. I graduated in 2026 with a B.Sc. in Electrical and Electronic Engineering from the University of Dhaka (CGPA 3.72/4.00). Since September 2026 I\'ve worked as an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh). I\'m also a CREST 2027 Research Fellow at Silicon River Bangladesh, and I founded Nexora Systems. Earlier in 2026 I completed a separate contract as Web Design and Development Consultant for the firm\'s official site, rrh.com.bd.',
   },
   {
-    q: 'What does S M Hozaifa Hossain research?',
-    a: 'He researches ferroelectric gate-all-around transistors (FeFETs) as low-energy artificial synapses for neuromorphic computing. His work combines Synopsys Sentaurus TCAD device simulation, spiking neural networks and high-level synthesis. His thesis device reached a 5410x memory window, and a spiking network built on it classified ECG heartbeats at 83.04% accuracy.',
+    q: 'What do I research?',
+    a: 'I research ferroelectric gate-all-around transistors (FeFETs) as low-energy artificial synapses for neuromorphic computing. My work combines Synopsys Sentaurus TCAD device simulation, spiking neural networks and high-level synthesis. My thesis device reached a 5410x memory window, and a spiking network built on it classified ECG heartbeats at 83.04% accuracy.',
   },
   {
-    q: 'What has he won?',
-    a: 'He is a CREST 2027 Research Fellow, won first place at the Siemens EDA HLS Hackathon 2026, and was one of three winners of the IEEE EDS TCAD Hackathon 2026, the first winner from Bangladesh. He also took Best-in-Track at the Tesseract Hackathon 2026 and received an IEEE Humanitarian Technologies Board recognition in 2025.',
+    q: 'What have I won?',
+    a: 'I am a CREST 2027 Research Fellow, won first place at the Siemens EDA HLS Hackathon 2026, and was one of three winners of the IEEE EDS TCAD Hackathon 2026, the first winner from Bangladesh. I also took Best-in-Track at the Tesseract Hackathon 2026 and received an IEEE Humanitarian Technologies Board recognition in 2025.',
   },
   {
-    q: 'Where did he study?',
-    a: 'He studied Electrical and Electronic Engineering at the University of Dhaka, graduating in 2026 with a CGPA of 3.72 out of 4.00. His undergraduate thesis, defended in September 2026 under Dr. Mainul Hossain, modeled ferroelectric gate-all-around FETs for neuromorphic systems and implemented a spiking network on top of them.',
+    q: 'Where did I study?',
+    a: 'I studied Electrical and Electronic Engineering at the University of Dhaka, graduating in 2026 with a CGPA of 3.72 out of 4.00. My undergraduate thesis, defended in September 2026 under Dr. Mainul Hossain, modeled ferroelectric gate-all-around FETs for neuromorphic systems and implemented a spiking network on top of them.',
   },
 ];
 

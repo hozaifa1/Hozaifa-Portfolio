@@ -37,7 +37,7 @@ export default function Home() {
               <p>AI Systems &amp; Full-Stack</p>
               <p style={{ marginTop: '14px' }}>{contactInfo.location}</p>
             </div>
-            <p className="hero-bio">{identity.bio}</p>
+            <p className="hero-bio">{identity.bioFirstPerson}</p>
             <div className="hero-sub">
               <span>Portfolio &middot; 2026</span>
             </div>
