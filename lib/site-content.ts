@@ -247,8 +247,8 @@ export const courses: CourseItem[] = [
     href: '/certificates/Coursera%20DL_CNN.pdf',
   },
   {
-    name: 'Advanced Data Analytics',
-    provider: 'Google / Coursera',
+    name: 'Go Beyond the Numbers: Translate Data into Insights',
+    provider: 'Google',
     background: '#c8cdd4',
     motif: 'rgba(26,30,36,0.22)',
     mark: '\\u03a3',

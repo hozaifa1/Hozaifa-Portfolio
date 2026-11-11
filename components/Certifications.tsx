@@ -42,8 +42,8 @@ export default function Certifications() {
           file: "/certificates/Coursera UL_RL.pdf"
         },
         {
-          title: "Generative AI Fundamentals",
-          issuer: "Google Cloud",
+          title: "Generative AI with Large Language Models",
+          issuer: "DeepLearning.AI and AWS",
           file: "/certificates/Coursera GenAI.pdf"
         }
       ]
@@ -55,7 +55,7 @@ export default function Certifications() {
       iconColor: "text-cyan-400",
       items: [
         {
-          title: "Advanced Data Analytics",
+          title: "Go Beyond the Numbers: Translate Data into Insights",
           issuer: "Google",
           file: "/certificates/Coursera Data.pdf"
         }
@@ -68,7 +68,7 @@ export default function Certifications() {
       iconColor: "text-green-400",
       items: [
         {
-          title: "Git and Version Control",
+          title: "Version Control with Git",
           issuer: "Atlassian",
           file: "/certificates/Coursera Git_Version_Control.pdf"
         },
