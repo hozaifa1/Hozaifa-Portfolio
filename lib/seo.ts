@@ -16,11 +16,13 @@ export const identity = {
     'I\'m a semiconductor device and neuromorphic hardware researcher from Bangladesh. I graduated in EEE from the University of Dhaka in 2026, and I\'ve worked as an IT Consultant at Rahman Rahman Huq (formerly KPMG Bangladesh) since September 2026. I\'m also a CREST 2027 Research Fellow at Silicon River Bangladesh, advised by Dr. Mainul Hossain. I won first place at the Siemens EDA HLS Hackathon 2026 and was one of three winners of the IEEE EDS TCAD Hackathon 2026.',
   linkedin: 'https://www.linkedin.com/in/s-m-hozaifa-hossain',
   github: 'https://github.com/hozaifa1',
+  orcid: 'https://orcid.org/0009-0004-3014-0714',
+  scholar: 'https://scholar.google.com/citations?user=-wpk2KoAAAAJ',
   employerName: 'Rahman Rahman Huq',
   employerUrl: 'https://rrh.com.bd',
 } as const;
 
-export const sameAs = [identity.linkedin, identity.github];
+export const sameAs = [identity.linkedin, identity.github, identity.orcid, identity.scholar];
 
 export const personId = `${SITE_URL}/#person`;
 export const websiteId = `${SITE_URL}/#website`;

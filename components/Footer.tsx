@@ -52,6 +52,24 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
+                href="https://orcid.org/0009-0004-3014-0714"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ORCID Profile"
+                className="h-10 px-3 rounded-full border border-[var(--border-subtle)] flex items-center justify-center text-xs font-medium text-[var(--text-muted)] hover:text-white hover:border-white/30 transition-all"
+              >
+                ORCID
+              </a>
+              <a
+                href="https://scholar.google.com/citations?user=-wpk2KoAAAAJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Scholar Profile"
+                className="h-10 px-3 rounded-full border border-[var(--border-subtle)] flex items-center justify-center text-xs font-medium text-[var(--text-muted)] hover:text-white hover:border-white/30 transition-all"
+              >
+                Scholar
+              </a>
+              <a
                 href="mailto:20hozaifa02@gmail.com"
                 aria-label="Email Contact"
                 className="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-white/30 transition-all"
