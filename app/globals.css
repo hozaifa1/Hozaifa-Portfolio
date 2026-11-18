@@ -1524,3 +1524,159 @@ body.theme-light .stack-pill {
     padding-right: 14px;
   }
 }
+
+/* Writing */
+.article-hero {
+  padding: 180px 0 88px;
+}
+
+.article-title {
+  max-width: 62rem;
+  font-size: clamp(36px, 5.2vw, 72px);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.article-byline {
+  margin-top: 32px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.article-byline a,
+.article-author a,
+.section-eyebrow a {
+  border-bottom: 1px solid currentColor;
+}
+
+.article-body {
+  max-width: 46rem;
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.article-body > p,
+.article-body > ul,
+.article-body > ol {
+  margin-top: 22px;
+}
+
+.article-body > .article-lead {
+  margin-top: 0;
+  font-size: clamp(21px, 2vw, 26px);
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.article-body h2 {
+  margin-top: 72px;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 24px;
+}
+
+.article-body li + li {
+  margin-top: 8px;
+}
+
+.article-table {
+  margin-top: 32px;
+  overflow-x: auto;
+  border-top: 1px solid rgba(128, 128, 128, 0.45);
+}
+
+.article-table:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.article-table table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.article-table th,
+.article-table td {
+  padding: 12px 16px 12px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.28);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-table th {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.article-body > .article-author {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(128, 128, 128, 0.45);
+  font-size: 15px;
+  line-height: 1.65;
+  opacity: 0.75;
+}
+
+.post-list {
+  list-style: none;
+  max-width: 56rem;
+}
+
+.post-row time {
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.post-row h2 {
+  margin-top: 12px;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.post-row h2 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+.post-row p {
+  margin-top: 18px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
+@media (max-width: 640px) {
+  .article-hero {
+    padding: 132px 0 56px;
+  }
+
+  .article-body {
+    font-size: 17px;
+  }
+
+  .article-body h2 {
+    margin-top: 56px;
+  }
+}

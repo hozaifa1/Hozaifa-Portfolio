@@ -34,6 +34,8 @@ S M Hozaifa Hossain is a semiconductor device and neuromorphic hardware research
 - [Research](https://hozaifa.dev/research): ferroelectric GAA FET thesis, CREST 2027 project, TCAD nanowire design, Differentiable Silicon, HLS accelerator
 - [Awards](https://hozaifa.dev/awards): CREST 2027, Siemens EDA HLS, IEEE EDS TCAD, Tesseract 2026, IEEE HTB
 - [Publications](https://hozaifa.dev/publications): full citation list (IJABC 2024, Social Network Analysis and Mining 2026, IEEE EDTM 2026)
+- [Writing](https://hozaifa.dev/writing): first-hand technical write-ups
+- [How I cut CNN inference energy 915x to win the Siemens EDA HLS Hackathon 2026](https://hozaifa.dev/writing/siemens-hls-hackathon-cnn-energy-915x): design flow, every major step from 6,877 nJ to 7.51 nJ, and the final settings
 - [Software portfolio](https://hozaifa.dev/portfolio): research, AI systems and production software case studies
 
 ## Profiles

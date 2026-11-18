@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { projects } from '@/lib/data';
 import { SITE_URL } from '@/lib/seo';
+import { posts } from '@/lib/writing';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/research', priority: 0.9 },
     { path: '/awards', priority: 0.8 },
     { path: '/publications', priority: 0.8 },
+    { path: '/writing', priority: 0.8 },
     { path: '/portfolio', priority: 0.7 },
   ];
 
@@ -18,6 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}${r.path}`,
       lastModified: now,
       priority: r.priority,
+    })),
+    ...posts.map((post) => ({
+      url: `${SITE_URL}/writing/${post.slug}`,
+      lastModified: new Date(post.datePublished),
+      priority: 0.8,
     })),
     ...projects.map((p) => ({
       url: `${SITE_URL}/portfolio/${p.id}`,

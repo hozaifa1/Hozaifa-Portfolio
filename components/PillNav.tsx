@@ -5,6 +5,7 @@ const navItems = [
   { label: 'Research', href: '/research' },
   { label: 'Awards', href: '/awards' },
   { label: 'Publications', href: '/publications' },
+  { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
   { label: 'Courses', href: '/#courses' },
 ];

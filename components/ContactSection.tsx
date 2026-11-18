@@ -47,6 +47,7 @@ export default function ContactSection() {
           <Link className="value" href="/research">Research</Link>
           <Link className="value" href="/awards">Awards</Link>
           <Link className="value" href="/publications">Publications</Link>
+          <Link className="value" href="/writing">Writing</Link>
           <Link className="value" href="/about">About</Link>
         </nav>
         <div className="footer-bottom">
