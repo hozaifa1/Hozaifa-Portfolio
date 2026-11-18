@@ -1680,3 +1680,9 @@ body.theme-light .stack-pill {
     margin-top: 56px;
   }
 }
+
+@media (min-width: 961px) {
+  .contact-links-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

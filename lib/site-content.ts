@@ -5,6 +5,7 @@ export const contactInfo = {
   email: identity.email,
   github: identity.github,
   linkedin: identity.linkedin,
+  facebook: identity.facebook,
   portfolio: SITE_URL,
   phone: '+8801615001456',
   location: identity.location,

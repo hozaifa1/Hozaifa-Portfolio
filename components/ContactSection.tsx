@@ -17,7 +17,7 @@ export default function ContactSection() {
             View GitHub &rarr;
           </a>
         </div>
-        <div className="contact-links">
+        <div className="contact-links contact-links-cards">
           <div className="contact-link-card">
             <span className="label">Email</span>
             <a className="value" href={`mailto:${contactInfo.email}`}>
@@ -34,6 +34,12 @@ export default function ContactSection() {
             <span className="label">LinkedIn</span>
             <a className="value" href={contactInfo.linkedin} target="_blank" rel="noreferrer">
               linkedin.com/in/s-m-hozaifa-hossain
+            </a>
+          </div>
+          <div className="contact-link-card">
+            <span className="label">Facebook</span>
+            <a className="value" href={contactInfo.facebook} target="_blank" rel="me noreferrer">
+              facebook.com/smhozaifahossain
             </a>
           </div>
           <div className="contact-link-card">

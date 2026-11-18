@@ -165,6 +165,10 @@ export default function AboutPage() {
                   <a className="text-link" href={identity.github} target="_blank" rel="noreferrer">
                     GitHub
                   </a>
+                  ,{' '}
+                  <a className="text-link" href={identity.facebook} target="_blank" rel="me noreferrer">
+                    Facebook
+                  </a>
                   .
                 </p>
               ) : null}
